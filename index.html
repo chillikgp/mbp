@@ -92,11 +92,10 @@
           <div class="flex items-center justify-end gap-4">
             <!-- Desktop Navigation -->
             <nav class="hidden items-center gap-9 md:flex">
-              <a class="text-[#6C584C] text-sm font-medium leading-normal transition-colors hover:text-[#FFB6B9]" href="#">Home</a>
-              <a class="text-[#6C584C] text-sm font-medium leading-normal transition-colors hover:text-[#FFB6B9]" href="#">About</a>
-              <a class="text-[#6C584C] text-sm font-medium leading-normal transition-colors hover:text-[#FFB6B9]" href="#">Portfolio</a>
-              <a class="text-[#6C584C] text-sm font-medium leading-normal transition-colors hover:text-[#FFB6B9]" href="#">Packages</a>
-              <a class="text-[#6C584C] text-sm font-medium leading-normal transition-colors hover:text-[#FFB6B9]" href="#">Contact</a>
+              <a class="text-[#6C584C] text-sm font-medium leading-normal transition-colors hover:text-[#FFB6B9]" href="#home">Home</a>
+              <a class="text-[#6C584C] text-sm font-medium leading-normal transition-colors hover:text-[#FFB6B9]" href="#about">About</a>
+              <a class="text-[#6C584C] text-sm font-medium leading-normal transition-colors hover:text-[#FFB6B9]" href="#portfolio">Portfolio</a>
+              <a class="text-[#6C584C] text-sm font-medium leading-normal transition-colors hover:text-[#FFB6B9]" href="#packages">Packages</a>
             </nav>
             <button
               class="hidden min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#FFB6B9] text-[#6C584C] text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105 md:flex open-popup-btn"
@@ -116,11 +115,10 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-solid border-b-[#FFF8F0] p-4">
             <nav class="flex flex-col gap-4">
-                 <a class="text-[#6C584C] text-base font-medium leading-normal" href="#">Home</a>
-                 <a class="text-[#6C584C] text-base font-medium leading-normal" href="#">About</a>
-                 <a class="text-[#6C584C] text-base font-medium leading-normal" href="#">Portfolio</a>
-                 <a class="text-[#6C584C] text-base font-medium leading-normal" href="#">Packages</a>
-                 <a class="text-[#6C584C] text-base font-medium leading-normal" href="#">Contact</a>
+                 <a class="text-[#6C584C] text-base font-medium leading-normal" href="#home">Home</a>
+                 <a class="text-[#6C584C] text-base font-medium leading-normal" href="#about">About</a>
+                 <a class="text-[#6C584C] text-base font-medium leading-normal" href="#portfolio">Portfolio</a>
+                 <a class="text-[#6C584C] text-base font-medium leading-normal" href="#packages">Packages</a>
                  <button
                     class="mt-2 w-full flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#FFB6B9] text-[#6C584C] text-sm font-bold leading-normal tracking-[0.015em] open-popup-btn"
                     >
@@ -169,7 +167,7 @@
 
 
             <!-- Hero Section -->
-            <section class="@container px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40">
+            <section class="@container px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40" id="home">
               <div class="flex flex-col gap-6 py-10 @[480px]:gap-8 lg:flex-row lg:items-stretch">
                 <!-- Carousel -->
                 <div id="hero-carousel" class="relative w-full aspect-video lg:aspect-auto rounded-xl lg:w-1/2 overflow-hidden">
@@ -217,7 +215,7 @@
             </section>
             
             <!-- Portfolio Section -->
-            <section class="py-10 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40">
+            <section class="py-10 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40" id="portfolio">
                 <h2 class="text-[#6C584C] text-3xl font-bold leading-tight tracking-[-0.015em] text-center mb-8">Portfolio</h2>
                 <div class="flex border-b border-[#e4e1dd] mb-8 overflow-x-auto no-scrollbar">
                     <button class="portfolio-tab active-tab px-4 py-2 text-sm font-bold border-b-2 border-[#6C584C] text-[#6C584C] flex-shrink-0" data-filter="all">All</button>
@@ -243,7 +241,7 @@
 
 
             <!-- About Us Section -->
-            <section class="py-10 bg-white px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40">
+            <section class="py-10 bg-white px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40" id="about">
                 <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
                     <div class="flex-shrink-0">
                         <img class="w-48 h-48 lg:w-64 lg:h-64 rounded-full object-cover shadow-lg" src="images/photographer-amelia.jpeg" alt="Photographer Amelia">
@@ -361,7 +359,7 @@
             </section>
             
             <!-- Services & Packages Section -->
-            <section class="py-10 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40">
+            <section class="py-10 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40"id="packages">
                 <div class="text-center mb-8">
                     <h2 class="text-[#6C584C] text-3xl font-bold leading-tight tracking-[-0.015em] px-4 pb-3">Services & Packages</h2>
                     <p class="text-[#6C584C] text-base font-normal leading-normal max-w-2xl mx-auto px-4">
