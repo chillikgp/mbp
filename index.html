@@ -80,9 +80,7 @@
     <div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
       <div class="layout-container flex h-full grow flex-col">
         <!-- Header -->
-        <header id="main-header" class="sticky top-0 z-50 transition-transform duration-300 ...">
-        <!-- existing classes -->
-        </header>
+        <header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-[#FFF8F0] bg-[#FFF8F0]/90 px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-10">
         <div class="flex items-center gap-4 text-[#6C584C]">
               <div class="size-6">
               <img src="images/mbp-favicon.png" alt="My Baby Pictures Icon" class="w-full h-full object-contain" />
@@ -845,24 +843,7 @@
 
       });
     </script>
-    <script>
-          const header = document.getElementById('main-header');
-          let lastScroll = window.scrollY;
-        
-          window.addEventListener('scroll', () => {
-            const currentScroll = window.scrollY;
-        
-            if (currentScroll > lastScroll && currentScroll > 50) {
-              // Scrolling down
-              header.classList.add('-translate-y-full');
-            } else {
-              // Scrolling up
-              header.classList.remove('-translate-y-full');
-            }
-        
-            lastScroll = currentScroll;
-          });
-     </script>
+
 
   </body>
 </html>
