@@ -57,6 +57,16 @@
   </head>
   <body class="bg-white" style="font-family: 'Plus Jakarta Sans', 'Noto Sans', sans-serif">
     <div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
+        
+      <!-- Background Graphics -->
+      <div class="absolute inset-0 -z-10">
+          <div class="absolute top-0 bottom-0 mx-auto left-1/2 transform -translate-x-1/2 w-full md:w-[1200px] lg:w-[1600px] max-w-screen">
+              <img src="https://www.letsjive.io/images/marketing/home-shapes-full.svg" class="hidden lg:block w-full h-full object-cover" alt="Shapes" />
+              <img src="https://www.letsjive.io/images/marketing/home-shapes-tablet.svg" class="hidden md:block lg:hidden w-full h-full object-cover" alt="Shapes" />
+              <img src="https://www.letsjive.io/images/marketing/home-shapes-mobile.svg" class="md:hidden w-full h-full object-cover" alt="Shapes" />
+          </div>
+      </div>
+
       <div class="layout-container flex h-full grow flex-col">
         <!-- Header -->
         <header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f4f2f1] bg-white/80 px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-10">
@@ -202,7 +212,7 @@
             <!-- Portfolio Section -->
             <section class="py-10 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40">
                 <h2 class="text-[#171512] text-3xl font-bold leading-tight tracking-[-0.015em] text-center mb-8">Portfolio</h2>
-                <div class="flex justify-center border-b border-[#e4e1dd] mb-8 overflow-x-auto no-scrollbar">
+                <div class="flex border-b border-[#e4e1dd] mb-8 overflow-x-auto no-scrollbar">
                     <button class="portfolio-tab active-tab px-4 py-2 text-sm font-bold border-b-2 border-[#171512] text-[#171512] flex-shrink-0" data-filter="all">All</button>
                     <button class="portfolio-tab px-4 py-2 text-sm font-bold border-b-2 border-transparent text-[#827768] hover:text-[#171512] flex-shrink-0" data-filter="newborn">Newborn</button>
                     <button class="portfolio-tab px-4 py-2 text-sm font-bold border-b-2 border-transparent text-[#827768] hover:text-[#171512] flex-shrink-0" data-filter="maternity">Maternity</button>
@@ -533,7 +543,7 @@
         bookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxL_MgPmZnfe0A3VKHMDbRcRjjWornfj6IeeUBubov5pwiicaBB-rzGLnhTBSBkE4E7/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyk56QjpSlXpbwCd2cZMiN24RMW4GEz7U1rRgNXgCszfeld83llm7pPDkmUYj4nBXpV/exec';
             const formData = new FormData(bookingForm);
 
             submitBtn.disabled = true;
