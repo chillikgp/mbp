@@ -12,7 +12,7 @@
     />
 
     <title>My Baby Pictures</title>
-    <link rel="icon" type="image/png" href="images/mbp-favicon.png" />
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
@@ -402,4 +402,352 @@
               <p class="text-[#827768] text-sm font-normal leading-normal">© 2024 Tiny Moments Photography. All rights reserved.</p>
               <div class="flex flex-wrap justify-center gap-4">
                 <a href="#" class="text-[#827768] transition-colors hover:text-[#171512]">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256"><path d="M128,80a48,48,0,1,0
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"></path></svg>
+                </a>
+                <a href="#" class="text-[#827768] transition-colors hover:text-[#171512]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Booking Popup Modal -->
+    <div id="booking-popup" class="hidden fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-50 p-4">
+        <div class="popup-content relative w-full max-w-lg bg-white rounded-2xl shadow-xl p-8 transform scale-95">
+            <button id="close-popup-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"></path></svg>
+            </button>
+            <h3 class="text-2xl font-bold text-[#171512] mb-6 text-center">Book a Session</h3>
+            <form id="booking-form" class="space-y-4">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-[#171512]">Name</label>
+                    <input type="text" id="name" name="name" required class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm focus:border-[#e8cfaf] focus:ring focus:ring-[#e8cfaf] focus:ring-opacity-50">
+                </div>
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-[#171512]">Phone</label>
+                    <input type="tel" id="phone" name="phone" required class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm focus:border-[#e8cfaf] focus:ring focus:ring-[#e8cfaf] focus:ring-opacity-50">
+                </div>
+                <div>
+                    <label for="age-due-date" class="block text-sm font-medium text-[#171512]">Baby’s Age or Due Date</label>
+                    <input type="text" id="age-due-date" name="ageDueDate" required class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm focus:border-[#e8cfaf] focus:ring focus:ring-[#e8cfaf] focus:ring-opacity-50">
+                </div>
+                <div>
+                    <label for="shoot-date" class="block text-sm font-medium text-[#171512]">Preferred Shoot Date</label>
+                    <input type="date" id="shoot-date" name="shootDate" required class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm focus:border-[#e8cfaf] focus:ring focus:ring-[#e8cfaf] focus:ring-opacity-50">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-[#171512]">Message</label>
+                    <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm focus:border-[#e8cfaf] focus:ring focus:ring-[#e8cfaf] focus:ring-opacity-50"></textarea>
+                </div>
+                <div class="text-center pt-4">
+                    <button id="submit-booking-btn" type="submit" class="w-full max-w-xs mx-auto flex items-center justify-center rounded-full h-12 px-6 bg-[#e8cfaf] text-[#171512] text-base font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105">Submit Request</button>
+                    <p id="form-status" class="text-sm mt-4"></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Story Viewer Modal -->
+    <div id="story-viewer" class="hidden fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-90">
+        <div class="story-content relative w-full h-full max-w-md max-h-[90vh] bg-black rounded-lg shadow-xl transform scale-95 flex flex-col">
+            <div class="story-progress-container absolute top-2 left-2 right-2 flex space-x-1"></div>
+            <img id="story-image" src="" alt="Story Image" class="w-full h-full object-contain">
+            <p id="story-caption" class="absolute bottom-4 left-4 right-4 text-white text-center text-sm bg-black bg-opacity-50 p-2 rounded"></p>
+            <button id="close-story-btn" class="absolute top-2 right-2 text-white text-2xl">&times;</button>
+            <button id="story-prev-btn" class="absolute left-2 top-1/2 -translate-y-1/2 text-white text-3xl opacity-75 hover:opacity-100">&#10094;</button>
+            <button id="story-next-btn" class="absolute right-2 top-1/2 -translate-y-1/2 text-white text-3xl opacity-75 hover:opacity-100">&#10095;</button>
+        </div>
+    </div>
+    
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="hidden fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-90 p-4">
+        <div class="lightbox-content relative w-full h-full">
+            <button id="close-lightbox-btn" class="absolute top-4 right-4 text-white text-4xl">&times;</button>
+            <img id="lightbox-image" src="" class="max-w-full max-h-full mx-auto my-auto object-contain">
+        </div>
+    </div>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Mobile Menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Booking Popup
+        const bookingPopup = document.getElementById('booking-popup');
+        const popupContent = bookingPopup.querySelector('.popup-content');
+        const openPopupBtns = document.querySelectorAll('.open-popup-btn');
+        const closePopupBtn = document.getElementById('close-popup-btn');
+        const bookingForm = document.getElementById('booking-form');
+        const heroPhoneInput = document.getElementById('hero-phone');
+        const heroBookNowBtn = document.getElementById('hero-book-now');
+        const popupPhoneInput = document.getElementById('phone');
+        const submitBtn = document.getElementById('submit-booking-btn');
+        const formStatus = document.getElementById('form-status');
+
+
+        const openPopup = () => {
+            formStatus.textContent = '';
+            bookingPopup.classList.remove('hidden');
+            bookingPopup.classList.add('flex');
+            void bookingPopup.offsetWidth;
+            bookingPopup.classList.add('opacity-100');
+            popupContent.classList.add('scale-100');
+            popupContent.classList.remove('scale-95');
+        };
+
+        const closePopup = () => {
+            bookingPopup.classList.remove('opacity-100');
+            popupContent.classList.remove('scale-100');
+            popupContent.classList.add('scale-95');
+            setTimeout(() => {
+                bookingPopup.classList.add('hidden');
+                bookingPopup.classList.remove('flex');
+            }, 300);
+        };
+
+        openPopupBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                popupPhoneInput.value = '';
+                openPopup();
+            });
+        });
+
+        heroBookNowBtn.addEventListener('click', () => {
+            popupPhoneInput.value = heroPhoneInput.value;
+            openPopup();
+        });
+
+        closePopupBtn.addEventListener('click', closePopup);
+        bookingPopup.addEventListener('click', (e) => {
+            if (e.target === bookingPopup) closePopup();
+        });
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyk56QjpSlXpbwCd2cZMiN24RMW4GEz7U1rRgNXgCszfeld83llm7pPDkmUYj4nBXpV/exec';
+            const formData = new FormData(bookingForm);
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            formStatus.textContent = '';
+            formStatus.classList.remove('text-green-600', 'text-red-600');
+
+
+            fetch(scriptURL, { method: 'POST', body: formData})
+                .then(response => {
+                    formStatus.textContent = 'Thank you! Your request has been sent.';
+                    formStatus.classList.add('text-green-600');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Request';
+                    bookingForm.reset();
+                    heroPhoneInput.value = '';
+                    setTimeout(closePopup, 3000);
+                })
+                .catch(error => {
+                    formStatus.textContent = 'Oops! Something went wrong. Please try again.';
+                    formStatus.classList.add('text-red-600');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Request';
+                    console.error('Error!', error.message);
+                });
+        });
+
+        // Hero Carousel
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let currentSlide = 0;
+        let slideInterval;
+
+        const showSlide = (index) => {
+            slides.forEach((slide, i) => {
+                slide.style.opacity = i === index ? '1' : '0';
+            });
+            dots.forEach((dot, i) => {
+                dot.style.opacity = i === index ? '0.75' : '0.5';
+            });
+            currentSlide = index;
+        };
+
+        const nextSlide = () => {
+            showSlide((currentSlide + 1) % slides.length);
+        };
+        
+        const startSlideShow = () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        };
+        
+        const stopSlideShow = () => {
+            clearInterval(slideInterval);
+        };
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                stopSlideShow();
+                showSlide(i);
+                startSlideShow();
+            });
+        });
+
+        startSlideShow();
+
+        // Story Viewer
+        const storyViewer = document.getElementById('story-viewer');
+        const storyContent = storyViewer.querySelector('.story-content');
+        const storyImage = document.getElementById('story-image');
+        const storyCaption = document.getElementById('story-caption');
+        const storyProgressContainer = storyViewer.querySelector('.story-progress-container');
+        const closeStoryBtn = document.getElementById('close-story-btn');
+        const prevStoryBtn = document.getElementById('story-prev-btn');
+        const nextStoryBtn = document.getElementById('story-next-btn');
+
+        const stories = {
+            newborn: [
+                { img: 'images/story-newborn-1.jpeg', caption: 'Sweet dreams.' },
+                { img: 'images/story-newborn-2.jpeg', caption: 'So tiny, so loved.' },
+            ],
+            '3-6-months': [
+                { img: 'images/story-3-6-months-1.jpeg', caption: 'Giggles and wiggles.' },
+                { img: 'images/story-3-6-months-2.jpeg', caption: 'Curious little explorer.' },
+            ],
+            toddlers: [
+                { img: 'images/story-toddler-1.jpeg', caption: 'On the move!' },
+                { img: 'images/story-toddler-2.jpeg', caption: 'Cake smash success!' },
+            ]
+        };
+
+        let currentStoryGroup = [];
+        let currentStoryIndex = 0;
+
+        const showStory = (group, index) => {
+            currentStoryGroup = stories[group];
+            currentStoryIndex = index;
+            
+            storyImage.src = currentStoryGroup[currentStoryIndex].img;
+            storyCaption.textContent = currentStoryGroup[currentStoryIndex].caption;
+
+            storyProgressContainer.innerHTML = '';
+            currentStoryGroup.forEach((_, i) => {
+                const bar = document.createElement('div');
+                bar.className = 'flex-1 h-1 bg-white/50 rounded-full';
+                if (i < currentStoryIndex) bar.style.backgroundColor = 'white';
+                if (i === currentStoryIndex) {
+                    const innerBar = document.createElement('div');
+                    innerBar.className = 'h-full bg-white rounded-full';
+                    bar.appendChild(innerBar);
+                }
+                storyProgressContainer.appendChild(bar);
+            });
+        };
+
+        const openStoryViewer = (group) => {
+            showStory(group, 0);
+            storyViewer.classList.remove('hidden');
+            storyViewer.classList.add('flex');
+            void storyViewer.offsetWidth;
+            storyViewer.classList.add('opacity-100');
+            storyContent.classList.add('scale-100');
+            storyContent.classList.remove('scale-95');
+        };
+
+        const closeStoryViewer = () => {
+            storyViewer.classList.remove('opacity-100');
+            storyContent.classList.remove('scale-100');
+            storyContent.classList.add('scale-95');
+            setTimeout(() => {
+                storyViewer.classList.add('hidden');
+                storyViewer.classList.remove('flex');
+            }, 300);
+        };
+
+        document.querySelectorAll('.story-item').forEach(item => {
+            item.addEventListener('click', () => {
+                openStoryViewer(item.dataset.storyGroup);
+            });
+        });
+
+        closeStoryBtn.addEventListener('click', closeStoryViewer);
+        nextStoryBtn.addEventListener('click', () => {
+            if (currentStoryIndex < currentStoryGroup.length - 1) {
+                showStory(Object.keys(stories).find(key => stories[key] === currentStoryGroup), currentStoryIndex + 1);
+            }
+        });
+        prevStoryBtn.addEventListener('click', () => {
+            if (currentStoryIndex > 0) {
+                showStory(Object.keys(stories).find(key => stories[key] === currentStoryGroup), currentStoryIndex - 1);
+            }
+        });
+
+        // Portfolio Gallery & Lightbox
+        const portfolioTabs = document.querySelectorAll('.portfolio-tab');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const lightbox = document.getElementById('lightbox-modal');
+        const lightboxImg = document.getElementById('lightbox-image');
+        const closeLightboxBtn = document.getElementById('close-lightbox-btn');
+
+        portfolioTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const filter = tab.dataset.filter;
+
+                portfolioTabs.forEach(t => {
+                    t.classList.remove('active-tab', 'border-[#171512]', 'text-[#171512]');
+                    t.classList.add('border-transparent', 'text-[#827768]');
+                });
+                tab.classList.add('active-tab', 'border-[#171512]', 'text-[#171512]');
+                tab.classList.remove('border-transparent', 'text-[#827768]');
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.transform = 'scale(1)';
+                            item.style.opacity = '1';
+                        }, 10);
+                    } else {
+                        item.style.transform = 'scale(0.9)';
+                        item.style.opacity = '0';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        portfolioItems.forEach(item => {
+            item.addEventListener('click', () => {
+                lightboxImg.src = item.dataset.src;
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                void lightbox.offsetWidth;
+                lightbox.classList.add('opacity-100');
+            });
+        });
+
+        const closeLightbox = () => {
+            lightbox.classList.remove('opacity-100');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+            }, 300);
+        };
+        
+        closeLightboxBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+      });
+    </script>
+  </body>
+</html>
