@@ -124,7 +124,7 @@
                     <div class="story-item flex-shrink-0 text-center cursor-pointer" data-story-group="newborn">
                         <div class="w-16 h-16 rounded-full p-1 bg-gradient-to-tr from-yellow-400 to-fuchsia-600">
                             <div class="w-full h-full rounded-full bg-white p-1">
-                                <img class="w-full h-full rounded-full object-cover" src="https://images.unsplash.com/photo-1546015929-f75a18145352?q=80&w=1974&auto=format&fit=crop" alt="Newborn story">
+                                <img class="w-full h-full rounded-full object-cover" src="images/story-newborn.jpeg" alt="Newborn story">
                             </div>
                         </div>
                         <p class="text-xs mt-1 text-gray-600">Newborn</p>
@@ -133,7 +133,7 @@
                     <div class="story-item flex-shrink-0 text-center cursor-pointer" data-story-group="3-6-months">
                         <div class="w-16 h-16 rounded-full p-1 bg-gradient-to-tr from-yellow-400 to-fuchsia-600">
                             <div class="w-full h-full rounded-full bg-white p-1">
-                                <img class="w-full h-full rounded-full object-cover" src="https://images.unsplash.com/photo-1520288339894-0683a739506d?q=80&w=1974&auto=format&fit=crop" alt="3-6 Months story">
+                                <img class="w-full h-full rounded-full object-cover" src="images/story-3-6-months.jpeg" alt="3-6 Months story">
                             </div>
                         </div>
                         <p class="text-xs mt-1 text-gray-600">3-6 Months</p>
@@ -142,7 +142,7 @@
                     <div class="story-item flex-shrink-0 text-center cursor-pointer" data-story-group="toddlers">
                         <div class="w-16 h-16 rounded-full p-1 bg-gradient-to-tr from-yellow-400 to-fuchsia-600">
                            <div class="w-full h-full rounded-full bg-white p-1">
-                                <img class="w-full h-full rounded-full object-cover" src="https://images.unsplash.com/photo-1519638831568-d9897f54ed69?q=80&w=2070&auto=format&fit=crop" alt="Toddlers story">
+                                <img class="w-full h-full rounded-full object-cover" src="images/story-toddler.jpeg" alt="Toddlers story">
                             </div>
                         </div>
                         <p class="text-xs mt-1 text-gray-600">Toddlers</p>
@@ -158,9 +158,9 @@
                 <!-- Carousel -->
                 <div id="hero-carousel" class="relative w-full aspect-video lg:aspect-auto lg:h-[500px] rounded-xl lg:w-1/2 overflow-hidden">
                     <!-- Slides -->
-                    <div class="carousel-slide absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover opacity-100" style="background-image: url('https://images.unsplash.com/photo-1519638831568-d9897f54ed69?q=80&w=2070&auto=format&fit=crop');"></div>
-                    <div class="carousel-slide absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover opacity-0" style="background-image: url('https://images.unsplash.com/photo-1604143237228-f6f1f3de5843?q=80&w=1974&auto=format&fit=crop');"></div>
-                    <div class="carousel-slide absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover opacity-0" style="background-image: url('https://images.unsplash.com/photo-1545479292-03956447585b?q=80&w=2003&auto=format&fit=crop');"></div>
+                    <div class="carousel-slide absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover opacity-100" style="background-image: url('images/hero-carousel-1.jpeg');"></div>
+                    <div class="carousel-slide absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover opacity-0" style="background-image: url('images/hero-carousel-2.jpeg');"></div>
+                    <div class="carousel-slide absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover opacity-0" style="background-image: url('images/hero-carousel-3.jpeg');"></div>
                     <!-- Dots -->
                     <div id="carousel-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
                         <button class="carousel-dot h-3 w-3 rounded-full bg-white opacity-75 transition"></button>
@@ -202,21 +202,25 @@
             <!-- Portfolio Section -->
             <section class="py-10 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40">
                 <h2 class="text-[#171512] text-3xl font-bold leading-tight tracking-[-0.015em] text-center mb-8">Portfolio</h2>
-                <div class="flex justify-center border-b border-[#e4e1dd] mb-8">
-                    <button class="portfolio-tab active-tab px-4 py-2 text-sm font-bold border-b-2 border-[#171512] text-[#171512]" data-filter="all">All</button>
-                    <button class="portfolio-tab px-4 py-2 text-sm font-bold border-b-2 border-transparent text-[#827768] hover:text-[#171512]" data-filter="newborn">Newborn</button>
-                    <button class="portfolio-tab px-4 py-2 text-sm font-bold border-b-2 border-transparent text-[#827768] hover:text-[#171512]" data-filter="maternity">Maternity</button>
-                    <button class="portfolio-tab px-4 py-2 text-sm font-bold border-b-2 border-transparent text-[#827768] hover:text-[#171512]" data-filter="cake-smash">Cake Smash</button>
-                    <button class="portfolio-tab px-4 py-2 text-sm font-bold border-b-2 border-transparent text-[#827768] hover:text-[#171512]" data-filter="family">Family</button>
+                <div class="flex justify-center border-b border-[#e4e1dd] mb-8 overflow-x-auto no-scrollbar">
+                    <button class="portfolio-tab active-tab px-4 py-2 text-sm font-bold border-b-2 border-[#171512] text-[#171512] flex-shrink-0" data-filter="all">All</button>
+                    <button class="portfolio-tab px-4 py-2 text-sm font-bold border-b-2 border-transparent text-[#827768] hover:text-[#171512] flex-shrink-0" data-filter="newborn">Newborn</button>
+                    <button class="portfolio-tab px-4 py-2 text-sm font-bold border-b-2 border-transparent text-[#827768] hover:text-[#171512] flex-shrink-0" data-filter="maternity">Maternity</button>
+                    <button class="portfolio-tab px-4 py-2 text-sm font-bold border-b-2 border-transparent text-[#827768] hover:text-[#171512] flex-shrink-0" data-filter="cake-smash">Cake Smash</button>
+                    <button class="portfolio-tab px-4 py-2 text-sm font-bold border-b-2 border-transparent text-[#827768] hover:text-[#171512] flex-shrink-0" data-filter="one-year">One Year</button>
+                    <button class="portfolio-tab px-4 py-2 text-sm font-bold border-b-2 border-transparent text-[#827768] hover:text-[#171512] flex-shrink-0" data-filter="family">Family</button>
                 </div>
                 <div id="portfolio-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     <!-- Portfolio Items -->
-                    <div class="portfolio-item cursor-pointer" data-category="newborn" data-src="https://images.unsplash.com/photo-1604143237228-f6f1f3de5843?q=80&w=1974&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1604143237228-f6f1f3de5843?q=80&w=1974&auto=format&fit=crop" alt="Newborn Photo 1" class="w-full h-full object-cover rounded-lg"></div>
-                    <div class="portfolio-item cursor-pointer" data-category="maternity" data-src="https://images.unsplash.com/photo-1519759124382-c54d94e2071f?q=80&w=1974&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1519759124382-c54d94e2071f?q=80&w=1974&auto=format&fit=crop" alt="Maternity Photo 1" class="w-full h-full object-cover rounded-lg"></div>
-                    <div class="portfolio-item cursor-pointer" data-category="cake-smash" data-src="https://images.unsplash.com/photo-1566380541128-95f1a503a493?q=80&w=1974&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1566380541128-95f1a503a493?q=80&w=1974&auto=format&fit=crop" alt="Cake Smash Photo 1" class="w-full h-full object-cover rounded-lg"></div>
-                    <div class="portfolio-item cursor-pointer" data-category="family" data-src="https://images.unsplash.com/photo-1550757750-4ce187a65014?q=80&w=2070&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1550757750-4ce187a65014?q=80&w=2070&auto=format&fit=crop" alt="Family Photo 1" class="w-full h-full object-cover rounded-lg"></div>
-                    <div class="portfolio-item cursor-pointer" data-category="newborn" data-src="https://images.unsplash.com/photo-1599405652278-75b455860348?q=80&w=1974&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1599405652278-75b455860348?q=80&w=1974&auto=format&fit=crop" alt="Newborn Photo 2" class="w-full h-full object-cover rounded-lg"></div>
-                    <div class="portfolio-item cursor-pointer" data-category="family" data-src="https://images.unsplash.com/photo-1617331140182-203799a49444?q=80&w=1974&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1617331140182-203799a49444?q=80&w=1974&auto=format&fit=crop" alt="Family Photo 2" class="w-full h-full object-cover rounded-lg"></div>
+                    <div class="portfolio-item cursor-pointer" data-category="newborn" data-src="images/portfolio-newborn-1.jpeg"><img src="images/portfolio-newborn-1.jpeg" alt="Newborn Photo 1" class="w-full h-full object-cover rounded-lg"></div>
+                    <div class="portfolio-item cursor-pointer" data-category="maternity" data-src="images/portfolio-maternity-1.jpeg"><img src="images/portfolio-maternity-1.jpeg" alt="Maternity Photo 1" class="w-full h-full object-cover rounded-lg"></div>
+                    <div class="portfolio-item cursor-pointer" data-category="cake-smash" data-src="images/portfolio-cakesmash-1.jpeg"><img src="images/portfolio-cakesmash-1.jpeg" alt="Cake Smash Photo 1" class="w-full h-full object-cover rounded-lg"></div>
+                    <div class="portfolio-item cursor-pointer" data-category="family" data-src="images/portfolio-family-1.jpeg"><img src="images/portfolio-family-1.jpeg" alt="Family Photo 1" class="w-full h-full object-cover rounded-lg"></div>
+                    <div class="portfolio-item cursor-pointer" data-category="newborn" data-src="images/portfolio-newborn-2.jpeg"><img src="images/portfolio-newborn-2.jpeg" alt="Newborn Photo 2" class="w-full h-full object-cover rounded-lg"></div>
+                    <div class="portfolio-item cursor-pointer" data-category="maternity" data-src="images/portfolio-maternity-2.jpeg"><img src="images/portfolio-maternity-2.jpeg" alt="Maternity Photo 2" class="w-full h-full object-cover rounded-lg"></div>
+                    <div class="portfolio-item cursor-pointer" data-category="one-year" data-src="images/portfolio-oneyear-1.jpeg"><img src="images/portfolio-oneyear-1.jpeg" alt="One Year Photo 1" class="w-full h-full object-cover rounded-lg"></div>
+                    <div class="portfolio-item cursor-pointer" data-category="one-year" data-src="images/portfolio-oneyear-2.jpeg"><img src="images/portfolio-oneyear-2.jpeg" alt="One Year Photo 2" class="w-full h-full object-cover rounded-lg"></div>
+                    <div class="portfolio-item cursor-pointer" data-category="family" data-src="images/portfolio-family-2.jpeg"><img src="images/portfolio-family-2.jpeg" alt="Family Photo 2" class="w-full h-full object-cover rounded-lg"></div>
                 </div>
             </section>
 
@@ -225,7 +229,7 @@
             <section class="py-10 bg-white px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40">
                 <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
                     <div class="flex-shrink-0">
-                        <img class="w-48 h-48 lg:w-64 lg:h-64 rounded-full object-cover shadow-lg" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop" alt="Photographer Amelia">
+                        <img class="w-48 h-48 lg:w-64 lg:h-64 rounded-full object-cover shadow-lg" src="images/photographer-amelia.jpeg" alt="Photographer Amelia">
                     </div>
                     <div class="text-center lg:text-left">
                         <h2 class="text-[#171512] text-3xl font-bold leading-tight tracking-[-0.015em] mb-4">About Me</h2>
@@ -246,7 +250,7 @@
                     <!-- Testimonial 1 -->
                     <div class="flex flex-col gap-3 bg-white p-6 rounded-lg shadow-sm">
                         <div class="flex items-center gap-3">
-                            <img class="aspect-square bg-cover rounded-full size-10" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop" alt="Sophia Bennett"/>
+                            <img class="aspect-square bg-cover rounded-full size-10" src="images/client-sophia.jpeg" alt="Sophia Bennett"/>
                             <div class="flex-1">
                                 <p class="text-[#171512] text-base font-medium leading-normal">Sophia Bennett</p>
                                 <p class="text-[#827768] text-sm font-normal leading-normal">2 months ago</p>
@@ -262,7 +266,7 @@
                     <!-- Testimonial 2 -->
                     <div class="flex flex-col gap-3 bg-white p-6 rounded-lg shadow-sm">
                         <div class="flex items-center gap-3">
-                            <img class="aspect-square bg-cover rounded-full size-10" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" alt="Ethan Carter"/>
+                            <img class="aspect-square bg-cover rounded-full size-10" src="images/client-ethan.jpeg" alt="Ethan Carter"/>
                             <div class="flex-1">
                                 <p class="text-[#171512] text-base font-medium leading-normal">Ethan Carter</p>
                                 <p class="text-[#827768] text-sm font-normal leading-normal">3 months ago</p>
@@ -278,7 +282,7 @@
                      <!-- Testimonial 3 -->
                      <div class="flex flex-col gap-3 bg-white p-6 rounded-lg shadow-sm">
                         <div class="flex items-center gap-3">
-                            <img class="aspect-square bg-cover rounded-full size-10" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop" alt="Olivia Foster"/>
+                            <img class="aspect-square bg-cover rounded-full size-10" src="images/client-olivia.jpeg" alt="Olivia Foster"/>
                             <div class="flex-1">
                                 <p class="text-[#171512] text-base font-medium leading-normal">Olivia Foster</p>
                                 <p class="text-[#827768] text-sm font-normal leading-normal">4 months ago</p>
@@ -579,16 +583,16 @@
 
         const stories = {
             newborn: [
-                { img: 'https://images.unsplash.com/photo-1546015929-f75a18145352?q=80&w=1974&auto=format&fit=crop', caption: 'Sweet dreams.' },
-                { img: 'https://images.unsplash.com/photo-1604143237228-f6f1f3de5843?q=80&w=1974&auto=format&fit=crop', caption: 'So tiny, so loved.' },
+                { img: 'images/story-newborn-1.jpeg', caption: 'Sweet dreams.' },
+                { img: 'images/story-newborn-2.jpeg', caption: 'So tiny, so loved.' },
             ],
             '3-6-months': [
-                { img: 'https://images.unsplash.com/photo-1520288339894-0683a739506d?q=80&w=1974&auto=format&fit=crop', caption: 'Giggles and wiggles.' },
-                { img: 'https://images.unsplash.com/photo-1599405652278-75b455860348?q=80&w=1974&auto=format&fit=crop', caption: 'Curious little explorer.' },
+                { img: 'images/story-3-6-months-1.jpeg', caption: 'Giggles and wiggles.' },
+                { img: 'images/story-3-6-months-2.jpeg', caption: 'Curious little explorer.' },
             ],
             toddlers: [
-                { img: 'https://images.unsplash.com/photo-1519638831568-d9897f54ed69?q=80&w=2070&auto=format&fit=crop', caption: 'On the move!' },
-                { img: 'https://images.unsplash.com/photo-1566380541128-95f1a503a493?q=80&w=1974&auto=format&fit=crop', caption: 'Cake smash success!' },
+                { img: 'images/story-toddler-1.jpeg', caption: 'On the move!' },
+                { img: 'images/story-toddler-2.jpeg', caption: 'Cake smash success!' },
             ]
         };
 
