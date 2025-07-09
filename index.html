@@ -24,11 +24,22 @@
         display: block;
       }
       body {
+  background-color: #fff; /* or your site background */
+  position: relative;
+}
+      body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url('images/hello-dddoodle-3.svg');
   background-repeat: repeat;
-  background-size: 200px 200px;
+  background-size: 800px 800px;
   background-position: center;
-  background-color: #fff;
+  opacity: 0.1; /* 10% opacity */
+  z-index: -1;
+  pointer-events: none;
 }
        /* Style for the popup modal */
       #booking-popup, #lightbox-modal {
