@@ -3,21 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      rel="stylesheet"
+      rel="preload"
       as="style"
       onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
+      href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800&family=Quicksand:wght%40400%3B500%3B700"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800&family=Quicksand:wght%40400%3B500%3B700"></noscript>
 
 
 
     <title>My Baby Pictures</title>
     <link rel="icon" type="image/png" href="images/mbp-favicon.png" />
 
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries" defer></script>
     <style>
       /* Simple style for the mobile menu toggle */
       #mobile-menu {
@@ -76,10 +76,9 @@
       }
     </style>
   </head>
-  <body class="bg-white" style="font-family: 'Plus Jakarta Sans', 'Noto Sans', sans-serif">
+  <body class="bg-white" style="font-family: 'Plus Jakarta Sans', 'Noto Sans', 'Quicksand', sans-serif">
     <div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
       <div class="layout-container flex h-full grow flex-col">
-        <!-- Header -->
         <header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-[#FFF8F0] bg-[#FFF8F0]/90 px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-10">
         <div class="flex items-center gap-4 text-[#6C584C]">
               <div class="size-6">
@@ -90,7 +89,6 @@
             </h2>
           </div>
           <div class="flex items-center justify-end gap-4">
-            <!-- Desktop Navigation -->
             <nav class="hidden items-center gap-9 md:flex">
               <a class="text-[#6C584C] text-sm font-medium leading-normal transition-colors hover:text-[#FFB6B9]" href="#home">Home</a>
               <a class="text-[#6C584C] text-sm font-medium leading-normal transition-colors hover:text-[#FFB6B9]" href="#about">About</a>
@@ -102,7 +100,6 @@
             >
               <span class="truncate">Book a Session</span>
             </button>
-            <!-- Mobile Menu Button -->
             <div class="md:hidden">
               <button id="menu-toggle" class="text-[#6C584C]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
@@ -112,7 +109,6 @@
             </div>
           </div>
         </header>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-solid border-b-[#FFF8F0] p-4">
             <nav class="flex flex-col gap-4">
                  <a class="text-[#6C584C] text-base font-medium leading-normal" href="#home">Home</a>
@@ -127,14 +123,11 @@
             </nav>
         </div>
 
-        <!-- Main Content -->
         <main class="flex flex-1 justify-center py-5">
           <div class="layout-content-container flex w-full max-w-[1280px] flex-1 flex-col">
             
-            <!-- Instagram Story Strip -->
             <section class="w-full px-4 sm:px-6 lg:px-10 py-4 border-b border-gray-200">
                 <div class="flex space-x-6 overflow-x-auto no-scrollbar">
-                    <!-- Story Item -->
                     <div class="story-item flex-shrink-0 text-center cursor-pointer" data-story-group="newborn">
                         <div class="w-16 h-16 rounded-full p-1 bg-gradient-to-tr from-yellow-400 to-fuchsia-600">
                             <div class="w-full h-full rounded-full bg-white p-1">
@@ -143,7 +136,6 @@
                         </div>
                         <p class="text-xs mt-1 text-gray-600">It's a wrap</p>
                     </div>
-                    <!-- Story Item -->
                     <div class="story-item flex-shrink-0 text-center cursor-pointer" data-story-group="3-6-months">
                         <div class="w-16 h-16 rounded-full p-1 bg-gradient-to-tr from-yellow-400 to-fuchsia-600">
                             <div class="w-full h-full rounded-full bg-white p-1">
@@ -152,7 +144,6 @@
                         </div>
                         <p class="text-xs mt-1 text-gray-600">Janmashtami</p>
                     </div>
-                    <!-- Story Item -->
                     <div class="story-item flex-shrink-0 text-center cursor-pointer" data-story-group="toddlers">
                         <div class="w-16 h-16 rounded-full p-1 bg-gradient-to-tr from-yellow-400 to-fuchsia-600">
                            <div class="w-full h-full rounded-full bg-white p-1">
@@ -161,21 +152,16 @@
                         </div>
                         <p class="text-xs mt-1 text-gray-600">Cake Smash</p>
                     </div>
-                    <!-- Add more story items as needed -->
-                </div>
+                    </div>
             </section>
 
 
-            <!-- Hero Section -->
             <section class="@container px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40" id="home">
               <div class="flex flex-col gap-6 py-10 @[480px]:gap-8 lg:flex-row lg:items-stretch">
-                <!-- Carousel -->
                 <div id="hero-carousel" class="relative w-full aspect-video lg:aspect-auto rounded-xl lg:w-1/2 overflow-hidden">
-                    <!-- Slides -->
                     <div class="carousel-slide absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover opacity-100" style="background-image: url('images/hero-carousel-1.jpeg');"></div>
                     <div class="carousel-slide absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover opacity-0" style="background-image: url('images/hero-carousel-2.jpeg');"></div>
                     <div class="carousel-slide absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover opacity-0" style="background-image: url('images/hero-carousel-3.jpeg');"></div>
-                    <!-- Dots -->
                     <div id="carousel-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
                         <button class="carousel-dot h-3 w-3 rounded-full bg-white opacity-75 transition"></button>
                         <button class="carousel-dot h-3 w-3 rounded-full bg-white opacity-50 transition"></button>
@@ -214,7 +200,6 @@
               </div>
             </section>
             
-            <!-- Portfolio Section -->
             <section class="py-10 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40" id="portfolio">
                 <h2 class="text-[#6C584C] text-3xl font-bold leading-tight tracking-[-0.015em] text-center mb-8">Portfolio</h2>
                 <div class="flex border-b border-[#e4e1dd] mb-8 overflow-x-auto no-scrollbar">
@@ -226,7 +211,6 @@
                     <button class="portfolio-tab px-4 py-2 text-sm font-bold border-b-2 border-transparent text-[#6EC4DB] hover:text-[#6C584C] flex-shrink-0" data-filter="family">Family</button>
                 </div>
                 <div id="portfolio-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <!-- Portfolio Items -->
                     <div class="portfolio-item cursor-pointer" data-category="newborn" data-src="images/portfolio-newborn-1.jpeg"><img src="images/portfolio-newborn-1.jpeg" alt="Newborn Photo 1" class="w-full h-full object-cover rounded-lg"></div>
                     <div class="portfolio-item cursor-pointer" data-category="maternity" data-src="images/portfolio-maternity-1.jpeg"><img src="images/portfolio-maternity-1.jpeg" alt="Maternity Photo 1" class="w-full h-full object-cover rounded-lg"></div>
                     <div class="portfolio-item cursor-pointer" data-category="cake-smash" data-src="images/portfolio-cakesmash-1.jpeg"><img src="images/portfolio-cakesmash-1.jpeg" alt="Cake Smash Photo 1" class="w-full h-full object-cover rounded-lg"></div>
@@ -240,7 +224,6 @@
             </section>
 
 
-            <!-- About Us Section -->
             <section class="py-10 bg-white px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40" id="about">
                 <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
                     <div class="flex-shrink-0">
@@ -258,11 +241,9 @@
                 </div>
             </section>
 
-            <!-- Testimonials -->
             <section class="py-10 bg-[#FFF8F0] rounded-xl px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40">
                 <h2 class="text-[#6C584C] text-3xl font-bold leading-tight tracking-[-0.015em] px-4 pb-8 text-center">What Our Clients Say</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
-                    <!-- Testimonial 1 -->
                     <div class="flex flex-col gap-3 bg-white p-6 rounded-lg shadow-sm">
                         <div class="flex items-center gap-3">
                             <img class="aspect-square bg-cover rounded-full size-10" src="https://lh3.googleusercontent.com/a-/ALV-UjUmo1iTAvJYikgZFjL2KgJsTYnfseI_-6lkpsHYCKXVCVpw-btauQ=s72-c-rp-mo-ba3-br100" alt="Sophia Bennett"/>
@@ -272,7 +253,6 @@
                             </div>
                         </div>
                         <div class="flex gap-0.5 text-yellow-400">
-                          <!-- Repeat this SVG 5 times -->
                           <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
                             <path d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"></path>
                           </svg>
@@ -293,7 +273,6 @@
                         "Our newborn photoshoot at My Baby Picture Studio was nothing short of magical. The team was so kind, patient, and attentive throughout the session. They truly captured the innocence and beauty of our baby in every shot. We’re overjoyed with the results and so grateful for the memories they’ve helped us preserve."
                         </p>
                     </div>
-                    <!-- Testimonial 2 -->
                     <div class="flex flex-col gap-3 bg-white p-6 rounded-lg shadow-sm">
                         <div class="flex items-center gap-3">
                             <img class="aspect-square bg-cover rounded-full size-10" src="https://lh3.googleusercontent.com/a-/ALV-UjVLoKNQA2-axluoq_HG1OJcZo-FEZtIFl52HLlHQZ0OzMOCJlMZ=s72-c-rp-mo-br100" alt="Ethan Carter"/>
@@ -303,7 +282,6 @@
                             </div>
                         </div>
                         <div class="flex gap-0.5 text-yellow-400">
-                          <!-- Repeat this SVG 5 times -->
                           <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
                             <path d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"></path>
                           </svg>
@@ -324,7 +302,6 @@
                         "It was an overwhelming experience...3 hours of pure self love. Super excited to see the end result"
                         </p>
                     </div>
-                     <!-- Testimonial 3 -->
                      <div class="flex flex-col gap-3 bg-white p-6 rounded-lg shadow-sm">
                         <div class="flex items-center gap-3">
                             <img class="aspect-square bg-cover rounded-full size-10" src="https://lh3.googleusercontent.com/a-/ALV-UjXAXii_DxQjNvSgT8UrcA6SHB_CggZvn9RTr94kiCjSsLKXw7B7=s72-c-rp-mo-br100" alt="Olivia Foster"/>
@@ -334,7 +311,6 @@
                             </div>
                         </div>
                         <div class="flex gap-0.5 text-yellow-400">
-                          <!-- Repeat this SVG 5 times -->
                           <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
                             <path d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"></path>
                           </svg>
@@ -358,7 +334,6 @@
                 </div>
             </section>
             
-            <!-- Services & Packages Section -->
             <section class="py-10 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40"id="packages">
                 <div class="text-center mb-8">
                     <h2 class="text-[#6C584C] text-3xl font-bold leading-tight tracking-[-0.015em] px-4 pb-3">Services & Packages</h2>
@@ -367,7 +342,6 @@
                     </p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 py-3">
-                    <!-- Package 1 -->
                     <div class="flex flex-1 flex-col gap-4 rounded-xl border border-solid border-[#e4e1dd] bg-white p-6 transition-shadow hover:shadow-lg">
                         <div class="flex flex-col gap-1 flex-grow">
                             <h3 class="text-[#6C584C] text-xl font-bold leading-tight">Newborn Bliss</h3>
@@ -380,7 +354,6 @@
                         </div>
                         <button class="open-popup-btn mt-4 w-full flex items-center justify-center rounded-full h-10 px-4 bg-[#FFB6B9] text-[#6C584C] text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105">Book Now</button>
                     </div>
-                    <!-- Package 2 -->
                     <div class="flex flex-1 flex-col gap-4 rounded-xl border-2 border-solid border-[#FFB6B9] bg-white p-6 shadow-xl transform scale-105">
                         <div class="flex flex-col gap-1 flex-grow">
                             <h3 class="text-[#6C584C] text-xl font-bold leading-tight">Milestone Magic</h3>
@@ -394,7 +367,6 @@
                         </div>
                         <button class="open-popup-btn mt-4 w-full flex items-center justify-center rounded-full h-10 px-4 bg-[#6C584C] text-white text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105">Book Now</button>
                     </div>
-                    <!-- Package 3 -->
                     <div class="flex flex-1 flex-col gap-4 rounded-xl border border-solid border-[#e4e1dd] bg-white p-6 transition-shadow hover:shadow-lg">
                         <div class="flex flex-col gap-1 flex-grow">
                             <h3 class="text-[#6C584C] text-xl font-bold leading-tight">First Year Collection</h3>
@@ -412,7 +384,6 @@
                 </div>
             </section>
 
-            <!-- FAQ Section -->
             <section class="py-10 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40">
                 <h2 class="text-[#6C584C] text-3xl font-bold leading-tight tracking-[-0.015em] px-4 pb-5 text-center">Frequently Asked Questions</h2>
                 <div class="flex flex-col p-4 gap-3 max-w-4xl mx-auto">
@@ -455,41 +426,34 @@
           </div>
         </main>
         
-        <!-- Footer -->
         <footer class="flex justify-center border-t border-solid border-t-[#FFF8F0] bg-white">
   <div class="flex w-full max-w-[1280px] flex-1 flex-col">
     <div class="flex flex-col items-center gap-6 px-5 py-10 text-center sm:flex-row sm:justify-between">
       
-      <!-- Contact Info -->
       <p class="text-[#6C584C] text-sm font-medium leading-normal">
         Contact: <a href="tel:+917042926912" class="hover:underline">+91 7042926912</a> |
         Studio Location: Saini Enclave, Karkardooma, East Delhi
       </p>
 
-      <!-- Social Icons -->
       <div class="flex flex-wrap justify-center gap-4 text-[#6EC4DB]">
-        <!-- Google Maps -->
         <a href="https://maps.app.goo.gl/oobxMK3rRPLw2Nuy9" target="_blank" rel="noopener" class="transition-colors hover:text-[#6C584C]">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 384 512">
             <path d="M168 0C75.1 0 0 75.1 0 168c0 87.5 143.6 308.4 152.2 322.3 7.9 12.4 25.7 12.4 33.6 0C240.4 476.4 384 255.5 384 168 384 75.1 308.9 0 216 0h-48zM192 248c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80z"/>
           </svg>
         </a>
 
-        <!-- Instagram -->
         <a href="https://www.instagram.com/mybabypictures18/" target="_blank" rel="noopener" class="transition-colors hover:text-[#6C584C]">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
             <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"/>
           </svg>
         </a>
 
-        <!-- YouTube -->
         <a href="https://www.youtube.com/@sahustudio1982" target="_blank" rel="noopener" class="transition-colors hover:text-[#6C584C]">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 576 512">
             <path d="M549.7 124.1c-6.3-24-25-42.7-48.9-49.2C456.7 64 288 64 288 64S119.3 64 75.2 74.9C51.3 81.4 32.6 100.1 26.3 124.1 16 168.4 16 256 16 256s0 87.6 10.3 131.9c6.3 24 25 42.7 48.9 49.2 44.1 10.9 212.8 10.9 212.8 10.9s168.7 0 212.8-10.9c23.9-6.5 42.6-25.2 48.9-49.2C560 343.6 560 256 560 256s0-87.6-10.3-131.9zM232 336V176l142.7 80L232 336z"/>
           </svg>
         </a>
 
-        <!-- WhatsApp -->
         <a href="https://wa.me/917042926912?text=Baby%20Photoshoot" target="_blank" rel="noopener" class="transition-colors hover:text-[#6C584C]">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 448 512">
             <path d="M380.9 97.1C339 55.2 283.2 32 224.4 32c-105.8 0-192 86.2-192 192 0 33.8 8.8 66.7 25.6 95.9L32 480l163.3-43.2c28.2 15.4 60.1 23.5 92.1 23.5 105.8 0 192-86.2 192-192 0-58.8-23.2-114.6-65.1-156.5zM224.4 400c-27.6 0-54.5-7.4-77.8-21.5l-5.6-3.3-96.9 25.7 25.8-94.2-3.6-5.9c-16.2-26.4-24.8-56.9-24.8-88.4 0-91.7 74.6-166.4 166.4-166.4 44.5 0 86.3 17.3 117.8 48.8 31.4 31.4 48.7 73.2 48.7 117.8 0 91.8-74.6 166.4-166.4 166.4zm93.5-122.5c-5.1-2.5-30.3-14.9-35-16.6-4.7-1.7-8.1-2.5-11.6 2.5-3.5 5-13.3 16.6-16.3 20.1-3 3.5-6 3.7-11.1 1.2-30.3-15.1-50.2-26.9-70.2-60.8-5.3-9.1 5.3-8.4 15.1-27.9 1.7-3.5.9-6.6-.4-9.1-1.2-2.5-11.6-28-15.8-38.3-4.2-10.2-8.5-8.8-11.6-9-3-.2-6.6-.2-10.1-.2s-9.1 1.3-13.8 6.6c-4.7 5.3-18.2 17.8-18.2 43.4s18.7 50.3 21.3 53.8c2.5 3.5 36.7 55.8 88.9 78.2 12.4 5.3 22.1 8.4 29.6 10.7 12.4 3.9 23.6 3.4 32.5 2.1 9.9-1.5 30.3-12.3 34.6-24.2 4.3-12 4.3-22.3 3-24.2-1.2-1.9-4.7-3-9.8-5.4z"/>
@@ -498,7 +462,6 @@
       </div>
     </div>
 
-    <!-- Copyright -->
     <div class="text-center pb-6 px-5">
       <p class="text-[#6EC4DB] text-sm font-normal leading-normal">© 2024 My Baby Pictures Photography. All rights reserved.</p>
     </div>
@@ -508,7 +471,6 @@
       </div>
     </div>
 
-    <!-- Booking Popup Modal -->
     <div id="booking-popup" class="hidden fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-50 p-4">
         <div class="popup-content relative w-full max-w-lg bg-white rounded-2xl shadow-xl p-8 transform scale-95">
             <button id="close-popup-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
@@ -544,22 +506,20 @@
         </div>
     </div>
 
-    <!-- Story Viewer Modal -->
     <div id="story-viewer" class="hidden fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-90">
         <div class="story-content relative w-full h-full max-w-md max-h-[90vh] bg-black rounded-lg shadow-xl transform scale-95 flex flex-col">
             <div class="story-progress-container absolute top-2 left-2 right-2 flex space-x-1"></div>
             <img id="story-image" src="" alt="Story Image" class="w-full h-full object-contain">
             <p id="story-caption" class="absolute bottom-4 left-4 right-4 text-white text-center text-sm bg-black bg-opacity-50 p-2 rounded"></p>
-            <button id="close-story-btn" class="absolute top-2 right-2 text-white text-2xl">&times;</button>
-            <button id="story-prev-btn" class="absolute left-2 top-1/2 -translate-y-1/2 text-white text-3xl opacity-75 hover:opacity-100">&#10094;</button>
-            <button id="story-next-btn" class="absolute right-2 top-1/2 -translate-y-1/2 text-white text-3xl opacity-75 hover:opacity-100">&#10095;</button>
+            <button id="close-story-btn" class="absolute top-2 right-2 text-white text-2xl">×</button>
+            <button id="story-prev-btn" class="absolute left-2 top-1/2 -translate-y-1/2 text-white text-3xl opacity-75 hover:opacity-100">❮</button>
+            <button id="story-next-btn" class="absolute right-2 top-1/2 -translate-y-1/2 text-white text-3xl opacity-75 hover:opacity-100">❯</button>
         </div>
     </div>
     
-    <!-- Lightbox Modal -->
     <div id="lightbox-modal" class="hidden fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-90 p-4">
         <div class="lightbox-content relative w-full h-full">
-            <button id="close-lightbox-btn" class="absolute top-4 right-4 text-white text-4xl">&times;</button>
+            <button id="close-lightbox-btn" class="absolute top-4 right-4 text-white text-4xl">×</button>
             <img id="lightbox-image" src="" class="max-w-full max-h-full mx-auto my-auto object-contain">
         </div>
     </div>
