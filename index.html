@@ -11,7 +11,8 @@
       href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
     />
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
-
+    <!-- Added Satisfy font for Janmashtami section -->
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
 
 
     <title>My Baby Pictures</title>
@@ -19,6 +20,10 @@
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
+      /* Added font-family for Janmashtami heading */
+      .font-satisfy {
+        font-family: 'Satisfy', cursive;
+      }
       /* Simple style for the mobile menu toggle */
       #mobile-menu {
         display: none;
@@ -27,23 +32,23 @@
         display: block;
       }
       body {
-  background-color: #fff; /* or your site background */
-  position: relative;
-}
+        background-color: #fff; /* or your site background */
+        position: relative;
+      }
       body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('images/hello-dddoodle-3.svg');
-  background-repeat: repeat;
-  background-size: 800px 800px;
-  background-position: center;
-  opacity: 0.1; /* 10% opacity */
-  z-index: -1;
-  pointer-events: none;
-}
+        content: "";
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('images/hello-dddoodle-3.svg');
+        background-repeat: repeat;
+        background-size: 800px 800px;
+        background-position: center;
+        opacity: 0.1; /* 10% opacity */
+        z-index: -1;
+        pointer-events: none;
+      }
        /* Style for the popup modal */
       #booking-popup, #lightbox-modal {
         transition: opacity 0.3s ease-in-out;
@@ -80,9 +85,9 @@
     <div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
       <div class="layout-container flex h-full grow flex-col">
         <!-- Header -->
-        <header id="main-header" class="sticky top-0 z-50 transition-transform duration-300 ...">
+        <header id="main-header" class="sticky top-0 z-50 transition-transform duration-300 bg-white/80 backdrop-blur-sm border-b border-solid border-b-[#FFF8F0] flex w-full items-center justify-between gap-4 px-4 sm:px-6 md:px-10 h-20">
         <!-- existing classes -->
-        </header>
+        
         <div class="flex items-center gap-4 text-[#6C584C]">
               <div class="size-6">
               <img src="images/mbp-favicon.png" alt="My Baby Pictures Icon" class="w-full h-full object-contain" />
@@ -133,10 +138,30 @@
         <main class="flex flex-1 justify-center py-5">
           <div class="layout-content-container flex w-full max-w-[1280px] flex-1 flex-col">
             
-            <!-- Instagram Story Strip -->
+            <!-- Janmashtami Offer Section -->
+            <section class="w-full px-4 sm:px-6 lg:px-10 py-8 mb-8 bg-[#FEFDE8] rounded-2xl border-2 border-yellow-300">
+                <div class="flex flex-col lg:flex-row items-center justify-center gap-8">
+                    <div class="lg:w-1/3">
+                        <img src="images/mbp-gif.gif" alt="Janmashtami baby photoshoot gif" class="rounded-xl shadow-lg border-4 border-white">
+                    </div>
+                    <div class="text-center lg:text-left lg:w-2/3">
+                        <h2 class="font-satisfy text-4xl md:text-6xl text-blue-600">Janmashtami Special!</h2>
+                        <p class="text-xl md:text-2xl font-bold mt-2 text-gray-700">Capture your little Krishna's divine moments.</p>
+                        <p class="mt-3 text-lg text-gray-600">Our enchanting Janmashtami theme is now available. Create memories you'll cherish forever, with packages starting at just <strong>₹1499</strong>.</p>
+                        <div class="mt-6 flex justify-center lg:justify-start">
+                            <a href="https://krishna.mybabypictures.in/" target="_blank" class="w-full sm:w-auto flex items-center justify-center rounded-full h-12 px-8 bg-blue-500 text-white text-base font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105 shadow-lg">
+                                See Packages
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Instagram Story Strip (Commented Out) -->
+            <!--
             <section class="w-full px-4 sm:px-6 lg:px-10 py-4 border-b border-gray-200">
                 <div class="flex space-x-6 overflow-x-auto no-scrollbar">
-                    <!-- Story Item -->
+                    
                     <div class="story-item flex-shrink-0 text-center cursor-pointer" data-story-group="newborn">
                         <div class="w-16 h-16 rounded-full p-1 bg-gradient-to-tr from-yellow-400 to-fuchsia-600">
                             <div class="w-full h-full rounded-full bg-white p-1">
@@ -145,7 +170,7 @@
                         </div>
                         <p class="text-xs mt-1 text-gray-600">It's a wrap</p>
                     </div>
-                    <!-- Story Item -->
+                    
                     <div class="story-item flex-shrink-0 text-center cursor-pointer" data-story-group="3-6-months">
                         <div class="w-16 h-16 rounded-full p-1 bg-gradient-to-tr from-yellow-400 to-fuchsia-600">
                             <div class="w-full h-full rounded-full bg-white p-1">
@@ -154,7 +179,7 @@
                         </div>
                         <p class="text-xs mt-1 text-gray-600">Janmashtami</p>
                     </div>
-                    <!-- Story Item -->
+                    
                     <div class="story-item flex-shrink-0 text-center cursor-pointer" data-story-group="toddlers">
                         <div class="w-16 h-16 rounded-full p-1 bg-gradient-to-tr from-yellow-400 to-fuchsia-600">
                            <div class="w-full h-full rounded-full bg-white p-1">
@@ -163,9 +188,10 @@
                         </div>
                         <p class="text-xs mt-1 text-gray-600">Cake Smash</p>
                     </div>
-                    <!-- Add more story items as needed -->
+                    
                 </div>
             </section>
+            -->
 
 
             <!-- Hero Section -->
@@ -514,7 +540,7 @@
     <div id="booking-popup" class="hidden fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-50 p-4">
         <div class="popup-content relative w-full max-w-lg bg-white rounded-2xl shadow-xl p-8 transform scale-95">
             <button id="close-popup-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111,63.51-63.52a12,12,0,0,1,17,17L145,128Z"></path></svg>
             </button>
             <h3 class="text-2xl font-bold text-[#6C584C] mb-6 text-center">Book a Session</h3>
             <form id="booking-form" class="space-y-4">
