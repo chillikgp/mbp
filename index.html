@@ -14,7 +14,7 @@
     <!-- Preload important asset (improves LCP) -->
     <link rel="preload" as="image" href="images/hero-carousel-1.jpeg" />
 
-    <!-- Fonts (reduced to 2) -->
+    <!-- Fonts (reduced to 2 families) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -57,7 +57,7 @@
     }
     </script>
 
-    <!-- FAQ JSON-LD (matches in-page FAQs) -->
+    <!-- FAQ JSON-LD (matches on-page FAQs & expanded using Search Console queries) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -76,7 +76,7 @@
           "name": "How much does a baby photoshoot cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Packages typically start from around ₹1,599 for small themed sessions and range to ₹15,000+ for full first-year collections or extended studio sessions. Exact pricing depends on duration, number of edited images, and add-ons (albums, prints). Contact us for current package pricing and offers."
+            "text": "Packages typically start from around ₹1,599 for small themed/micro sessions and range to ₹15,000+ for full first-year collections or extended studio sessions. Exact pricing depends on duration, number of edited images, and add-ons (albums, prints). Contact us for current pricing."
           }
         },
         {
@@ -97,7 +97,7 @@
         },
         {
           "@type": "Question",
-          "name": "Do you do outdoor maternity photoshoots in Delhi?",
+          "name": "Do you offer outdoor maternity shoots in Delhi?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Yes, we offer outdoor maternity sessions at parks and scenic city locations across Delhi. Outdoor shoots may include a small travel fee depending on the location and require permits for certain venues."
@@ -165,6 +165,10 @@
       img { max-width:100%; height:auto; display:block; }
       .no-scrollbar::-webkit-scrollbar { display: none; }
       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      /* modal transitions */
+      .popup-content { transition: transform 250ms ease, opacity 250ms ease; transform-origin: center; }
+      .scale-95 { transform: scale(.95); opacity: 0; }
+      .scale-100 { transform: scale(1); opacity: 1; }
     </style>
   </head>
 
@@ -187,9 +191,12 @@
               <a href="#packages" class="text-sm hover:text-[#FFB6B9]">Packages</a>
             </nav>
 
-            <a href="#packages" class="hidden md:inline-block rounded-full h-10 px-4 bg-[#FFB6B9] text-[#6C584C] font-bold">Book a Session</a>
+            <!-- Header button triggers modal -->
+            <button class="hidden md:inline-flex rounded-full h-10 px-4 bg-[#FFB6B9] text-[#6C584C] font-bold open-popup-btn" type="button">
+              Book a Session
+            </button>
 
-            <!-- Mobile toggle (no JS necessary for this copy) -->
+            <!-- Mobile toggle (no JS for menu in this file) -->
             <button class="md:hidden" id="menu-toggle" aria-label="Toggle menu">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,88H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></svg>
             </button>
@@ -284,7 +291,7 @@
               </div>
             </section>
 
-            <!-- PACKAGES (kept simple) -->
+            <!-- PACKAGES -->
             <section id="packages" class="py-10">
               <h3 class="text-3xl font-bold text-center mb-6">Services & Packages</h3>
               <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -296,6 +303,7 @@
                     <li>Includes props & outfits</li>
                     <li>15 edited images</li>
                   </ul>
+                  <button class="mt-4 rounded-full bg-[#FFB6B9] text-[#6C584C] px-4 py-2 font-bold open-popup-btn">Book Now</button>
                 </div>
                 <div class="p-6 bg-white rounded-xl border-2 border-[#FFB6B9] shadow-xl transform scale-105">
                   <h4 class="text-xl font-bold">Milestone Magic</h4>
@@ -305,6 +313,7 @@
                     <li>Choice of location</li>
                     <li>25 edited images</li>
                   </ul>
+                  <button class="mt-4 rounded-full bg-[#6C584C] text-white px-4 py-2 font-bold open-popup-btn">Book Now</button>
                 </div>
                 <div class="p-6 bg-white rounded-xl border">
                   <h4 class="text-xl font-bold">First Year Collection</h4>
@@ -314,6 +323,7 @@
                     <li>Up to 6 hours total</li>
                     <li>40 edited images + album</li>
                   </ul>
+                  <button class="mt-4 rounded-full bg-[#FFB6B9] text-[#6C584C] px-4 py-2 font-bold open-popup-btn">Book Now</button>
                 </div>
               </div>
             </section>
@@ -389,19 +399,185 @@
       </div>
     </div>
 
-    <!-- OPTIONAL: Small script to allow <details> to be keyboard accessible toggle (nice-to-have) -->
+    <!-- Booking Popup (modal) -->
+    <div id="booking-popup" class="hidden fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-50 p-4">
+      <div class="popup-content relative w-full max-w-lg bg-white rounded-2xl shadow-xl p-6 transform scale-95">
+        <button id="close-popup-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700" aria-label="Close booking form">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111,191.51,47.51a12,12,0,0,1,17,17L145,128Z"></path></svg>
+        </button>
+
+        <h3 class="text-2xl font-bold text-[#6C584C] mb-4 text-center">Book a Session</h3>
+
+        <form id="booking-form" class="space-y-4" novalidate>
+          <div>
+            <label for="name" class="block text-sm font-medium text-[#6C584C]">Name</label>
+            <input type="text" id="name" name="name" required class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 p-2">
+          </div>
+
+          <div>
+            <label for="phone" class="block text-sm font-medium text-[#6C584C]">Phone</label>
+            <input type="tel" id="phone" name="phone" required class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 p-2" placeholder="+91xxxxxxxxxx">
+          </div>
+
+          <div>
+            <label for="age-due-date" class="block text-sm font-medium text-[#6C584C]">Baby’s Age or Due Date</label>
+            <input type="text" id="age-due-date" name="ageDueDate" class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 p-2">
+          </div>
+
+          <div>
+            <label for="shoot-date" class="block text-sm font-medium text-[#6C584C]">Preferred Shoot Date</label>
+            <input type="date" id="shoot-date" name="shootDate" class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 p-2">
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium text-[#6C584C]">Message</label>
+            <textarea id="message" name="message" rows="3" class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 p-2"></textarea>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button id="submit-booking-btn" type="submit" class="flex-0 rounded-full bg-[#FFB6B9] text-[#6C584C] px-4 py-2 font-bold">
+              Submit Request
+            </button>
+            <p id="form-status" role="status" class="text-sm"></p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Booking script: robust, accessible, single-submit protected -->
     <script>
-      // No heavy JS here — this is a tiny helper only.
-      document.querySelectorAll('details').forEach(d => {
-        d.addEventListener('toggle', (e) => {
-          // close other open details (accordion behavior)
-          if (d.open) {
-            document.querySelectorAll('details').forEach(other => {
-              if (other !== d) other.open = false;
-            });
+    document.addEventListener('DOMContentLoaded', () => {
+      // Elements (safe lookups)
+      const bookingPopup = document.getElementById('booking-popup');
+      if (!bookingPopup) return; // nothing to do
+
+      const popupContent = bookingPopup.querySelector('.popup-content');
+      const openPopupBtns = Array.from(document.querySelectorAll('.open-popup-btn'));
+      const heroBookNowBtn = document.getElementById('hero-book-now');
+      const closePopupBtn = document.getElementById('close-popup-btn');
+      const bookingForm = document.getElementById('booking-form');
+      const heroPhoneInput = document.getElementById('hero-phone');
+      const popupPhoneInput = document.getElementById('phone');
+      const submitBtn = document.getElementById('submit-booking-btn');
+      const formStatus = document.getElementById('form-status');
+
+      // Save last focused element to restore focus after closing
+      let lastFocusedElement = null;
+
+      const openPopup = () => {
+        if (!bookingPopup) return;
+        lastFocusedElement = document.activeElement;
+        formStatus.textContent = '';
+        formStatus.classList.remove('text-green-600','text-red-600');
+        bookingPopup.classList.remove('hidden');
+        bookingPopup.classList.add('flex','opacity-100');
+        popupContent.classList.remove('scale-95');
+        popupContent.classList.add('scale-100');
+        // focus first input
+        const firstInput = bookingForm.querySelector('input, textarea, button');
+        if (firstInput) firstInput.focus();
+      };
+
+      const closePopup = () => {
+        if (!bookingPopup) return;
+        bookingPopup.classList.remove('opacity-100','flex');
+        popupContent.classList.remove('scale-100');
+        popupContent.classList.add('scale-95');
+        setTimeout(() => {
+          bookingPopup.classList.add('hidden');
+          // restore focus
+          if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') lastFocusedElement.focus();
+        }, 250);
+      };
+
+      // Attach open handlers
+      openPopupBtns.forEach(btn => btn.addEventListener('click', (e) => {
+        // copy phone if available
+        if (popupPhoneInput && heroPhoneInput && heroPhoneInput.value) popupPhoneInput.value = heroPhoneInput.value;
+        openPopup();
+      }));
+
+      // Also attach to hero button if present
+      if (heroBookNowBtn) {
+        heroBookNowBtn.addEventListener('click', () => {
+          if (popupPhoneInput && heroPhoneInput) popupPhoneInput.value = heroPhoneInput.value || '';
+          openPopup();
+        });
+      }
+
+      // Close handlers
+      if (closePopupBtn) closePopupBtn.addEventListener('click', closePopup);
+      bookingPopup.addEventListener('click', (e) => {
+        if (e.target === bookingPopup) closePopup();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !bookingPopup.classList.contains('hidden')) closePopup();
+      });
+
+      // Form submit (async/await, single-submit protection)
+      if (bookingForm && submitBtn) {
+        bookingForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          // basic validation (phone required)
+          const phoneEl = bookingForm.querySelector('#phone');
+          if (!phoneEl || !phoneEl.value.trim()) {
+            formStatus.textContent = 'Please enter a phone number.';
+            formStatus.classList.remove('text-green-600');
+            formStatus.classList.add('text-red-600');
+            phoneEl && phoneEl.focus();
+            return;
+          }
+
+          // disable to prevent double submits
+          submitBtn.disabled = true;
+          const prevText = submitBtn.textContent;
+          submitBtn.textContent = 'Submitting...';
+          formStatus.textContent = '';
+          formStatus.classList.remove('text-green-600','text-red-600');
+
+          try {
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxL_MgPmZnfe0A3VKHMDbRcRjjWornfj6IeeUBubov5pwiicaBB-rzGLnhTBSBkE4E7/exec';
+            const formData = new FormData(bookingForm);
+
+            // Use fetch
+            const res = await fetch(scriptURL, { method: 'POST', body: formData });
+            if (!res.ok) throw new Error('Network response was not ok');
+
+            formStatus.textContent = 'Thank you! Your request has been sent.';
+            formStatus.classList.add('text-green-600');
+            bookingForm.reset();
+            // clear hero phone too
+            if (heroPhoneInput) heroPhoneInput.value = '';
+            setTimeout(closePopup, 2000);
+          } catch (err) {
+            console.error('Booking submit error', err);
+            formStatus.textContent = 'Oops! Something went wrong. Please try again.';
+            formStatus.classList.add('text-red-600');
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = prevText;
           }
         });
+      }
+
+      // Accessibility: trap focus inside modal while open (basic)
+      bookingPopup.addEventListener('keydown', (e) => {
+        if (e.key !== 'Tab') return;
+        const focusable = bookingPopup.querySelectorAll('a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])');
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       });
+
+    }); // DOMContentLoaded
     </script>
+
   </body>
 </html>
