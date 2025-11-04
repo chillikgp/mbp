@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://www.mybabypictures.in/sitemap.xml
+Sitemap: https://mybabypictures.in/sitemap.xml
