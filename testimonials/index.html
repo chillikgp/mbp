@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Testimonials — My Baby Pictures</title>
+    <meta name="description"
+        content="Read what parents say about their experience with My Baby Pictures - East Delhi's trusted newborn and maternity photography studio." />
+    <link rel="icon" type="image/png" href="../images/mbp-favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Satisfy&display=swap"
+        rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            background-color: #fff;
+            color: #6c584c;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: "Quicksand", sans-serif;
+        }
+
+        .font-satisfy {
+            font-family: "Satisfy", cursive;
+        }
+
+        /* Masonry-like grid for testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header (Matching privacy-policy.html) -->
+    <header
+        class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-solid border-b-[#FFF8F0] flex w-full items-center justify-between gap-4 px-4 sm:px-6 md:px-10 h-20">
+        <div class="flex items-center gap-4">
+            <a href="../index.html" class="flex items-center gap-4">
+                <img src="../images/mbp-favicon.png" alt="My Baby Pictures Logo" width="36" height="36"
+                    class="rounded-lg" />
+                <h1 class="text-lg font-bold">My Baby Pictures</h1>
+            </a>
+        </div>
+        <nav class="hidden md:flex gap-8">
+            <a href="../index.html#home" class="text-sm hover:text-[#FFB6B9]">Home</a>
+            <a href="../index.html#about" class="text-sm hover:text-[#FFB6B9]">About</a>
+            <a href="../index.html#portfolio" class="text-sm hover:text-[#FFB6B9]">Portfolio</a>
+            <a href="../index.html#packages" class="text-sm hover:text-[#FFB6B9]">Packages</a>
+        </nav>
+        <!-- Mobile Menu Button (Simple version) -->
+        <a href="../index.html#packages" class="md:hidden text-sm font-bold text-[#FFB6B9]">Book Now</a>
+    </header>
+
+    <main class="py-12 px-4 sm:px-6 md:px-10">
+        <!-- Title Section -->
+        <div class="max-w-4xl mx-auto text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-black mb-4 text-[#6C584C]">Stories of Love</h1>
+            <p class="text-lg md:text-xl text-[#6C584C]/80 font-satisfy">Kind words from our happy families</p>
+        </div>
+
+        <!-- Testimonials Container -->
+        <div class="max-w-6xl mx-auto">
+            <div class="testimonial-grid">
+
+                <!-- Review 1: Paras Abbi -->
+                <div class="bg-[#FFF8F0] p-8 rounded-3xl border border-[#e4e1dd] hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#FFB6B9] flex items-center justify-center text-white font-bold text-lg">
+                            P</div>
+                        <div>
+                            <h3 class="font-bold text-lg">Paras Abbi</h3>
+                            <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="leading-relaxed opacity-90">
+                        "Our newborn photoshoot at My Baby Picture Studio was nothing short of magical. The team was so
+                        kind, patient, and attentive throughout the session. They truly captured the innocence and
+                        beauty of our baby in every shot. We’re overjoyed with the results and so grateful for the
+                        memories they’ve helped us preserve."
+                    </p>
+                </div>
+
+                <!-- Review 2: Shashank Thakur -->
+                <div class="bg-[#FFF8F0] p-8 rounded-3xl border border-[#e4e1dd] hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#6EC4DB] flex items-center justify-center text-white font-bold text-lg">
+                            S</div>
+                        <div>
+                            <h3 class="font-bold text-lg">Shashank Thakur</h3>
+                            <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="leading-relaxed opacity-90">
+                        "It was an overwhelming experience...3 hours of pure self love. Super excited to see the end
+                        result"
+                    </p>
+                </div>
+
+                <!-- Review 3: Nikita Sharma -->
+                <div
+                    class="bg-[#FFF8F0] p-8 rounded-3xl border border-[#e4e1dd] hover:shadow-lg transition-shadow md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#FFB6B9] flex items-center justify-center text-white font-bold text-lg">
+                            N</div>
+                        <div>
+                            <h3 class="font-bold text-lg">Nikita Sharma</h3>
+                            <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="leading-relaxed opacity-90">
+                        "Absolutely incredible experience working with them! From the moment we scheduled our session,
+                        the communication was seamless and stress-free. The studio was warm, welcoming, and perfectly
+                        designed for little ones. They are not only talented but also incredibly patient and gentle with
+                        our baby. The photos are absolutely stunning - we couldn't be happier! The way they captured our
+                        baby's personality is truly magical. We can't wait to frame and display our favorites. Highly
+                        recommend for any parent looking to treasure their baby's milestones."
+                    </p>
+                </div>
+
+                <!-- Review 4: Ashish Arora -->
+                <div class="bg-[#FFF8F0] p-8 rounded-3xl border border-[#e4e1dd] hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#6EC4DB] flex items-center justify-center text-white font-bold text-lg">
+                            A</div>
+                        <div>
+                            <h3 class="font-bold text-lg">Ashish Arora</h3>
+                            <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="leading-relaxed opacity-90">
+                        "We had a very good Janmashtami shoot with them.. we twice took their services for our both
+                        sons.. best comfortable environment for small newborns also in a very good range.. nice service
+                        👌 …"
+                    </p>
+                </div>
+
+                <!-- Review 5: Abhika Mittal -->
+                <div class="bg-[#FFF8F0] p-8 rounded-3xl border border-[#e4e1dd] hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#FFB6B9] flex items-center justify-center text-white font-bold text-lg">
+                            A</div>
+                        <div>
+                            <h3 class="font-bold text-lg">Abhika Mittal</h3>
+                            <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="leading-relaxed opacity-90">
+                        "My experience is too gud with gaurav bhaiya n his staff.. he clicked miracle pics of my baby…
+                        new born n janmashtami too… he is very supportive n calm with babies n parents too..i m very
+                        satisfied with his work… thank u gaurav bhaiya n his staff…👍 …"
+                    </p>
+                </div>
+
+                <!-- Review 6: Jyoti Sharma -->
+                <div
+                    class="bg-[#FFF8F0] p-8 rounded-3xl border border-[#e4e1dd] hover:shadow-lg transition-shadow md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#FFB6B9] flex items-center justify-center text-white font-bold text-lg">
+                            J</div>
+                        <div>
+                            <h3 class="font-bold text-lg">Jyoti Sharma</h3>
+                            <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="leading-relaxed opacity-90 mb-4">
+                        "Finding the right place for an infant photo shoot is tough, but I’m so glad I found this
+                        studio. Laxmi and her team were amazing! They handled my 26-day-old baby with such care, making
+                        the experience smooth and stress-free."
+                    </p>
+                    <p class="leading-relaxed opacity-90 mb-4">
+                        "Our shoot was during peak winter, but they ensured my baby’s comfort with a warm,
+                        wind-protected space. Their dedication was incredible—they worked late into the night, capturing
+                        beautiful family and couple photos."
+                    </p>
+                    <p class="leading-relaxed opacity-90">
+                        "I’m truly grateful for their effort and professionalism. Thank you, Laxmi and team, for these
+                        priceless memories! We’ll be back again soon.😊😊"
+                    </p>
+                </div>
+
+                <!-- Review 7: Shuchi Abhiruta -->
+                <div class="bg-[#FFF8F0] p-8 rounded-3xl border border-[#e4e1dd] hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#6EC4DB] flex items-center justify-center text-white font-bold text-lg">
+                            S</div>
+                        <div>
+                            <h3 class="font-bold text-lg">Shuchi Abhiruta</h3>
+                            <div class="flex text-yellow-400 text-sm">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="leading-relaxed opacity-90">
+                        "My very first shooting experience with my 6month baby. They did very great shooting I called
+                        them at home. everything was so smooth and they were very generous and polite.such a lovely
+                        experience. I loved their work. Keep it up guyz."
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="../index.html#packages"
+                    class="inline-block bg-[#FFB6B9] text-[#6C584C] font-bold px-10 py-3 rounded-full hover:scale-105 transition-transform shadow-md">
+                    Book Your Session
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (Matching privacy-policy.html) -->
+    <footer class="border-t border-[#FFF8F0] bg-white">
+        <div
+            class="max-w-[1280px] mx-auto px-4 py-8 flex flex-col md:flex-row md:justify-between md:items-center gap-6">
+            <p>Contact: <a href="tel:+917042926912" class="underline">+91 7042926912</a> | Saini Enclave, Karkardooma,
+                East Delhi</p>
+            <div class="flex gap-4">
+                <a href="https://maps.app.goo.gl/oobxMK3rRPLw2Nuy9" target="_blank" rel="noopener">Maps</a>
+                <a href="https://www.instagram.com/mybabypictures18/" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://www.youtube.com/@sahustudio1982" target="_blank" rel="noopener">YouTube</a>
+                <a href="https://wa.me/917042926912?text=Baby%20Photoshoot" target="_blank" rel="noopener">WhatsApp</a>
+                <a href="../privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="text-center pb-6">© 2024 My Baby Pictures Photography. All rights reserved.</div>
+    </footer>
+</body>
+
+</html>
