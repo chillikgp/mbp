@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO: Primary Meta Tags from index(4) for better search visibility -->
-    <title>East Delhi Baby Photography — Newborn, Maternity & Family</title>
-    <meta
-      name="description"
-      content="My Baby Pictures — East Delhi newborn, baby, maternity & family photography. Studio or on-location across Delhi NCR. Largest backdrops & outfits. Rated 4.9⭐ by 164 clients."
-    />
-    <meta name="keywords" content="baby photography Delhi, newborn photographer East Delhi, maternity photoshoot Delhi, cake smash photography, family portraits Delhi" />
-    <link rel="canonical" href="https://mybabypictures.in/" />
-    <meta name="robots" content="index, follow" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Preload important asset (improves LCP) -->
-    <link rel="preload" as="image" href="images/hero-carousel-1.jpeg" />
+  <!-- SEO: Primary Meta Tags from index(4) for better search visibility -->
+  <title>East Delhi Baby Photography — Newborn, Maternity & Family</title>
+  <meta name="description"
+    content="My Baby Pictures — East Delhi newborn, baby, maternity & family photography. Studio or on-location across Delhi NCR. Largest backdrops & outfits. Rated 4.9⭐ by 164 clients." />
+  <meta name="keywords"
+    content="baby photography Delhi, newborn photographer East Delhi, maternity photoshoot Delhi, cake smash photography, family portraits Delhi" />
+  <link rel="canonical" href="https://mybabypictures.in/" />
+  <meta name="robots" content="index, follow" />
 
-    <!-- Fonts: Combined and Optimized -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Satisfy&display=swap" rel="stylesheet" />
+  <!-- Preload important asset (improves LCP) -->
+  <link rel="preload" as="image" href="images/hero-carousel-1.jpeg" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW6GNLQ3KH"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-LW6GNLQ3KH");
-    </script>
+  <!-- Fonts: Combined and Optimized -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Satisfy&display=swap"
+    rel="stylesheet" />
 
-    <link rel="icon" type="image/png" href="images/mbp-favicon.png" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LW6GNLQ3KH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-LW6GNLQ3KH");
+  </script>
 
-    <!-- SEO: JSON-LD Structured Data for Local Business -->
-    <script type="application/ld+json">
+  <link rel="icon" type="image/png" href="images/mbp-favicon.png" />
+
+  <!-- SEO: JSON-LD Structured Data for Local Business -->
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "PhotographyStudio",
@@ -120,8 +122,8 @@
       }
     </script>
 
-    <!-- SEO: FAQ JSON-LD for rich snippets -->
-    <script type="application/ld+json">
+  <!-- SEO: FAQ JSON-LD for rich snippets -->
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -209,134 +211,237 @@
         ]
       }
     </script>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <style>
-      /* Custom styles */
-      body {
-        font-family: "Plus Jakarta Sans", "Noto Sans", "Quicksand", sans-serif;
-        background-color: #fff;
-        color: #6c584c;
-      }
-      .font-satisfy {
-        font-family: "Satisfy", cursive;
-      }
-      /* Hide scrollbar for story strip */
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .no-scrollbar {
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
-      }
-      /* Modal transitions */
-      .popup-content,
-      .lightbox-content {
-        transition: transform 0.3s ease, opacity 0.3s ease;
-      }
-      .carousel-slide {
-        transition: opacity 1s ease-in-out;
-      }
-      /* Masonry layout for portfolio */
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    /* Custom styles */
+    body {
+      font-family: "Plus Jakarta Sans", "Noto Sans", "Quicksand", sans-serif;
+      background-color: #fff;
+      color: #6c584c;
+    }
+
+    .font-satisfy {
+      font-family: "Satisfy", cursive;
+    }
+
+    /* Hide scrollbar for story strip */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    /* Modal transitions */
+    .popup-content,
+    .lightbox-content {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .carousel-slide {
+      transition: opacity 1s ease-in-out;
+    }
+
+    /* Masonry layout for portfolio */
+    .masonry {
+      columns: 2;
+      column-gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
       .masonry {
-        columns: 2;
-        column-gap: 1rem;
+        columns: 3;
       }
-      @media (min-width: 768px) {
-        .masonry {
-          columns: 3;
-        }
+    }
+
+    @media (min-width: 1024px) {
+      .masonry {
+        columns: 4;
       }
-      @media (min-width: 1024px) {
-        .masonry {
-          columns: 4;
-        }
-      }
-      .masonry-item {
-        margin-bottom: 1rem;
-        break-inside: avoid;
-      }
-      .masonry-item img {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-      /* Ensure hero image and text are aligned better on small screens */
-      .hero-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+    }
+
+    .masonry-item {
+      margin-bottom: 1rem;
+      break-inside: avoid;
+    }
+
+    .masonry-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Ensure hero image and text are aligned better on small screens */
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    @media (min-width: 768px) {
       .hero-title {
-        font-size: 2.5rem;
+        font-size: 3rem;
       }
-      @media (min-width: 768px) {
-        .hero-title {
-          font-size: 3rem;
-        }
+    }
+
+    @media (min-width: 1024px) {
+      .hero-content {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 2rem;
       }
-      @media (min-width: 1024px) {
-        .hero-content {
-          flex-direction: row;
-          align-items: stretch;
-          gap: 2rem;
-        }
-        .hero-title {
-          font-size: 4rem;
-        }
+
+      .hero-title {
+        font-size: 4rem;
       }
-    </style>
-  </head>
-  <body class="bg-white">
-    <div class="relative min-h-screen flex flex-col overflow-x-hidden">
-      <div class="flex h-full flex-col">
-        <!-- Header -->
-        <header
-          id="main-header"
-          class="sticky top-0 z-50 transition-transform duration-300 bg-white/80 backdrop-blur-sm border-b border-solid border-b-[#FFF8F0] flex w-full items-center justify-between gap-4 px-4 sm:px-6 md:px-10 h-20"
-        >
-          <div class="flex items-center gap-4">
-            <img src="images/mbp-favicon.png" alt="My Baby Pictures Logo" width="36" height="36" decoding="async" class="rounded-lg" />
-            <h1 class="text-lg font-bold">My Baby Pictures</h1>
-          </div>
+    }
+  </style>
+</head>
 
-          <div class="flex items-center gap-4">
-            <nav class="hidden md:flex gap-8">
-              <a href="#home" class="text-sm hover:text-[#FFB6B9]">Home</a>
-              <a href="#about" class="text-sm hover:text-[#FFB6B9]">About</a>
-              <a href="#portfolio" class="text-sm hover:text-[#FFB6B9]">Portfolio</a>
-              <a href="#packages" class="text-sm hover:text-[#FFB6B9]">Packages</a>
-            </nav>
+<body class="bg-white">
+  <div class="relative min-h-screen flex flex-col overflow-x-hidden">
 
-            <button class="hidden md:inline-flex items-center justify-center rounded-full h-10 px-4 bg-[#FFB6B9] text-[#6C584C] font-bold open-popup-btn" type="button">Book a Session</button>
-
-            <!-- Mobile menu toggle -->
-            <button class="md:hidden" id="menu-toggle" aria-label="Toggle menu">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
-                <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,88H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z" />
-              </svg>
-            </button>
-          </div>
-        </header>
-
-        <!-- Mobile Menu (JS toggled) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-solid border-b-[#FFF8F0] p-4">
-          <nav class="flex flex-col gap-4">
-            <a class="text-[#6C584C] text-base font-medium leading-normal" href="#home">Home</a>
-            <a class="text-[#6C584C] text-base font-medium leading-normal" href="#about">About</a>
-            <a class="text-[#6C584C] text-base font-medium leading-normal" href="#portfolio">Portfolio</a>
-            <a class="text-[#6C584C] text-base font-medium leading-normal" href="#packages">Packages</a>
-            <button
-              class="mt-2 w-full flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#FFB6B9] text-[#6C584C] text-sm font-bold leading-normal tracking-[0.015em] open-popup-btn"
-            >
-              <span class="truncate">Book a Session</span>
-            </button>
-          </nav>
+    <div class="flex h-full flex-col">
+      <!-- Header -->
+      <header id="main-header"
+        class="sticky top-0 z-50 transition-transform duration-300 bg-white/80 backdrop-blur-sm border-b border-solid border-b-[#FFF8F0] flex w-full items-center justify-between gap-4 px-4 sm:px-6 md:px-10 h-20">
+        <div class="flex items-center gap-4">
+          <img src="images/mbp-favicon.png" alt="My Baby Pictures Logo" width="36" height="36" decoding="async"
+            class="rounded-lg" />
+          <h1 class="text-lg font-bold">My Baby Pictures</h1>
         </div>
 
-        <!-- Main -->
-        <main class="flex-1 flex justify-center py-6">
-          <div class="w-full max-w-[1280px] px-4">
-            <!-- Janmashtami Offer Section (from index(2))
+        <div class="flex items-center gap-4">
+          <nav class="hidden md:flex gap-8">
+            <a href="#home" class="text-sm hover:text-[#FFB6B9]">Home</a>
+            <a href="#about" class="text-sm hover:text-[#FFB6B9]">About</a>
+            <a href="#portfolio" class="text-sm hover:text-[#FFB6B9]">Portfolio</a>
+            <a href="#packages" class="text-sm hover:text-[#FFB6B9]">Packages</a>
+          </nav>
+
+          <button
+            class="hidden md:inline-flex items-center justify-center rounded-full h-10 px-4 bg-[#FFB6B9] text-[#6C584C] font-bold open-popup-btn"
+            type="button">Book a Session</button>
+
+          <!-- Mobile menu toggle -->
+          <button class="md:hidden" id="menu-toggle" aria-label="Toggle menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+              <path
+                d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,88H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Mobile Menu (JS toggled) -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-solid border-b-[#FFF8F0] p-4">
+        <nav class="flex flex-col gap-4">
+          <a class="text-[#6C584C] text-base font-medium leading-normal" href="#home">Home</a>
+          <a class="text-[#6C584C] text-base font-medium leading-normal" href="#about">About</a>
+          <a class="text-[#6C584C] text-base font-medium leading-normal" href="#portfolio">Portfolio</a>
+          <a class="text-[#6C584C] text-base font-medium leading-normal" href="#packages">Packages</a>
+          <button
+            class="mt-2 w-full flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#FFB6B9] text-[#6C584C] text-sm font-bold leading-normal tracking-[0.015em] open-popup-btn">
+            <span class="truncate">Book a Session</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Christmas Banner -->
+      <section class="w-full bg-white py-6 md:py-8">
+        <div
+          class="relative w-full max-w-7xl mx-auto rounded-3xl overflow-hidden bg-gradient-to-r from-red-600 via-red-500 to-red-600 shadow-2xl px-4 py-8 sm:px-6 md:px-12">
+          <!-- Festive Pattern Overlay -->
+          <div class="absolute inset-0 opacity-10 pointer-events-none"
+            style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
+          </div>
+
+          <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
+
+            <!-- Visual "ho! ho! ho!" -->
+            <div class="flex-shrink-0 flex flex-col items-center gap-4">
+              <div class="flex flex-col gap-[-10px] sm:gap-[-15px]" style="line-height: 0.8;">
+                <!-- Line 1 -->
+                <div class="flex items-center">
+                  <span class="text-white font-serif italic text-6xl sm:text-7xl lg:text-9xl leading-none"
+                    style="text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">h</span>
+                  <div
+                    class="relative w-14 h-14 sm:w-20 sm:h-20 lg:w-28 lg:h-28 rounded-full border-4 border-white shadow-lg overflow-hidden mx-1">
+                    <img src="images/santa1.jpg" alt="Christmas baby" class="w-full h-full object-cover">
+                  </div>
+                </div>
+                <!-- Line 2 -->
+                <div class="flex items-center ml-12 sm:ml-16 lg:ml-24">
+                  <span class="text-white font-serif italic text-6xl sm:text-7xl lg:text-9xl leading-none"
+                    style="text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">h</span>
+                  <div
+                    class="relative w-14 h-14 sm:w-20 sm:h-20 lg:w-28 lg:h-28 rounded-full border-4 border-white shadow-lg overflow-hidden mx-1">
+                    <img src="images/santa2.jpg" alt="Christmas tree" class="w-full h-full object-cover">
+                  </div>
+                  <span class="text-white font-serif italic text-6xl sm:text-7xl lg:text-9xl leading-none"
+                    style="text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">!</span>
+                </div>
+                <!-- Line 3 -->
+                <div class="flex items-center">
+                  <span class="text-white font-serif italic text-6xl sm:text-7xl lg:text-9xl leading-none"
+                    style="text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">h</span>
+                  <div
+                    class="relative w-14 h-14 sm:w-20 sm:h-20 lg:w-28 lg:h-28 rounded-full border-4 border-white shadow-lg overflow-hidden mx-1">
+                    <img src="images/santa3.jpg" alt="Reindeer baby" class="w-full h-full object-cover">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 text-center lg:text-left text-white max-w-2xl">
+              <h2 class="font-satisfy text-4xl sm:text-5xl lg:text-6xl mb-4 text-[#FFF8F0] drop-shadow-md">The Most
+                Magical Christmas Baby Photoshoot</h2>
+
+              <div class="space-y-4 mb-8">
+                <p class="text-lg sm:text-xl font-medium leading-relaxed opacity-95">
+                  Santa Theme Photoshoot at our Karkardooma (Anand Vihar) Studio, starting at just <span
+                    class="font-bold text-yellow-300 text-2xl">₹1,999</span> – costume included.
+                </p>
+                <p class="text-base sm:text-lg opacity-90">
+                  Serving families across Delhi NCR – Delhi, Noida, Gurgaon, Faridabad & Ghaziabad.
+                </p>
+                <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-1 mt-2">
+                  <span>🎄</span>
+                  <span class="font-bold tracking-wide uppercase text-sm">Limited slots available for December
+                    2025</span>
+                </div>
+              </div>
+
+              <!-- CTAs -->
+              <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a href="https://santa.mybabypictures.in/"
+                  class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-red-600 transition-all duration-200 bg-white border-2 border-transparent rounded-full hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-red-600 focus:ring-white shadow-[0_4px_14px_0_rgba(0,0,0,0.2)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.23)] hover:-translate-y-1">
+                  Book Your Slot
+                </a>
+                <a href="https://santa.mybabypictures.in/"
+                  class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-transparent border-2 border-white rounded-full hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-red-600 focus:ring-white">
+                  See Gallery
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Main -->
+      <main class="flex-1 flex justify-center py-6">
+        <div class="w-full max-w-[1280px] px-4">
+          <!-- Janmashtami Offer Section (from index(2))
             <section class="w-full px-4 sm:px-6 lg:px-10 py-8 mb-8 bg-[#FEFDE8] rounded-2xl border-2 border-yellow-300">
               <div class="flex flex-col lg:flex-row items-stretch justify-center gap-8">
                 <div class="lg:w-1/3 flex">
@@ -365,51 +470,61 @@
               </div>
             </section>-->
 
-            <!-- Hero Section (Combined) -->
-            <section id="home" class="py-10 lg:flex lg:items-center lg:gap-8">
-              <div id="hero-carousel" class="relative w-full lg:w-1/2 aspect-square rounded-xl overflow-hidden">
-                <div class="carousel-slide absolute inset-0 w-full h-full opacity-100">
-                  <img src="images/hero-carousel-1.jpeg" alt="parents holding baby hand photography" class="w-full h-full object-cover" />
-                </div>
-                <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                  <img src="images/hero-carousel-2.jpeg" alt="baby in chef costume photography" class="w-full h-full object-cover" />
-                </div>
-                <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
-                  <img src="images/hero-carousel-3.jpeg" alt="family photo with animals background" class="w-full h-full object-cover" />
-                </div>
-                <!-- Dots -->
-                <div id="carousel-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-                  <button class="carousel-dot h-3 w-3 rounded-full bg-white opacity-75 transition"></button>
-                  <button class="carousel-dot h-3 w-3 rounded-full bg-white opacity-50 transition"></button>
-                  <button class="carousel-dot h-3 w-3 rounded-full bg-white opacity-50 transition"></button>
-                </div>
+          <!-- Hero Section (Combined) -->
+          <section id="home" class="py-10 lg:flex lg:items-center lg:gap-8">
+            <div id="hero-carousel" class="relative w-full lg:w-1/2 aspect-square rounded-xl overflow-hidden">
+              <div class="carousel-slide absolute inset-0 w-full h-full opacity-100">
+                <img src="images/hero-carousel-1.jpeg" alt="parents holding baby hand photography"
+                  class="w-full h-full object-cover" />
               </div>
-
-              <div class="lg:w-1/2 mt-6 lg:mt-0">
-                <h1 class="text-[#6C584C] text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em]" style="font-family: 'Quicksand', sans-serif">
-                  East Delhi Baby Photography — Newborn, Maternity & Family
-                </h1>
-                <p class="text-[#6C584C] text-base font-normal leading-normal sm:text-lg">
-                  My Baby Pictures captures the tiny moments that become lifelong memories. From newborn poses and maternity portraits to 3–6 month, first-birthday, family and themed shoots
-                  (Janmashtami, Christmas & more), we shoot in-studio in East Delhi or on-location across Delhi NCR. Fast delivery, professional gear and the largest collection of backdrops, outfits &
-                  themes.
-                </p>
-                <p class="hero-sub text-[#6C584C] text-sm font-normal leading-normal md:hidden">Newborn, maternity & family photography in East Delhi — studio or on-location across Delhi NCR.</p>
-                <div class="mt-6 max-w-[480px] flex">
-                  <input id="hero-phone" placeholder="Phone Number" type="tel" class="flex-1 rounded-l-full bg-[#FFF8F0] px-4 py-3" />
-                  <button id="hero-book-now" class="rounded-r-full bg-[#FFB6B9] px-5 text-[#6C584C] font-bold">Book Now</button>
-                </div>
-                <p class="text-[#6C584C] text-base font-normal leading-normal mt-4">
-                  Rated <strong>4.9★</strong> from 164 happy parents. <a href="#packages" class="text-[#FFB6B9] font-bold cta">Book your session</a> or
-                  <a href="tel:+917042926912" class="text-[#FFB6B9] font-bold">call +91 70429 26912</a>.
-                </p>
+              <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
+                <img src="images/hero-carousel-2.jpeg" alt="baby in chef costume photography"
+                  class="w-full h-full object-cover" />
               </div>
-            </section>
+              <div class="carousel-slide absolute inset-0 w-full h-full opacity-0">
+                <img src="images/hero-carousel-3.jpeg" alt="family photo with animals background"
+                  class="w-full h-full object-cover" />
+              </div>
+              <!-- Dots -->
+              <div id="carousel-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                <button class="carousel-dot h-3 w-3 rounded-full bg-white opacity-75 transition"></button>
+                <button class="carousel-dot h-3 w-3 rounded-full bg-white opacity-50 transition"></button>
+                <button class="carousel-dot h-3 w-3 rounded-full bg-white opacity-50 transition"></button>
+              </div>
+            </div>
 
-            <!-- Portfolio Section (with tabs and lightbox from index(2)) -->
-            <section id="portfolio" class="py-10">
-              <h3 class="text-3xl font-bold text-center mb-6">Portfolio</h3>
-              <!--<div class="flex border-b border-[#e4e1dd] mb-8 overflow-x-auto no-scrollbar">
+            <div class="lg:w-1/2 mt-6 lg:mt-0">
+              <h1 class="text-[#6C584C] text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em]"
+                style="font-family: 'Quicksand', sans-serif">
+                East Delhi Baby Photography — Newborn, Maternity & Family
+              </h1>
+              <p class="text-[#6C584C] text-base font-normal leading-normal sm:text-lg">
+                My Baby Pictures captures the tiny moments that become lifelong memories. From newborn poses and
+                maternity portraits to 3–6 month, first-birthday, family and themed shoots
+                (Janmashtami, Christmas & more), we shoot in-studio in East Delhi or on-location across Delhi NCR. Fast
+                delivery, professional gear and the largest collection of backdrops, outfits &
+                themes.
+              </p>
+              <p class="hero-sub text-[#6C584C] text-sm font-normal leading-normal md:hidden">Newborn, maternity &
+                family photography in East Delhi — studio or on-location across Delhi NCR.</p>
+              <div class="mt-6 max-w-[480px] flex">
+                <input id="hero-phone" placeholder="Phone Number" type="tel"
+                  class="flex-1 rounded-l-full bg-[#FFF8F0] px-4 py-3" />
+                <button id="hero-book-now" class="rounded-r-full bg-[#FFB6B9] px-5 text-[#6C584C] font-bold">Book
+                  Now</button>
+              </div>
+              <p class="text-[#6C584C] text-base font-normal leading-normal mt-4">
+                Rated <strong>4.9★</strong> from 164 happy parents. <a href="#packages"
+                  class="text-[#FFB6B9] font-bold cta">Book your session</a> or
+                <a href="tel:+917042926912" class="text-[#FFB6B9] font-bold">call +91 70429 26912</a>.
+              </p>
+            </div>
+          </section>
+
+          <!-- Portfolio Section (with tabs and lightbox from index(2)) -->
+          <section id="portfolio" class="py-10">
+            <h3 class="text-3xl font-bold text-center mb-6">Portfolio</h3>
+            <!--<div class="flex border-b border-[#e4e1dd] mb-8 overflow-x-auto no-scrollbar">
                 <button class="portfolio-tab active-tab px-4 py-2 text-sm font-bold border-b-2 border-[#6C584C] text-[#6C584C] flex-shrink-0" data-filter="all">All</button>
                 <button class="portfolio-tab px-4 py-2 text-sm font-bold border-b-2 border-transparent text-[#6EC4DB] hover:text-[#6C584C] flex-shrink-0" data-filter="newborn">Newborn</button>
                 <button class="portfolio-tab px-4 py-2 text-sm font-bold border-b-2 border-transparent text-[#6EC4DB] hover:text-[#6C584C] flex-shrink-0" data-filter="maternity">Maternity</button>
@@ -418,772 +533,823 @@
                 <button class="portfolio-tab px-4 py-2 text-sm font-bold border-b-2 border-transparent text-[#6EC4DB] hover:text-[#6C584C] flex-shrink-0" data-filter="janmashtami">Janmashtami</button>
                 <button class="portfolio-tab px-4 py-2 text-sm font-bold border-b-2 border-transparent text-[#6EC4DB] hover:text-[#6C584C] flex-shrink-0" data-filter="family">Family</button>
               </div>-->
-              <div id="portfolio-grid" class="masonry">
-                <div class="portfolio-item cursor-pointer masonry-item" data-category="maternity" data-src="images/portfolio-maternity-1.jpeg">
-                  <img
-                    src="images/portfolio-maternity-1.jpeg"
-                    alt="Maternity photoshoot — expecting mother in white gown with umbrella in a park"
-                    loading="lazy"
-                    class="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
-                <div class="portfolio-item cursor-pointer masonry-item" data-category="maternity" data-src="images/portfolio-maternity-2.jpeg">
-                  <img
-                    src="images/portfolio-maternity-2.jpeg"
-                    alt="Maternity photoshoot — husband and wife in village theme holding each other"
-                    loading="lazy"
-                    class="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
-                <div class="portfolio-item cursor-pointer masonry-item" data-category="newborn" data-src="images/portfolio-newborn-1.jpeg">
-                  <img
-                    src="images/portfolio-newborn-1.jpeg"
-                    alt="Newborn photoshoot — baby in bee costume sleeping in a hammock with jungle backdrop"
-                    loading="lazy"
-                    class="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
-                <div class="portfolio-item cursor-pointer masonry-item" data-category="newborn" data-src="images/portfolio-newborn-2.jpeg">
-                  <img
-                    src="images/portfolio-newborn-2.jpeg"
-                    alt="Newborn photoshoot — baby wrapped in cloth with name board beside the baby"
-                    loading="lazy"
-                    class="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
-                <div class="portfolio-item cursor-pointer masonry-item" data-category="newborn" data-src="images/story-newborn-1.jpeg">
-                  <img src="images/story-newborn-1.jpeg" alt="Newborn photoshoot — baby in wizard costume in Harry Potter themed setup" loading="lazy" class="w-full h-full object-cover rounded-lg" />
-                </div>
-                <div class="portfolio-item cursor-pointer masonry-item" data-category="newborn" data-src="images/story-newborn-2.jpeg">
-                  <img src="images/story-newborn-2.jpeg" alt="Newborn photoshoot — baby wrapped with 'LOVE' nameplate in studio" loading="lazy" class="w-full h-full object-cover rounded-lg" />
-                </div>
-                <div class="portfolio-item cursor-pointer masonry-item" data-category="janmashtami" data-src="images/story-3-6-months-1.jpeg">
-                  <img src="images/story-3-6-months-1.jpeg" alt="Janmashtami baby photoshoot — infant in Krishna costume playing flute" loading="lazy" class="w-full h-full object-cover rounded-lg" />
-                </div>
-                <div class="portfolio-item cursor-pointer masonry-item" data-category="janmashtami" data-src="images/story-3-6-months-2.jpeg">
-                  <img
-                    src="images/story-3-6-months-2.jpeg"
-                    alt="Janmashtami toddler photoshoot — toddler in Krishna costume walking on studio floor"
-                    loading="lazy"
-                    class="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
-                <div class="portfolio-item cursor-pointer masonry-item" data-category="one-year" data-src="images/story-toddler-1.jpeg">
-                  <img src="images/story-toddler-1.jpeg" alt="baby photoshoot in chef costume with kitchen theme" loading="lazy" class="w-full h-full object-cover rounded-lg" />
-                </div>
-                <div class="portfolio-item cursor-pointer masonry-item" data-category="cake-smash" data-src="images/story-toddler-2.jpeg">
-                  <img src="images/story-toddler-2.jpeg" alt="baby photoshoot for a birthday girl with cake smash theme" loading="lazy" class="w-full h-full object-cover rounded-lg" />
-                </div>
-                <div class="portfolio-item cursor-pointer masonry-item" data-category="one-year" data-src="images/portfolio-oneyear-1.jpeg">
-                  <img src="images/portfolio-oneyear-1.jpeg" alt="One-year photoshoot — first birthday celebration portrait" loading="lazy" class="w-full h-full object-cover rounded-lg" />
-                </div>
-                <div class="portfolio-item cursor-pointer masonry-item" data-category="cake-smash" data-src="images/portfolio-oneyear-2.jpeg">
-                  <img src="images/portfolio-oneyear-2.jpeg" alt="Birthday photoshoot — baby boy enjoying cake-smash celebration" loading="lazy" class="w-full h-full object-cover rounded-lg" />
-                </div>
-                <div class="portfolio-item cursor-pointer masonry-item" data-category="cake-smash" data-src="images/portfolio-cakesmash-1.jpeg">
-                  <img
-                    src="images/portfolio-cakesmash-1.jpeg"
-                    alt="Cake-smash birthday photoshoot — baby girl celebrating first birthday"
-                    loading="lazy"
-                    class="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
-                <div class="portfolio-item cursor-pointer masonry-item" data-category="family" data-src="images/portfolio-family-1.jpeg">
-                  <img src="images/portfolio-family-1.jpeg" alt="Family portrait — parents with baby heads joined together" loading="lazy" class="w-full h-full object-cover rounded-lg" />
-                </div>
-                <div class="portfolio-item cursor-pointer masonry-item" data-category="family" data-src="images/portfolio-family-2.jpeg">
-                  <img
-                    src="images/portfolio-family-2.jpeg"
-                    alt="Creative family portrait — parents and baby posed on moon with starry background"
-                    loading="lazy"
-                    class="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
+            <div id="portfolio-grid" class="masonry">
+              <div class="portfolio-item cursor-pointer masonry-item" data-category="maternity"
+                data-src="images/portfolio-maternity-1.jpeg">
+                <img src="images/portfolio-maternity-1.jpeg"
+                  alt="Maternity photoshoot — expecting mother in white gown with umbrella in a park" loading="lazy"
+                  class="w-full h-full object-cover rounded-lg" />
               </div>
-            </section>
-
-            <!-- About Us Section (from index(2)) -->
-            <section class="py-10 bg-white px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40" id="about">
-              <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-                <div class="flex-shrink-0">
-                  <img
-                    class="w-48 h-48 lg:w-64 lg:h-64 rounded-full object-cover shadow-lg"
-                    src="images/photographer-amelia.jpeg"
-                    alt="Gaurav, founder and photographer at My Baby Pictures"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="text-center lg:text-left">
-                  <h2 class="text-[#6C584C] text-3xl font-bold leading-tight tracking-[-0.015em] mb-4">About My Baby Pictures — East Delhi Newborn & Maternity Photographer</h2>
-                  <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                    I’m <strong>Gaurav</strong>, founder and lead photographer at <strong>My Baby Pictures</strong>. For over 10 years I’ve specialised in
-                    <strong>newborn, baby, maternity and family photography</strong> from our studio in <strong>Saini Enclave, Karkardooma (East Delhi)</strong>. We shoot safe, gentle newborn
-                    sessions, milestone shoots (3–6 months), first-birthday cake-smash sessions, maternity portraits, family portraits and themed festival shoots like Janmashtami and Christmas.
-                  </p>
-                  <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                    We offer studio sessions and on-location shoots across <strong>Delhi NCR</strong>, using professional cameras, lighting and the largest local collection of backdrops, dresses and
-                    props — so your images look unique and magazine-ready. Our clients rate us <strong>4.9 out of 5</strong> across <strong>164 reviews</strong>, and we pride ourselves on a calm,
-                    patient approach and quick 2–3 week delivery of edited photos.
-                  </p>
-                  <p>
-                    Want to know more? <a href="#packages">See our packages</a> or <a href="tel:+917042926912">call +91 70429 26912</a> / <a href="https://wa.me/917042926912">WhatsApp us</a> to check
-                    availability.
-                  </p>
-                </div>
+              <div class="portfolio-item cursor-pointer masonry-item" data-category="maternity"
+                data-src="images/portfolio-maternity-2.jpeg">
+                <img src="images/portfolio-maternity-2.jpeg"
+                  alt="Maternity photoshoot — husband and wife in village theme holding each other" loading="lazy"
+                  class="w-full h-full object-cover rounded-lg" />
               </div>
-            </section>
-
-            <!-- Testimonials (from index(2)) -->
-            <section class="py-10 bg-[#FFF8F0] rounded-xl px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40">
-              <h2 class="text-[#6C584C] text-3xl font-bold leading-tight tracking-[-0.015em] px-4 pb-8 text-center">What Our Clients Say</h2>
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
-                <!-- Testimonial 1 -->
-                <div class="flex flex-col gap-3 bg-white p-6 rounded-lg shadow-sm">
-                  <div class="flex items-center gap-3">
-                    <img
-                      class="aspect-square bg-cover rounded-full size-10"
-                      src="https://lh3.googleusercontent.com/a-/ALV-UjUmo1iTAvJYikgZFjL2KgJsTYnfseI_-6lkpsHYCKXVCVpw-btauQ=s72-c-rp-mo-ba3-br100"
-                      alt="Client photo for Paras Abbi"
-                    />
-                    <div class="flex-1">
-                      <p class="text-[#6C584C] text-base font-medium leading-normal">Paras Abbi</p>
-                      <p class="text-[#6EC4DB] text-sm font-normal leading-normal">2 days ago</p>
-                    </div>
-                  </div>
-                  <div class="flex gap-0.5 text-yellow-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"
-                      ></path></svg
-                    ><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"
-                      ></path></svg
-                    ><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"
-                      ></path></svg
-                    ><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"
-                      ></path></svg
-                    ><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <p class="text-[#6C584C] text-base font-normal leading-relaxed">
-                    "Our newborn photoshoot at My Baby Picture Studio was nothing short of magical. The team was so kind, patient, and attentive throughout the session. They truly captured the
-                    innocence and beauty of our baby in every shot. We’re overjoyed with the results and so grateful for the memories they’ve helped us preserve."
-                  </p>
-                </div>
-                <!-- Testimonial 2 -->
-                <div class="flex flex-col gap-3 bg-white p-6 rounded-lg shadow-sm">
-                  <div class="flex items-center gap-3">
-                    <img
-                      class="aspect-square bg-cover rounded-full size-10"
-                      src="https://lh3.googleusercontent.com/a-/ALV-UjVLoKNQA2-axluoq_HG1OJcZo-FEZtIFl52HLlHQZ0OzMOCJlMZ=s72-c-rp-mo-br100"
-                      alt="Client photo for Shashank Thakur"
-                    />
-                    <div class="flex-1">
-                      <p class="text-[#6C584C] text-base font-medium leading-normal">Shashank Thakur</p>
-                      <p class="text-[#6EC4DB] text-sm font-normal leading-normal">3 days ago</p>
-                    </div>
-                  </div>
-                  <div class="flex gap-0.5 text-yellow-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"
-                      ></path></svg
-                    ><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"
-                      ></path></svg
-                    ><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"
-                      ></path></svg
-                    ><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"
-                      ></path></svg
-                    ><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <p class="text-[#6C584C] text-base font-normal leading-relaxed">"It was an overwhelming experience...3 hours of pure self love. Super excited to see the end result"</p>
-                </div>
-                <!-- Testimonial 3 -->
-                <div class="flex flex-col gap-3 bg-white p-6 rounded-lg shadow-sm">
-                  <div class="flex items-center gap-3">
-                    <img
-                      class="aspect-square bg-cover rounded-full size-10"
-                      src="https://lh3.googleusercontent.com/a-/ALV-UjXAXii_DxQjNvSgT8UrcA6SHB_CggZvn9RTr94kiCjSsLKXw7B7=s72-c-rp-mo-br100"
-                      alt="Client photo for Srish Srish"
-                    />
-                    <div class="flex-1">
-                      <p class="text-[#6C584C] text-base font-medium leading-normal">Srish Srish</p>
-                      <p class="text-[#6EC4DB] text-sm font-normal leading-normal">6 days ago</p>
-                    </div>
-                  </div>
-                  <div class="flex gap-0.5 text-yellow-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"
-                      ></path></svg
-                    ><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"
-                      ></path></svg
-                    ><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"
-                      ></path></svg
-                    ><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"
-                      ></path></svg
-                    ><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <p class="text-[#6C584C] text-base font-normal leading-relaxed">"It was an overwhelming experience...3 hours of pure self love. Super excited to see the end result"</p>
-                </div>
+              <div class="portfolio-item cursor-pointer masonry-item" data-category="newborn"
+                data-src="images/portfolio-newborn-1.jpeg">
+                <img src="images/portfolio-newborn-1.jpeg"
+                  alt="Newborn photoshoot — baby in bee costume sleeping in a hammock with jungle backdrop"
+                  loading="lazy" class="w-full h-full object-cover rounded-lg" />
               </div>
-            </section>
+              <div class="portfolio-item cursor-pointer masonry-item" data-category="newborn"
+                data-src="images/portfolio-newborn-2.jpeg">
+                <img src="images/portfolio-newborn-2.jpeg"
+                  alt="Newborn photoshoot — baby wrapped in cloth with name board beside the baby" loading="lazy"
+                  class="w-full h-full object-cover rounded-lg" />
+              </div>
+              <div class="portfolio-item cursor-pointer masonry-item" data-category="newborn"
+                data-src="images/story-newborn-1.jpeg">
+                <img src="images/story-newborn-1.jpeg"
+                  alt="Newborn photoshoot — baby in wizard costume in Harry Potter themed setup" loading="lazy"
+                  class="w-full h-full object-cover rounded-lg" />
+              </div>
+              <div class="portfolio-item cursor-pointer masonry-item" data-category="newborn"
+                data-src="images/story-newborn-2.jpeg">
+                <img src="images/story-newborn-2.jpeg"
+                  alt="Newborn photoshoot — baby wrapped with 'LOVE' nameplate in studio" loading="lazy"
+                  class="w-full h-full object-cover rounded-lg" />
+              </div>
+              <div class="portfolio-item cursor-pointer masonry-item" data-category="janmashtami"
+                data-src="images/story-3-6-months-1.jpeg">
+                <img src="images/story-3-6-months-1.jpeg"
+                  alt="Janmashtami baby photoshoot — infant in Krishna costume playing flute" loading="lazy"
+                  class="w-full h-full object-cover rounded-lg" />
+              </div>
+              <div class="portfolio-item cursor-pointer masonry-item" data-category="janmashtami"
+                data-src="images/story-3-6-months-2.jpeg">
+                <img src="images/story-3-6-months-2.jpeg"
+                  alt="Janmashtami toddler photoshoot — toddler in Krishna costume walking on studio floor"
+                  loading="lazy" class="w-full h-full object-cover rounded-lg" />
+              </div>
+              <div class="portfolio-item cursor-pointer masonry-item" data-category="one-year"
+                data-src="images/story-toddler-1.jpeg">
+                <img src="images/story-toddler-1.jpeg" alt="baby photoshoot in chef costume with kitchen theme"
+                  loading="lazy" class="w-full h-full object-cover rounded-lg" />
+              </div>
+              <div class="portfolio-item cursor-pointer masonry-item" data-category="cake-smash"
+                data-src="images/story-toddler-2.jpeg">
+                <img src="images/story-toddler-2.jpeg" alt="baby photoshoot for a birthday girl with cake smash theme"
+                  loading="lazy" class="w-full h-full object-cover rounded-lg" />
+              </div>
+              <div class="portfolio-item cursor-pointer masonry-item" data-category="one-year"
+                data-src="images/portfolio-oneyear-1.jpeg">
+                <img src="images/portfolio-oneyear-1.jpeg"
+                  alt="One-year photoshoot — first birthday celebration portrait" loading="lazy"
+                  class="w-full h-full object-cover rounded-lg" />
+              </div>
+              <div class="portfolio-item cursor-pointer masonry-item" data-category="cake-smash"
+                data-src="images/portfolio-oneyear-2.jpeg">
+                <img src="images/portfolio-oneyear-2.jpeg"
+                  alt="Birthday photoshoot — baby boy enjoying cake-smash celebration" loading="lazy"
+                  class="w-full h-full object-cover rounded-lg" />
+              </div>
+              <div class="portfolio-item cursor-pointer masonry-item" data-category="cake-smash"
+                data-src="images/portfolio-cakesmash-1.jpeg">
+                <img src="images/portfolio-cakesmash-1.jpeg"
+                  alt="Cake-smash birthday photoshoot — baby girl celebrating first birthday" loading="lazy"
+                  class="w-full h-full object-cover rounded-lg" />
+              </div>
+              <div class="portfolio-item cursor-pointer masonry-item" data-category="family"
+                data-src="images/portfolio-family-1.jpeg">
+                <img src="images/portfolio-family-1.jpeg"
+                  alt="Family portrait — parents with baby heads joined together" loading="lazy"
+                  class="w-full h-full object-cover rounded-lg" />
+              </div>
+              <div class="portfolio-item cursor-pointer masonry-item" data-category="family"
+                data-src="images/portfolio-family-2.jpeg">
+                <img src="images/portfolio-family-2.jpeg"
+                  alt="Creative family portrait — parents and baby posed on moon with starry background" loading="lazy"
+                  class="w-full h-full object-cover rounded-lg" />
+              </div>
+            </div>
+          </section>
 
-            <!-- Services & Packages Section (from index(2)) -->
-            <section class="py-10 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40" id="packages">
-              <div class="text-center mb-8">
-                <h2 class="text-[#6C584C] text-3xl font-bold leading-tight tracking-[-0.015em] px-4 pb-3">Services & Packages</h2>
-                <p class="text-[#6C584C] text-base font-normal leading-normal max-w-2xl mx-auto px-4">
-                  We offer a range of packages to suit your needs, from newborn sessions to milestone photoshoots. Each package includes a pre-shoot consultation, professional editing, and a selection
-                  of high-resolution digital images.
+          <!-- About Us Section (from index(2)) -->
+          <section class="py-10 bg-white px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40" id="about">
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+              <div class="flex-shrink-0">
+                <img class="w-48 h-48 lg:w-64 lg:h-64 rounded-full object-cover shadow-lg"
+                  src="images/photographer-amelia.jpeg" alt="Gaurav, founder and photographer at My Baby Pictures"
+                  loading="lazy" />
+              </div>
+              <div class="text-center lg:text-left">
+                <h2 class="text-[#6C584C] text-3xl font-bold leading-tight tracking-[-0.015em] mb-4">About My Baby
+                  Pictures — East Delhi Newborn & Maternity Photographer</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                  I’m <strong>Gaurav</strong>, founder and lead photographer at <strong>My Baby Pictures</strong>. For
+                  over 10 years I’ve specialised in
+                  <strong>newborn, baby, maternity and family photography</strong> from our studio in <strong>Saini
+                    Enclave, Karkardooma (East Delhi)</strong>. We shoot safe, gentle newborn
+                  sessions, milestone shoots (3–6 months), first-birthday cake-smash sessions, maternity portraits,
+                  family portraits and themed festival shoots like Janmashtami and Christmas.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                  We offer studio sessions and on-location shoots across <strong>Delhi NCR</strong>, using professional
+                  cameras, lighting and the largest local collection of backdrops, dresses and
+                  props — so your images look unique and magazine-ready. Our clients rate us <strong>4.9 out of
+                    5</strong> across <strong>164 reviews</strong>, and we pride ourselves on a calm,
+                  patient approach and quick 2–3 week delivery of edited photos.
+                </p>
+                <p>
+                  Want to know more? <a href="#packages">See our packages</a> or <a href="tel:+917042926912">call +91
+                    70429 26912</a> / <a href="https://wa.me/917042926912">WhatsApp us</a> to check
+                  availability.
                 </p>
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 py-3">
-                <!-- Package 1 -->
-                <div class="flex flex-1 flex-col gap-4 rounded-xl border border-solid border-[#e4e1dd] bg-white p-6 transition-shadow hover:shadow-lg">
-                  <div class="flex flex-col gap-1 flex-grow">
-                    <h3 class="text-[#6C584C] text-xl font-bold leading-tight">Newborn Bliss</h3>
-                    <span class="text-[#6C584C] text-4xl font-black leading-tight tracking-[-0.033em]">₹8000</span>
+            </div>
+          </section>
+
+          <!-- Testimonials (from index(2)) -->
+          <section class="py-10 bg-[#FFF8F0] rounded-xl px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40">
+            <h2 class="text-[#6C584C] text-3xl font-bold leading-tight tracking-[-0.015em] px-4 pb-8 text-center">What
+              Our Clients Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
+              <!-- Testimonial 1 -->
+              <div class="flex flex-col gap-3 bg-white p-6 rounded-lg shadow-sm">
+                <div class="flex items-center gap-3">
+                  <img class="aspect-square bg-cover rounded-full size-10"
+                    src="https://lh3.googleusercontent.com/a-/ALV-UjUmo1iTAvJYikgZFjL2KgJsTYnfseI_-6lkpsHYCKXVCVpw-btauQ=s72-c-rp-mo-ba3-br100"
+                    alt="Client photo for Paras Abbi" />
+                  <div class="flex-1">
+                    <p class="text-[#6C584C] text-base font-medium leading-normal">Paras Abbi</p>
+                    <p class="text-[#6EC4DB] text-sm font-normal leading-normal">2 days ago</p>
                   </div>
-                  <div class="flex flex-col gap-3 flex-grow">
-                    <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
-                      <div class="text-[#FFB6B9]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
-                        </svg>
-                      </div>
-                      Up to 3 hours
-                    </div>
-                    <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
-                      <div class="text-[#FFB6B9]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
-                        </svg>
-                      </div>
-                      Includes props & outfits
-                    </div>
-                    <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
-                      <div class="text-[#FFB6B9]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
-                        </svg>
-                      </div>
-                      15 edited images
-                    </div>
-                  </div>
-                  <button
-                    class="open-popup-btn mt-4 w-full flex items-center justify-center rounded-full h-10 px-4 bg-[#FFB6B9] text-[#6C584C] text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105"
-                  >
-                    Book Now
-                  </button>
                 </div>
-                <!-- Package 2 -->
-                <div class="flex flex-1 flex-col gap-4 rounded-xl border-2 border-solid border-[#FFB6B9] bg-white p-6 shadow-xl transform scale-105">
-                  <div class="flex flex-col gap-1 flex-grow">
-                    <h3 class="text-[#6C584C] text-xl font-bold leading-tight">Milestone Magic</h3>
-                    <span class="text-[#6C584C] text-4xl font-black leading-tight tracking-[-0.033em]">₹12000</span>
-                  </div>
-                  <div class="flex flex-col gap-3 flex-grow">
-                    <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
-                      <div class="text-[#FFB6B9]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
-                        </svg>
-                      </div>
-                      Up to 4 hours
-                    </div>
-                    <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
-                      <div class="text-[#FFB6B9]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
-                        </svg>
-                      </div>
-                      Includes props & outfits
-                    </div>
-                    <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
-                      <div class="text-[#FFB6B9]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
-                        </svg>
-                      </div>
-                      25 edited images
-                    </div>
-                    <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
-                      <div class="text-[#FFB6B9]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
-                        </svg>
-                      </div>
-                      Choice of location
-                    </div>
-                  </div>
-                  <button
-                    class="open-popup-btn mt-4 w-full flex items-center justify-center rounded-full h-10 px-4 bg-[#6C584C] text-white text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105"
-                  >
-                    Book Now
-                  </button>
+                <div class="flex gap-0.5 text-yellow-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                    viewBox="0 0 256 256">
+                    <path
+                      d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
+                    </path>
+                  </svg><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                    viewBox="0 0 256 256">
+                    <path
+                      d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
+                    </path>
+                  </svg><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                    viewBox="0 0 256 256">
+                    <path
+                      d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
+                    </path>
+                  </svg><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                    viewBox="0 0 256 256">
+                    <path
+                      d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
+                    </path>
+                  </svg><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                    viewBox="0 0 256 256">
+                    <path
+                      d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
+                    </path>
+                  </svg>
                 </div>
-                <!-- Package 3 -->
-                <div class="flex flex-1 flex-col gap-4 rounded-xl border border-solid border-[#e4e1dd] bg-white p-6 transition-shadow hover:shadow-lg">
-                  <div class="flex flex-col gap-1 flex-grow">
-                    <h3 class="text-[#6C584C] text-xl font-bold leading-tight">First Year Collection</h3>
-                    <span class="text-[#6C584C] text-4xl font-black leading-tight tracking-[-0.033em]">₹15000</span>
-                  </div>
-                  <div class="flex flex-col gap-3 flex-grow">
-                    <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
-                      <div class="text-[#FFB6B9]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
-                        </svg>
-                      </div>
-                      Two sessions (Newborn & Milestone)
-                    </div>
-                    <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
-                      <div class="text-[#FFB6B9]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
-                        </svg>
-                      </div>
-                      Up to 6 hours total
-                    </div>
-                    <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
-                      <div class="text-[#FFB6B9]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
-                        </svg>
-                      </div>
-                      Includes props & outfits
-                    </div>
-                    <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
-                      <div class="text-[#FFB6B9]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
-                        </svg>
-                      </div>
-                      40 edited images
-                    </div>
-                    <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
-                      <div class="text-[#FFB6B9]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                          <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
-                        </svg>
-                      </div>
-                      Custom photo album
-                    </div>
-                  </div>
-                  <button
-                    class="open-popup-btn mt-4 w-full flex items-center justify-center rounded-full h-10 px-4 bg-[#FFB6B9] text-[#6C584C] text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105"
-                  >
-                    Book Now
-                  </button>
-                </div>
+                <p class="text-[#6C584C] text-base font-normal leading-relaxed">
+                  "Our newborn photoshoot at My Baby Picture Studio was nothing short of magical. The team was so kind,
+                  patient, and attentive throughout the session. They truly captured the
+                  innocence and beauty of our baby in every shot. We’re overjoyed with the results and so grateful for
+                  the memories they’ve helped us preserve."
+                </p>
               </div>
-            </section>
-
-            <!-- FAQ Section (from index(4)) -->
-            <section id="faq" class="py-10">
-              <h3 class="text-3xl font-bold text-center mb-6">Frequently Asked Questions</h3>
-              <div class="max-w-3xl mx-auto space-y-4">
-                <details class="p-4 rounded-xl bg-[#FFF8F0]">
-                  <summary class="font-medium cursor-pointer">When should I book my baby photoshoot?</summary>
-                  <p class="mt-2 text-sm">
-                    We recommend booking at least 2–3 weeks in advance. For newborn sessions, the ideal window is typically within the first 5–15 days after birth, but we can accommodate later
-                    bookings as well.
-                  </p>
-                </details>
-
-                <details class="p-4 rounded-xl bg-[#FFF8F0]">
-                  <summary class="font-medium cursor-pointer">How much does a baby photoshoot cost?</summary>
-                  <p class="mt-2 text-sm">
-                    Packages start from around ₹1,599 for themed mini sessions and go up to ₹15,000+ for full collections. Final price depends on session length, number of edited images, and add-ons
-                    like albums or prints.
-                  </p>
-                </details>
-
-                <details class="p-4 rounded-xl bg-[#FFF8F0]">
-                  <summary class="font-medium cursor-pointer">Do you provide outfits and props?</summary>
-                  <p class="mt-2 text-sm">Yes — we provide a selection of newborn wraps, props, and themed outfits. You're welcome to bring your own items too.</p>
-                </details>
-
-                <details class="p-4 rounded-xl bg-[#FFF8F0]">
-                  <summary class="font-medium cursor-pointer">Do you offer Janmashtami or other themed shoots?</summary>
-                  <p class="mt-2 text-sm">Yes, seasonal theme shoots (including Janmashtami) are available. Theme sessions are limited and should be booked early.</p>
-                </details>
-
-                <details class="p-4 rounded-xl bg-[#FFF8F0]">
-                  <summary class="font-medium cursor-pointer">Do you offer outdoor maternity shoots in Delhi?</summary>
-                  <p class="mt-2 text-sm">Yes — we offer outdoor maternity sessions at parks and scenic locations. Some locations may require permits or a small travel fee.</p>
-                </details>
-
-                <details class="p-4 rounded-xl bg-[#FFF8F0]">
-                  <summary class="font-medium cursor-pointer">How long until I receive my edited photos?</summary>
-                  <p class="mt-2 text-sm">Typical turnaround is 2–3 weeks for the full edited gallery. Rush delivery can be arranged for an extra fee.</p>
-                </details>
-
-                <details class="p-4 rounded-xl bg-[#FFF8F0]">
-                  <summary class="font-medium cursor-pointer">Do you photograph newborns? What’s the best age?</summary>
-                  <p class="mt-2 text-sm">Yes — ideal time for posed newborn shots is 5–15 days old. Family and lifestyle newborn sessions can be scheduled later as well.</p>
-                </details>
-
-                <details class="p-4 rounded-xl bg-[#FFF8F0]">
-                  <summary class="font-medium cursor-pointer">How do I book a session?</summary>
-                  <p class="mt-2 text-sm">You can book via our website booking form, call +91-7042926912, or message us on WhatsApp for fast replies and availability.</p>
-                </details>
-
-                <details class="p-4 rounded-xl bg-[#FFF8F0]">
-                  <summary class="font-medium cursor-pointer">Can parents and siblings be included?</summary>
-                  <p class="mt-2 text-sm">Yes — family members are welcome. Please tell us the group size when booking so we can plan the session time and setup.</p>
-                </details>
+              <!-- Testimonial 2 -->
+              <div class="flex flex-col gap-3 bg-white p-6 rounded-lg shadow-sm">
+                <div class="flex items-center gap-3">
+                  <img class="aspect-square bg-cover rounded-full size-10"
+                    src="https://lh3.googleusercontent.com/a-/ALV-UjVLoKNQA2-axluoq_HG1OJcZo-FEZtIFl52HLlHQZ0OzMOCJlMZ=s72-c-rp-mo-br100"
+                    alt="Client photo for Shashank Thakur" />
+                  <div class="flex-1">
+                    <p class="text-[#6C584C] text-base font-medium leading-normal">Shashank Thakur</p>
+                    <p class="text-[#6EC4DB] text-sm font-normal leading-normal">3 days ago</p>
+                  </div>
+                </div>
+                <div class="flex gap-0.5 text-yellow-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                    viewBox="0 0 256 256">
+                    <path
+                      d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
+                    </path>
+                  </svg><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                    viewBox="0 0 256 256">
+                    <path
+                      d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
+                    </path>
+                  </svg><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                    viewBox="0 0 256 256">
+                    <path
+                      d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
+                    </path>
+                  </svg><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                    viewBox="0 0 256 256">
+                    <path
+                      d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
+                    </path>
+                  </svg><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                    viewBox="0 0 256 256">
+                    <path
+                      d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
+                    </path>
+                  </svg>
+                </div>
+                <p class="text-[#6C584C] text-base font-normal leading-relaxed">"It was an overwhelming experience...3
+                  hours of pure self love. Super excited to see the end result"</p>
               </div>
-            </section>
+              <!-- Testimonial 3 -->
+              <div class="flex flex-col gap-3 bg-white p-6 rounded-lg shadow-sm">
+                <div class="flex items-center gap-3">
+                  <img class="aspect-square bg-cover rounded-full size-10"
+                    src="https://lh3.googleusercontent.com/a-/ALV-UjXAXii_DxQjNvSgT8UrcA6SHB_CggZvn9RTr94kiCjSsLKXw7B7=s72-c-rp-mo-br100"
+                    alt="Client photo for Srish Srish" />
+                  <div class="flex-1">
+                    <p class="text-[#6C584C] text-base font-medium leading-normal">Srish Srish</p>
+                    <p class="text-[#6EC4DB] text-sm font-normal leading-normal">6 days ago</p>
+                  </div>
+                </div>
+                <div class="flex gap-0.5 text-yellow-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                    viewBox="0 0 256 256">
+                    <path
+                      d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
+                    </path>
+                  </svg><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                    viewBox="0 0 256 256">
+                    <path
+                      d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
+                    </path>
+                  </svg><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                    viewBox="0 0 256 256">
+                    <path
+                      d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
+                    </path>
+                  </svg><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                    viewBox="0 0 256 256">
+                    <path
+                      d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
+                    </path>
+                  </svg><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                    viewBox="0 0 256 256">
+                    <path
+                      d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z">
+                    </path>
+                  </svg>
+                </div>
+                <p class="text-[#6C584C] text-base font-normal leading-relaxed">"It was an overwhelming experience...3
+                  hours of pure self love. Super excited to see the end result"</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Services & Packages Section (from index(2)) -->
+          <section class="py-10 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-40" id="packages">
+            <div class="text-center mb-8">
+              <h2 class="text-[#6C584C] text-3xl font-bold leading-tight tracking-[-0.015em] px-4 pb-3">Services &
+                Packages</h2>
+              <p class="text-[#6C584C] text-base font-normal leading-normal max-w-2xl mx-auto px-4">
+                We offer a range of packages to suit your needs, from newborn sessions to milestone photoshoots. Each
+                package includes a pre-shoot consultation, professional editing, and a selection
+                of high-resolution digital images.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 py-3">
+              <!-- Package 1 -->
+              <div
+                class="flex flex-1 flex-col gap-4 rounded-xl border border-solid border-[#e4e1dd] bg-white p-6 transition-shadow hover:shadow-lg">
+                <div class="flex flex-col gap-1 flex-grow">
+                  <h3 class="text-[#6C584C] text-xl font-bold leading-tight">Newborn Bliss</h3>
+                  <span class="text-[#6C584C] text-4xl font-black leading-tight tracking-[-0.033em]">₹8000</span>
+                </div>
+                <div class="flex flex-col gap-3 flex-grow">
+                  <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
+                    <div class="text-[#FFB6B9]">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                        viewBox="0 0 256 256">
+                        <path
+                          d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z">
+                        </path>
+                      </svg>
+                    </div>
+                    Up to 3 hours
+                  </div>
+                  <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
+                    <div class="text-[#FFB6B9]">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                        viewBox="0 0 256 256">
+                        <path
+                          d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z">
+                        </path>
+                      </svg>
+                    </div>
+                    Includes props & outfits
+                  </div>
+                  <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
+                    <div class="text-[#FFB6B9]">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                        viewBox="0 0 256 256">
+                        <path
+                          d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z">
+                        </path>
+                      </svg>
+                    </div>
+                    15 edited images
+                  </div>
+                </div>
+                <button
+                  class="open-popup-btn mt-4 w-full flex items-center justify-center rounded-full h-10 px-4 bg-[#FFB6B9] text-[#6C584C] text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105">
+                  Book Now
+                </button>
+              </div>
+              <!-- Package 2 -->
+              <div
+                class="flex flex-1 flex-col gap-4 rounded-xl border-2 border-solid border-[#FFB6B9] bg-white p-6 shadow-xl transform scale-105">
+                <div class="flex flex-col gap-1 flex-grow">
+                  <h3 class="text-[#6C584C] text-xl font-bold leading-tight">Milestone Magic</h3>
+                  <span class="text-[#6C584C] text-4xl font-black leading-tight tracking-[-0.033em]">₹12000</span>
+                </div>
+                <div class="flex flex-col gap-3 flex-grow">
+                  <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
+                    <div class="text-[#FFB6B9]">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                        viewBox="0 0 256 256">
+                        <path
+                          d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z">
+                        </path>
+                      </svg>
+                    </div>
+                    Up to 4 hours
+                  </div>
+                  <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
+                    <div class="text-[#FFB6B9]">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                        viewBox="0 0 256 256">
+                        <path
+                          d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z">
+                        </path>
+                      </svg>
+                    </div>
+                    Includes props & outfits
+                  </div>
+                  <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
+                    <div class="text-[#FFB6B9]">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                        viewBox="0 0 256 256">
+                        <path
+                          d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z">
+                        </path>
+                      </svg>
+                    </div>
+                    25 edited images
+                  </div>
+                  <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
+                    <div class="text-[#FFB6B9]">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                        viewBox="0 0 256 256">
+                        <path
+                          d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z">
+                        </path>
+                      </svg>
+                    </div>
+                    Choice of location
+                  </div>
+                </div>
+                <button
+                  class="open-popup-btn mt-4 w-full flex items-center justify-center rounded-full h-10 px-4 bg-[#6C584C] text-white text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105">
+                  Book Now
+                </button>
+              </div>
+              <!-- Package 3 -->
+              <div
+                class="flex flex-1 flex-col gap-4 rounded-xl border border-solid border-[#e4e1dd] bg-white p-6 transition-shadow hover:shadow-lg">
+                <div class="flex flex-col gap-1 flex-grow">
+                  <h3 class="text-[#6C584C] text-xl font-bold leading-tight">First Year Collection</h3>
+                  <span class="text-[#6C584C] text-4xl font-black leading-tight tracking-[-0.033em]">₹15000</span>
+                </div>
+                <div class="flex flex-col gap-3 flex-grow">
+                  <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
+                    <div class="text-[#FFB6B9]">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                        viewBox="0 0 256 256">
+                        <path
+                          d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z">
+                        </path>
+                      </svg>
+                    </div>
+                    Two sessions (Newborn & Milestone)
+                  </div>
+                  <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
+                    <div class="text-[#FFB6B9]">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                        viewBox="0 0 256 256">
+                        <path
+                          d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z">
+                        </path>
+                      </svg>
+                    </div>
+                    Up to 6 hours total
+                  </div>
+                  <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
+                    <div class="text-[#FFB6B9]">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                        viewBox="0 0 256 256">
+                        <path
+                          d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z">
+                        </path>
+                      </svg>
+                    </div>
+                    Includes props & outfits
+                  </div>
+                  <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
+                    <div class="text-[#FFB6B9]">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                        viewBox="0 0 256 256">
+                        <path
+                          d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z">
+                        </path>
+                      </svg>
+                    </div>
+                    40 edited images
+                  </div>
+                  <div class="flex gap-3 items-center text-[#6C584C] text-sm font-normal leading-normal">
+                    <div class="text-[#FFB6B9]">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                        viewBox="0 0 256 256">
+                        <path
+                          d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z">
+                        </path>
+                      </svg>
+                    </div>
+                    Custom photo album
+                  </div>
+                </div>
+                <button
+                  class="open-popup-btn mt-4 w-full flex items-center justify-center rounded-full h-10 px-4 bg-[#FFB6B9] text-[#6C584C] text-sm font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105">
+                  Book Now
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- FAQ Section (from index(4)) -->
+          <section id="faq" class="py-10">
+            <h3 class="text-3xl font-bold text-center mb-6">Frequently Asked Questions</h3>
+            <div class="max-w-3xl mx-auto space-y-4">
+              <details class="p-4 rounded-xl bg-[#FFF8F0]">
+                <summary class="font-medium cursor-pointer">When should I book my baby photoshoot?</summary>
+                <p class="mt-2 text-sm">
+                  We recommend booking at least 2–3 weeks in advance. For newborn sessions, the ideal window is
+                  typically within the first 5–15 days after birth, but we can accommodate later
+                  bookings as well.
+                </p>
+              </details>
+
+              <details class="p-4 rounded-xl bg-[#FFF8F0]">
+                <summary class="font-medium cursor-pointer">How much does a baby photoshoot cost?</summary>
+                <p class="mt-2 text-sm">
+                  Packages start from around ₹1,599 for themed mini sessions and go up to ₹15,000+ for full collections.
+                  Final price depends on session length, number of edited images, and add-ons
+                  like albums or prints.
+                </p>
+              </details>
+
+              <details class="p-4 rounded-xl bg-[#FFF8F0]">
+                <summary class="font-medium cursor-pointer">Do you provide outfits and props?</summary>
+                <p class="mt-2 text-sm">Yes — we provide a selection of newborn wraps, props, and themed outfits. You're
+                  welcome to bring your own items too.</p>
+              </details>
+
+              <details class="p-4 rounded-xl bg-[#FFF8F0]">
+                <summary class="font-medium cursor-pointer">Do you offer Janmashtami or other themed shoots?</summary>
+                <p class="mt-2 text-sm">Yes, seasonal theme shoots (including Janmashtami) are available. Theme sessions
+                  are limited and should be booked early.</p>
+              </details>
+
+              <details class="p-4 rounded-xl bg-[#FFF8F0]">
+                <summary class="font-medium cursor-pointer">Do you offer outdoor maternity shoots in Delhi?</summary>
+                <p class="mt-2 text-sm">Yes — we offer outdoor maternity sessions at parks and scenic locations. Some
+                  locations may require permits or a small travel fee.</p>
+              </details>
+
+              <details class="p-4 rounded-xl bg-[#FFF8F0]">
+                <summary class="font-medium cursor-pointer">How long until I receive my edited photos?</summary>
+                <p class="mt-2 text-sm">Typical turnaround is 2–3 weeks for the full edited gallery. Rush delivery can
+                  be arranged for an extra fee.</p>
+              </details>
+
+              <details class="p-4 rounded-xl bg-[#FFF8F0]">
+                <summary class="font-medium cursor-pointer">Do you photograph newborns? What’s the best age?</summary>
+                <p class="mt-2 text-sm">Yes — ideal time for posed newborn shots is 5–15 days old. Family and lifestyle
+                  newborn sessions can be scheduled later as well.</p>
+              </details>
+
+              <details class="p-4 rounded-xl bg-[#FFF8F0]">
+                <summary class="font-medium cursor-pointer">How do I book a session?</summary>
+                <p class="mt-2 text-sm">You can book via our website booking form, call +91-7042926912, or message us on
+                  WhatsApp for fast replies and availability.</p>
+              </details>
+
+              <details class="p-4 rounded-xl bg-[#FFF8F0]">
+                <summary class="font-medium cursor-pointer">Can parents and siblings be included?</summary>
+                <p class="mt-2 text-sm">Yes — family members are welcome. Please tell us the group size when booking so
+                  we can plan the session time and setup.</p>
+              </details>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="border-t border-[#FFF8F0] bg-white">
+        <div
+          class="max-w-[1280px] mx-auto px-4 py-8 flex flex-col md:flex-row md:justify-between md:items-center gap-6">
+          <p>Contact: <a href="tel:+917042926912" class="underline">+91 7042926912</a> | Saini Enclave, Karkardooma,
+            East Delhi</p>
+          <div class="flex gap-4">
+            <a href="https://maps.app.goo.gl/oobxMK3rRPLw2Nuy9" target="_blank" rel="noopener">Maps</a>
+            <a href="https://www.instagram.com/mybabypictures18/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.youtube.com/@sahustudio1982" target="_blank" rel="noopener">YouTube</a>
+            <a href="https://wa.me/917042926912?text=Baby%20Photoshoot" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="https://mybabypictures.in/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
           </div>
-        </main>
-
-        <!-- Footer -->
-        <footer class="border-t border-[#FFF8F0] bg-white">
-  <div class="max-w-[1280px] mx-auto px-4 py-8 flex flex-col md:flex-row md:justify-between md:items-center gap-6">
-    <p>Contact: <a href="tel:+917042926912" class="underline">+91 7042926912</a> | Saini Enclave, Karkardooma, East Delhi</p>
-    <div class="flex gap-4">
-      <a href="https://maps.app.goo.gl/oobxMK3rRPLw2Nuy9" target="_blank" rel="noopener">Maps</a>
-      <a href="https://www.instagram.com/mybabypictures18/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.youtube.com/@sahustudio1982" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://wa.me/917042926912?text=Baby%20Photoshoot" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="https://mybabypictures.in/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+        </div>
+        <div class="text-center pb-6">© 2024 My Baby Pictures Photography. All rights reserved.</div>
+      </footer>
     </div>
   </div>
-  <div class="text-center pb-6">© 2024 My Baby Pictures Photography. All rights reserved.</div>
-</footer>
-      </div>
-    </div>
 
-    <!-- Booking Popup Modal (from index(2), with JS from index(4)) -->
-    <div id="booking-popup" class="hidden fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-50 p-4">
-      <div class="popup-content relative w-full max-w-lg bg-white rounded-2xl shadow-xl p-8 transform scale-95">
-        <button id="close-popup-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
-            <path d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111,191.51,47.51a12,12,0,0,1,17,17L145,128Z"></path>
-          </svg>
-        </button>
-        <h3 class="text-2xl font-bold text-[#6C584C] mb-6 text-center">Book a Session</h3>
-        <form id="booking-form" class="space-y-4">
-          <div>
-            <label for="name" class="block text-sm font-medium text-[#6C584C]">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm focus:border-[#FFB6B9] focus:ring focus:ring-[#FFB6B9] focus:ring-opacity-50"
-            />
-          </div>
-          <div>
-            <label for="phone" class="block text-sm font-medium text-[#6C584C]">Phone</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              required
-              class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm focus:border-[#FFB6B9] focus:ring focus:ring-[#FFB6B9] focus:ring-opacity-50"
-            />
-          </div>
-          <div>
-            <label for="age-due-date" class="block text-sm font-medium text-[#6C584C]">Baby’s Age or Due Date</label>
-            <input
-              type="text"
-              id="age-due-date"
-              name="ageDueDate"
-              required
-              class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm focus:border-[#FFB6B9] focus:ring focus:ring-[#FFB6B9] focus:ring-opacity-50"
-            />
-          </div>
-          <div>
-            <label for="shoot-date" class="block text-sm font-medium text-[#6C584C]">Preferred Shoot Date</label>
-            <input
-              type="date"
-              id="shoot-date"
-              name="shootDate"
-              required
-              class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm focus:border-[#FFB6B9] focus:ring focus:ring-[#FFB6B9] focus:ring-opacity-50"
-            />
-          </div>
-          <div>
-            <label for="message" class="block text-sm font-medium text-[#6C584C]">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="4"
-              class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm focus:border-[#FFB6B9] focus:ring focus:ring-[#FFB6B9] focus:ring-opacity-50"
-            ></textarea>
-          </div>
-          <div class="text-center pt-4">
-            <button
-              id="submit-booking-btn"
-              type="submit"
-              class="w-full max-w-xs mx-auto flex items-center justify-center rounded-full h-12 px-6 bg-[#FFB6B9] text-[#6C584C] text-base font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105"
-            >
-              Submit Request
-            </button>
-            <p id="form-status" class="text-sm mt-4"></p>
-          </div>
-        </form>
-      </div>
+  <!-- Booking Popup Modal (from index(2), with JS from index(4)) -->
+  <div id="booking-popup" class="hidden fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-50 p-4">
+    <div class="popup-content relative w-full max-w-lg bg-white rounded-2xl shadow-xl p-8 transform scale-95">
+      <button id="close-popup-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+          <path
+            d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111,191.51,47.51a12,12,0,0,1,17,17L145,128Z">
+          </path>
+        </svg>
+      </button>
+      <h3 class="text-2xl font-bold text-[#6C584C] mb-6 text-center">Book a Session</h3>
+      <form id="booking-form" class="space-y-4">
+        <div>
+          <label for="name" class="block text-sm font-medium text-[#6C584C]">Name</label>
+          <input type="text" id="name" name="name" required
+            class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm focus:border-[#FFB6B9] focus:ring focus:ring-[#FFB6B9] focus:ring-opacity-50" />
+        </div>
+        <div>
+          <label for="phone" class="block text-sm font-medium text-[#6C584C]">Phone</label>
+          <input type="tel" id="phone" name="phone" required
+            class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm focus:border-[#FFB6B9] focus:ring focus:ring-[#FFB6B9] focus:ring-opacity-50" />
+        </div>
+        <div>
+          <label for="age-due-date" class="block text-sm font-medium text-[#6C584C]">Baby’s Age or Due Date</label>
+          <input type="text" id="age-due-date" name="ageDueDate" required
+            class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm focus:border-[#FFB6B9] focus:ring focus:ring-[#FFB6B9] focus:ring-opacity-50" />
+        </div>
+        <div>
+          <label for="shoot-date" class="block text-sm font-medium text-[#6C584C]">Preferred Shoot Date</label>
+          <input type="date" id="shoot-date" name="shootDate" required
+            class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm focus:border-[#FFB6B9] focus:ring focus:ring-[#FFB6B9] focus:ring-opacity-50" />
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-medium text-[#6C584C]">Message</label>
+          <textarea id="message" name="message" rows="4"
+            class="mt-1 block w-full rounded-md border-gray-300 bg-gray-50 shadow-sm focus:border-[#FFB6B9] focus:ring focus:ring-[#FFB6B9] focus:ring-opacity-50"></textarea>
+        </div>
+        <div class="text-center pt-4">
+          <button id="submit-booking-btn" type="submit"
+            class="w-full max-w-xs mx-auto flex items-center justify-center rounded-full h-12 px-6 bg-[#FFB6B9] text-[#6C584C] text-base font-bold leading-normal tracking-[0.015em] transition-transform hover:scale-105">
+            Submit Request
+          </button>
+          <p id="form-status" class="text-sm mt-4"></p>
+        </div>
+      </form>
     </div>
+  </div>
 
-    <!-- Lightbox Modal (from index(2)) -->
-    <div id="lightbox-modal" class="hidden fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-90 p-4">
-      <div class="lightbox-content relative w-full h-full">
-        <button id="close-lightbox-btn" class="absolute top-4 right-4 text-white text-4xl">&times;</button>
-        <img id="lightbox-image" src="" class="max-w-full max-h-full mx-auto my-auto object-contain" />
-      </div>
+  <!-- Lightbox Modal (from index(2)) -->
+  <div id="lightbox-modal" class="hidden fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-90 p-4">
+    <div class="lightbox-content relative w-full h-full">
+      <button id="close-lightbox-btn" class="absolute top-4 right-4 text-white text-4xl">&times;</button>
+      <img id="lightbox-image" src="" class="max-w-full max-h-full mx-auto my-auto object-contain" />
     </div>
+  </div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // Mobile Menu
-        const menuToggle = document.getElementById("menu-toggle");
-        const mobileMenu = document.getElementById("mobile-menu");
-        menuToggle.addEventListener("click", () => {
-          mobileMenu.classList.toggle("hidden");
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Mobile Menu
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Hide header on scroll down (from index(2))
+      const header = document.getElementById("main-header");
+      let lastScroll = window.scrollY;
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.scrollY;
+        if (currentScroll > lastScroll && currentScroll > 50) {
+          header.classList.add("-translate-y-full");
+        } else {
+          header.classList.remove("-translate-y-full");
+        }
+        lastScroll = currentScroll;
+      });
+
+      // Booking Popup (logic from index(4))
+      const bookingPopup = document.getElementById("booking-popup");
+      const popupContent = bookingPopup.querySelector(".popup-content");
+      const openPopupBtns = Array.from(document.querySelectorAll(".open-popup-btn"));
+      const heroBookNowBtn = document.getElementById("hero-book-now");
+      const closePopupBtn = document.getElementById("close-popup-btn");
+      const bookingForm = document.getElementById("booking-form");
+      const heroPhoneInput = document.getElementById("hero-phone");
+      const popupPhoneInput = document.getElementById("phone");
+      const submitBtn = document.getElementById("submit-booking-btn");
+      const formStatus = document.getElementById("form-status");
+      let lastFocusedElement = null;
+
+      const openPopup = () => {
+        if (!bookingPopup) return;
+        lastFocusedElement = document.activeElement;
+        formStatus.textContent = "";
+        formStatus.classList.remove("text-green-600", "text-red-600");
+        bookingPopup.classList.remove("hidden");
+        bookingPopup.classList.add("flex", "opacity-100");
+        popupContent.classList.remove("scale-95");
+        popupContent.classList.add("scale-100");
+        const firstInput = bookingForm.querySelector("input, textarea, button");
+        if (firstInput) firstInput.focus();
+      };
+
+      const closePopup = () => {
+        if (!bookingPopup) return;
+        bookingPopup.classList.remove("opacity-100", "flex");
+        popupContent.classList.remove("scale-100");
+        popupContent.classList.add("scale-95");
+        setTimeout(() => {
+          bookingPopup.classList.add("hidden");
+          if (lastFocusedElement && typeof lastFocusedElement.focus === "function") lastFocusedElement.focus();
+        }, 300);
+      };
+
+      openPopupBtns.forEach((btn) =>
+        btn.addEventListener("click", () => {
+          if (popupPhoneInput && heroPhoneInput && heroPhoneInput.value) popupPhoneInput.value = heroPhoneInput.value;
+          openPopup();
+        })
+      );
+
+      if (heroBookNowBtn) {
+        heroBookNowBtn.addEventListener("click", () => {
+          if (popupPhoneInput && heroPhoneInput) popupPhoneInput.value = heroPhoneInput.value || "";
+          openPopup();
         });
+      }
 
-        // Hide header on scroll down (from index(2))
-        const header = document.getElementById("main-header");
-        let lastScroll = window.scrollY;
-        window.addEventListener("scroll", () => {
-          const currentScroll = window.scrollY;
-          if (currentScroll > lastScroll && currentScroll > 50) {
-            header.classList.add("-translate-y-full");
-          } else {
-            header.classList.remove("-translate-y-full");
+      if (closePopupBtn) closePopupBtn.addEventListener("click", closePopup);
+      bookingPopup.addEventListener("click", (e) => {
+        if (e.target === bookingPopup) closePopup();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !bookingPopup.classList.contains("hidden")) closePopup();
+      });
+
+      if (bookingForm && submitBtn) {
+        bookingForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const phoneEl = bookingForm.querySelector("#phone");
+          if (!phoneEl || !phoneEl.value.trim()) {
+            formStatus.textContent = "Please enter a phone number.";
+            formStatus.classList.remove("text-green-600");
+            formStatus.classList.add("text-red-600");
+            phoneEl && phoneEl.focus();
+            return;
           }
-          lastScroll = currentScroll;
-        });
 
-        // Booking Popup (logic from index(4))
-        const bookingPopup = document.getElementById("booking-popup");
-        const popupContent = bookingPopup.querySelector(".popup-content");
-        const openPopupBtns = Array.from(document.querySelectorAll(".open-popup-btn"));
-        const heroBookNowBtn = document.getElementById("hero-book-now");
-        const closePopupBtn = document.getElementById("close-popup-btn");
-        const bookingForm = document.getElementById("booking-form");
-        const heroPhoneInput = document.getElementById("hero-phone");
-        const popupPhoneInput = document.getElementById("phone");
-        const submitBtn = document.getElementById("submit-booking-btn");
-        const formStatus = document.getElementById("form-status");
-        let lastFocusedElement = null;
-
-        const openPopup = () => {
-          if (!bookingPopup) return;
-          lastFocusedElement = document.activeElement;
+          submitBtn.disabled = true;
+          const prevText = submitBtn.textContent;
+          submitBtn.textContent = "Submitting...";
           formStatus.textContent = "";
           formStatus.classList.remove("text-green-600", "text-red-600");
-          bookingPopup.classList.remove("hidden");
-          bookingPopup.classList.add("flex", "opacity-100");
-          popupContent.classList.remove("scale-95");
-          popupContent.classList.add("scale-100");
-          const firstInput = bookingForm.querySelector("input, textarea, button");
-          if (firstInput) firstInput.focus();
-        };
 
-        const closePopup = () => {
-          if (!bookingPopup) return;
-          bookingPopup.classList.remove("opacity-100", "flex");
-          popupContent.classList.remove("scale-100");
-          popupContent.classList.add("scale-95");
-          setTimeout(() => {
-            bookingPopup.classList.add("hidden");
-            if (lastFocusedElement && typeof lastFocusedElement.focus === "function") lastFocusedElement.focus();
-          }, 300);
-        };
+          try {
+            const scriptURL = "https://script.google.com/macros/s/AKfycbxL_MgPmZnfe0A3VKHMDbRcRjjWornfj6IeeUBubov5pwiicaBB-rzGLnhTBSBkE4E7/exec";
+            const formData = new FormData(bookingForm);
 
-        openPopupBtns.forEach((btn) =>
-          btn.addEventListener("click", () => {
-            if (popupPhoneInput && heroPhoneInput && heroPhoneInput.value) popupPhoneInput.value = heroPhoneInput.value;
-            openPopup();
-          })
-        );
+            const res = await fetch(scriptURL, { method: "POST", body: formData });
+            if (!res.ok) throw new Error("Network response was not ok");
 
-        if (heroBookNowBtn) {
-          heroBookNowBtn.addEventListener("click", () => {
-            if (popupPhoneInput && heroPhoneInput) popupPhoneInput.value = heroPhoneInput.value || "";
-            openPopup();
-          });
-        }
-
-        if (closePopupBtn) closePopupBtn.addEventListener("click", closePopup);
-        bookingPopup.addEventListener("click", (e) => {
-          if (e.target === bookingPopup) closePopup();
-        });
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape" && !bookingPopup.classList.contains("hidden")) closePopup();
-        });
-
-        if (bookingForm && submitBtn) {
-          bookingForm.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const phoneEl = bookingForm.querySelector("#phone");
-            if (!phoneEl || !phoneEl.value.trim()) {
-              formStatus.textContent = "Please enter a phone number.";
-              formStatus.classList.remove("text-green-600");
-              formStatus.classList.add("text-red-600");
-              phoneEl && phoneEl.focus();
-              return;
-            }
-
-            submitBtn.disabled = true;
-            const prevText = submitBtn.textContent;
-            submitBtn.textContent = "Submitting...";
-            formStatus.textContent = "";
-            formStatus.classList.remove("text-green-600", "text-red-600");
-
-            try {
-              const scriptURL = "https://script.google.com/macros/s/AKfycbxL_MgPmZnfe0A3VKHMDbRcRjjWornfj6IeeUBubov5pwiicaBB-rzGLnhTBSBkE4E7/exec";
-              const formData = new FormData(bookingForm);
-
-              const res = await fetch(scriptURL, { method: "POST", body: formData });
-              if (!res.ok) throw new Error("Network response was not ok");
-
-              formStatus.textContent = "Thank you! Your request has been sent.";
-              formStatus.classList.add("text-green-600");
-              bookingForm.reset();
-              if (heroPhoneInput) heroPhoneInput.value = "";
-              setTimeout(closePopup, 2000);
-            } catch (err) {
-              console.error("Booking submit error", err);
-              formStatus.textContent = "Oops! Something went wrong. Please try again.";
-              formStatus.classList.add("text-red-600");
-            } finally {
-              submitBtn.disabled = false;
-              submitBtn.textContent = prevText;
-            }
-          });
-        }
-
-        // Hero Carousel (from index(2))
-        const slides = document.querySelectorAll(".carousel-slide");
-        const dots = document.querySelectorAll(".carousel-dot");
-        let currentSlide = 0;
-        let slideInterval;
-
-        const showSlide = (index) => {
-          slides.forEach((slide, i) => {
-            slide.style.opacity = i === index ? "1" : "0";
-          });
-          dots.forEach((dot, i) => {
-            dot.style.opacity = i === index ? "0.75" : "0.5";
-          });
-          currentSlide = index;
-        };
-
-        const nextSlide = () => {
-          showSlide((currentSlide + 1) % slides.length);
-        };
-
-        const startSlideShow = () => {
-          slideInterval = setInterval(nextSlide, 5000);
-        };
-
-        const stopSlideShow = () => {
-          clearInterval(slideInterval);
-        };
-
-        dots.forEach((dot, i) => {
-          dot.addEventListener("click", () => {
-            stopSlideShow();
-            showSlide(i);
-            startSlideShow();
-          });
-        });
-        startSlideShow();
-
-        // Portfolio Gallery & Lightbox (from index(2))
-        const portfolioTabs = document.querySelectorAll(".portfolio-tab");
-        const portfolioItems = document.querySelectorAll(".portfolio-item");
-        const lightbox = document.getElementById("lightbox-modal");
-        const lightboxImg = document.getElementById("lightbox-image");
-        const closeLightboxBtn = document.getElementById("close-lightbox-btn");
-
-        portfolioTabs.forEach((tab) => {
-          tab.addEventListener("click", () => {
-            const filter = tab.dataset.filter;
-            portfolioTabs.forEach((t) => {
-              t.classList.remove("active-tab", "border-[#6C584C]", "text-[#6C584C]");
-              t.classList.add("border-transparent", "text-[#6EC4DB]");
-            });
-            tab.classList.add("active-tab", "border-[#6C584C]", "text-[#6C584C]");
-            tab.classList.remove("border-transparent", "text-[#6EC4DB]");
-
-            portfolioItems.forEach((item) => {
-              if (filter === "all" || item.dataset.category === filter) {
-                item.style.display = "block";
-                setTimeout(() => {
-                  item.style.transform = "scale(1)";
-                  item.style.opacity = "1";
-                }, 10);
-              } else {
-                item.style.transform = "scale(0.9)";
-                item.style.opacity = "0";
-                setTimeout(() => {
-                  item.style.display = "none";
-                }, 300);
-              }
-            });
-          });
-        });
-
-        portfolioItems.forEach((item) => {
-          item.addEventListener("click", () => {
-            lightboxImg.src = item.dataset.src;
-            lightbox.classList.remove("hidden");
-            lightbox.classList.add("flex");
-            void lightbox.offsetWidth;
-            lightbox.classList.add("opacity-100");
-          });
-        });
-
-        const closeLightbox = () => {
-          lightbox.classList.remove("opacity-100");
-          setTimeout(() => {
-            lightbox.classList.add("hidden");
-            lightbox.classList.remove("flex");
-          }, 300);
-        };
-
-        closeLightboxBtn.addEventListener("click", closeLightbox);
-        lightbox.addEventListener("click", (e) => {
-          if (e.target === lightbox) {
-            closeLightbox();
+            formStatus.textContent = "Thank you! Your request has been sent.";
+            formStatus.classList.add("text-green-600");
+            bookingForm.reset();
+            if (heroPhoneInput) heroPhoneInput.value = "";
+            setTimeout(closePopup, 2000);
+          } catch (err) {
+            console.error("Booking submit error", err);
+            formStatus.textContent = "Oops! Something went wrong. Please try again.";
+            formStatus.classList.add("text-red-600");
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = prevText;
           }
         });
+      }
+
+      // Hero Carousel (from index(2))
+      const slides = document.querySelectorAll(".carousel-slide");
+      const dots = document.querySelectorAll(".carousel-dot");
+      let currentSlide = 0;
+      let slideInterval;
+
+      const showSlide = (index) => {
+        slides.forEach((slide, i) => {
+          slide.style.opacity = i === index ? "1" : "0";
+        });
+        dots.forEach((dot, i) => {
+          dot.style.opacity = i === index ? "0.75" : "0.5";
+        });
+        currentSlide = index;
+      };
+
+      const nextSlide = () => {
+        showSlide((currentSlide + 1) % slides.length);
+      };
+
+      const startSlideShow = () => {
+        slideInterval = setInterval(nextSlide, 5000);
+      };
+
+      const stopSlideShow = () => {
+        clearInterval(slideInterval);
+      };
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener("click", () => {
+          stopSlideShow();
+          showSlide(i);
+          startSlideShow();
+        });
       });
-    </script>
-  </body>
+      startSlideShow();
+
+      // Portfolio Gallery & Lightbox (from index(2))
+      const portfolioTabs = document.querySelectorAll(".portfolio-tab");
+      const portfolioItems = document.querySelectorAll(".portfolio-item");
+      const lightbox = document.getElementById("lightbox-modal");
+      const lightboxImg = document.getElementById("lightbox-image");
+      const closeLightboxBtn = document.getElementById("close-lightbox-btn");
+
+      portfolioTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const filter = tab.dataset.filter;
+          portfolioTabs.forEach((t) => {
+            t.classList.remove("active-tab", "border-[#6C584C]", "text-[#6C584C]");
+            t.classList.add("border-transparent", "text-[#6EC4DB]");
+          });
+          tab.classList.add("active-tab", "border-[#6C584C]", "text-[#6C584C]");
+          tab.classList.remove("border-transparent", "text-[#6EC4DB]");
+
+          portfolioItems.forEach((item) => {
+            if (filter === "all" || item.dataset.category === filter) {
+              item.style.display = "block";
+              setTimeout(() => {
+                item.style.transform = "scale(1)";
+                item.style.opacity = "1";
+              }, 10);
+            } else {
+              item.style.transform = "scale(0.9)";
+              item.style.opacity = "0";
+              setTimeout(() => {
+                item.style.display = "none";
+              }, 300);
+            }
+          });
+        });
+      });
+
+      portfolioItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          lightboxImg.src = item.dataset.src;
+          lightbox.classList.remove("hidden");
+          lightbox.classList.add("flex");
+          void lightbox.offsetWidth;
+          lightbox.classList.add("opacity-100");
+        });
+      });
+
+      const closeLightbox = () => {
+        lightbox.classList.remove("opacity-100");
+        setTimeout(() => {
+          lightbox.classList.add("hidden");
+          lightbox.classList.remove("flex");
+        }, 300);
+      };
+
+      closeLightboxBtn.addEventListener("click", closeLightbox);
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+    });
+  </script>
+</body>
+
 </html>
