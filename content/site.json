@@ -1,0 +1,319 @@
+{
+  "site": {
+    "name": "My Baby Pictures",
+    "domain": "https://mybabypictures.in",
+    "tagline": "Premium maternity, newborn, baby and family photography in Delhi NCR",
+    "description": "A warm, polished photography studio in East Delhi creating maternity, newborn, milestone, birthday, family, event and festival portraits for families across Delhi NCR.",
+    "phone": "+91 70429 26912",
+    "phoneHref": "tel:+917042926912",
+    "whatsapp": "https://wa.me/917042926912",
+    "email": "hello@mybabypictures.in",
+    "address": "Saini Enclave, Karkardooma, East Delhi 110092",
+    "instagram": "https://www.instagram.com/mybabypictures18/",
+    "youtube": "https://www.youtube.com/@sahustudio1982",
+    "logo": "/images/mbp-favicon.png",
+    "ogImage": "/images/hero-carousel-1.jpeg",
+    "analyticsId": "G-LW6GNLQ3KH",
+    "rating": "4.9",
+    "reviewCount": "164"
+  },
+  "homepage": {
+    "seo": {
+      "title": "My Baby Pictures | Premium Baby, Maternity & Family Photography Delhi NCR",
+      "description": "Explore premium maternity, newborn, milestone, cake smash, family, event and festival photography by My Baby Pictures in East Delhi and across Delhi NCR."
+    },
+    "hero": {
+      "eyebrow": "East Delhi studio. Delhi NCR sessions.",
+      "title": "Premium portraits for the first stories your family will tell forever.",
+      "copy": "My Baby Pictures creates calm, carefully styled photography experiences for expecting parents, newborns, babies, birthdays, family portraits, rituals, events and festival memories.",
+      "image": "/images/hero-carousel-1.jpeg",
+      "primaryCta": "Book a Session",
+      "secondaryCta": "Explore Categories",
+      "stats": [
+        { "value": "4.9", "label": "client rating" },
+        { "value": "164+", "label": "happy parent reviews" },
+        { "value": "10+", "label": "years of studio craft" }
+      ],
+      "trust": [
+        "Baby-safe posing and gentle session flow",
+        "Studio, home and outdoor options",
+        "Curated outfits, wraps, props and backdrops",
+        "Edited digital galleries with album add-ons"
+      ]
+    },
+    "story": {
+      "eyebrow": "About the studio",
+      "title": "Warm direction, polished styling and a calm space for little people.",
+      "copy": "Led by Gaurav and the MBP team, the studio specialises in photographing babies and families with patience, safety and a refined visual style. Every session is planned around the child's age, the family's comfort and the kind of memory you want to preserve.",
+      "image": "/images/photographer-amelia.jpeg",
+      "points": [
+        "Dedicated East Delhi studio in Saini Enclave, Karkardooma",
+        "Serving Delhi, Noida, Gurugram, Faridabad and Ghaziabad",
+        "Category-specific themes, pricing and media galleries",
+        "Future-ready content model for new categories, offers and AI tools"
+      ]
+    },
+    "resources": [
+      "When to book your maternity session",
+      "How newborn sessions are planned safely",
+      "What to bring for a first birthday shoot"
+    ]
+  },
+  "categories": [
+    {
+      "slug": "maternity",
+      "title": "Maternity",
+      "label": "Maternity Photography",
+      "eyebrow": "For the weeks before everything changes",
+      "summary": "Elegant portraits for expecting mothers, couples and families.",
+      "description": "A relaxed maternity session with gowns, gentle posing and styling that celebrates the softness and strength of pregnancy.",
+      "heroImage": "/images/portfolio-maternity-1.jpeg",
+      "gallery": [
+        { "src": "/images/portfolio-maternity-1.jpeg", "alt": "Outdoor maternity portrait with a flowing white gown", "caption": "Outdoor elegance" },
+        { "src": "/images/portfolio-maternity-2.jpeg", "alt": "Couple maternity portrait in a rustic studio theme", "caption": "Couple story" },
+        { "src": "/images/hero-carousel-2.jpeg", "alt": "Styled studio family portrait", "caption": "Studio styling" },
+        { "src": "/images/portfolio-family-1.jpeg", "alt": "Parents with baby family detail portrait", "caption": "Family included" }
+      ],
+      "pricing": [
+        { "name": "Essential Maternity", "price": "₹8,000", "featured": false, "includes": ["1 look", "1 hour session", "8 edited images", "Studio styling guidance"] },
+        { "name": "Signature Maternity", "price": "₹14,000", "featured": true, "includes": ["2 looks", "Couple portraits", "18 edited images", "Gown and backdrop support"] },
+        { "name": "Editorial Maternity", "price": "₹22,000", "featured": false, "includes": ["3 looks", "Indoor or outdoor planning", "30 edited images", "Album consultation"] }
+      ],
+      "addons": ["Outdoor location coordination", "Makeup artist on request", "Premium album", "Additional edited images"],
+      "faqs": [
+        { "q": "When should I book a maternity shoot?", "a": "Most families book between 28 and 34 weeks, when the bump photographs beautifully and movement is still comfortable." },
+        { "q": "Can my partner and child join?", "a": "Yes. Couple, sibling and family frames can be added to maternity sessions." }
+      ],
+      "testimonials": ["Shashank Thakur", "Nikita Sharma"],
+      "related": ["newborn", "family-portrait", "milestone"]
+    },
+    {
+      "slug": "newborn",
+      "title": "Newborn",
+      "label": "Newborn Photography",
+      "eyebrow": "Tiny details, safely held",
+      "summary": "Gentle newborn portraits with wraps, baskets, parents and sibling frames.",
+      "description": "A baby-led newborn experience designed around feeding, settling, safe posing and warm studio comfort.",
+      "heroImage": "/images/portfolio-newborn-1.jpeg",
+      "gallery": [
+        { "src": "/images/portfolio-newborn-1.jpeg", "alt": "Sleeping newborn in bee costume on a themed setup", "caption": "Themed newborn" },
+        { "src": "/images/portfolio-newborn-2.jpeg", "alt": "Wrapped newborn portrait with name board", "caption": "Wrapped detail" },
+        { "src": "/images/story-newborn-1.jpeg", "alt": "Newborn in a wizard costume theme", "caption": "Creative themes" },
+        { "src": "/images/story-newborn-2.jpeg", "alt": "Newborn wrapped with LOVE prop", "caption": "Studio classics" }
+      ],
+      "pricing": [
+        { "name": "Newborn Mini", "price": "₹8,000", "featured": false, "includes": ["Up to 2 hours", "1 setup", "8 edited images", "Wraps and props included"] },
+        { "name": "Newborn Signature", "price": "₹16,000", "featured": true, "includes": ["Up to 3 hours", "3 setups", "18 edited images", "Parent portraits included"] },
+        { "name": "First Days Collection", "price": "₹26,000", "featured": false, "includes": ["Up to 4 hours", "4 setups", "30 edited images", "Sibling and album planning"] }
+      ],
+      "addons": ["Sibling portraits", "Printed album", "Rush editing", "Extra setup"],
+      "faqs": [
+        { "q": "What is the best age for newborn photos?", "a": "The ideal window is usually 5 to 15 days, but lifestyle newborn portraits can be planned later too." },
+        { "q": "Are props and wraps provided?", "a": "Yes. The studio keeps baby-safe wraps, baskets, backdrops and accessories ready." }
+      ],
+      "testimonials": ["Paras Abbi", "Jyoti Sharma"],
+      "related": ["maternity", "milestone", "family-portrait"]
+    },
+    {
+      "slug": "milestone",
+      "title": "Milestone",
+      "label": "Milestone Photography",
+      "eyebrow": "Every new expression deserves a chapter",
+      "summary": "Three-month, six-month, sitting, crawling and first-year portraits.",
+      "description": "Playful milestone sessions for babies who are discovering expressions, movement, food, props and personality.",
+      "heroImage": "/images/story-3-6-months-1.jpeg",
+      "gallery": [
+        { "src": "/images/story-3-6-months-1.jpeg", "alt": "Baby in Krishna costume playing flute", "caption": "3 to 6 months" },
+        { "src": "/images/story-3-6-months-2.jpeg", "alt": "Toddler in Krishna outfit walking", "caption": "New steps" },
+        { "src": "/images/story-toddler-1.jpeg", "alt": "Baby chef themed milestone portrait", "caption": "Theme play" },
+        { "src": "/images/portfolio-oneyear-1.jpeg", "alt": "One-year baby portrait", "caption": "First year" }
+      ],
+      "pricing": [
+        { "name": "Milestone Mini", "price": "₹6,000", "featured": false, "includes": ["1 setup", "45 minute session", "6 edited images", "Basic props"] },
+        { "name": "Milestone Magic", "price": "₹12,000", "featured": true, "includes": ["2 setups", "90 minute session", "15 edited images", "Outfits and props"] },
+        { "name": "First Year Story", "price": "₹24,000", "featured": false, "includes": ["3 milestone sessions", "30 edited images", "Coordinated themes", "Album add-on support"] }
+      ],
+      "addons": ["Cake add-on", "Extra theme", "Family frames", "Reels or short video"],
+      "faqs": [
+        { "q": "Which milestones can be photographed?", "a": "Tummy time, sitting, crawling, standing, first birthday and seasonal milestones all work beautifully." },
+        { "q": "Can we use a custom theme?", "a": "Yes. Share references in advance so the studio can plan props, colors and outfits." }
+      ],
+      "testimonials": ["Shuchi Abhiruta", "Abhika Mittal"],
+      "related": ["birthday-cake-smash", "festival", "family-portrait"]
+    },
+    {
+      "slug": "birthday-cake-smash",
+      "title": "Birthday / Cake Smash",
+      "label": "Birthday & Cake Smash",
+      "eyebrow": "A first birthday with personality",
+      "summary": "Cake smash, pre-birthday and one-year portraits with playful themes.",
+      "description": "A bright, expressive birthday session that can include clean portraits, family frames, cake smash and a splashy finale.",
+      "heroImage": "/images/portfolio-cakesmash-1.jpeg",
+      "gallery": [
+        { "src": "/images/portfolio-cakesmash-1.jpeg", "alt": "First birthday cake smash portrait", "caption": "Cake smash" },
+        { "src": "/images/story-toddler-2.jpeg", "alt": "Birthday girl cake smash setup", "caption": "Birthday theme" },
+        { "src": "/images/portfolio-oneyear-2.jpeg", "alt": "Baby boy enjoying cake smash", "caption": "Messy joy" },
+        { "src": "/images/portfolio-oneyear-1.jpeg", "alt": "First birthday portrait", "caption": "One-year classic" }
+      ],
+      "pricing": [
+        { "name": "Birthday Mini", "price": "₹7,000", "featured": false, "includes": ["1 birthday setup", "6 edited images", "Basic props", "Pre-shoot planning"] },
+        { "name": "Cake Smash Signature", "price": "₹15,000", "featured": true, "includes": ["Portrait and cake setup", "15 edited images", "Outfit guidance", "Family frames"] },
+        { "name": "Birthday Story", "price": "₹24,000", "featured": false, "includes": ["2 premium setups", "Cake smash and splash option", "28 edited images", "Short reel add-on support"] }
+      ],
+      "addons": ["Custom cake coordination", "Balloon styling", "Splash bath setup", "Short video reel"],
+      "faqs": [
+        { "q": "Do you arrange the cake?", "a": "Cake can be arranged as an add-on or brought by the family after discussing color and allergy preferences." },
+        { "q": "Can we do a pre-birthday shoot before the party?", "a": "Yes. Many families book a pre-birthday shoot for invitation images and decor displays." }
+      ],
+      "testimonials": ["Nikita Sharma", "Shuchi Abhiruta"],
+      "related": ["milestone", "events", "family-portrait"]
+    },
+    {
+      "slug": "family-portrait",
+      "title": "Family Portrait",
+      "label": "Family Portraits",
+      "eyebrow": "Everyone in the frame",
+      "summary": "Studio and lifestyle portraits for parents, siblings and extended families.",
+      "description": "Family sessions are directed with warmth and polish so everyone looks comfortable, connected and naturally themselves.",
+      "heroImage": "/images/portfolio-family-2.jpeg",
+      "gallery": [
+        { "src": "/images/portfolio-family-1.jpeg", "alt": "Parents and baby close family portrait", "caption": "Close connection" },
+        { "src": "/images/portfolio-family-2.jpeg", "alt": "Creative family moon portrait", "caption": "Creative portrait" },
+        { "src": "/images/hero-carousel-3.jpeg", "alt": "Family portrait with themed background", "caption": "Story setup" },
+        { "src": "/images/client-sophia.jpeg", "alt": "Client family portrait", "caption": "Studio warmth" }
+      ],
+      "pricing": [
+        { "name": "Family Mini", "price": "₹8,000", "featured": false, "includes": ["Up to 4 people", "1 look", "8 edited images", "Studio session"] },
+        { "name": "Family Signature", "price": "₹16,000", "featured": true, "includes": ["Up to 6 people", "2 looks", "18 edited images", "Indoor or outdoor option"] },
+        { "name": "Legacy Portraits", "price": "₹28,000", "featured": false, "includes": ["Extended family planning", "30 edited images", "Group and individual frames", "Album consultation"] }
+      ],
+      "addons": ["Extra family member", "Outdoor location", "Wall art prints", "Album design"],
+      "faqs": [
+        { "q": "Can grandparents join?", "a": "Yes. Larger groups can be planned with extra time and a suitable backdrop or location." },
+        { "q": "Do you guide posing?", "a": "Yes. The team directs expressions, hand placement, sitting arrangements and natural candid moments." }
+      ],
+      "testimonials": ["Paras Abbi", "Nikita Sharma"],
+      "related": ["maternity", "newborn", "events"]
+    },
+    {
+      "slug": "events",
+      "title": "Events",
+      "label": "Event Photography",
+      "eyebrow": "Rituals, parties and family gatherings",
+      "summary": "Baby showers, birthday parties, naming ceremonies, mundan and family events.",
+      "description": "Event coverage blends candid storytelling, family portraits, decor details and ritual moments with optional video and BTS capture.",
+      "heroImage": "/images/hero-carousel-3.jpeg",
+      "gallery": [
+        { "src": "/images/hero-carousel-3.jpeg", "alt": "Family event portrait with themed backdrop", "caption": "Family events" },
+        { "src": "/images/portfolio-family-2.jpeg", "alt": "Creative family event portrait", "caption": "Portrait corner" },
+        { "src": "/images/story-toddler-2.jpeg", "alt": "Birthday celebration portrait", "caption": "Birthday party" },
+        { "src": "/images/portfolio-oneyear-2.jpeg", "alt": "Birthday cake moment", "caption": "Candid moments" }
+      ],
+      "pricing": [
+        { "name": "Event Essentials", "price": "₹12,000", "featured": false, "includes": ["Up to 2 hours", "Candid coverage", "Family portraits", "Edited digital gallery"] },
+        { "name": "Event Story", "price": "₹24,000", "featured": true, "includes": ["Up to 4 hours", "Candid and decor coverage", "80+ edited photos", "Highlight reel add-on ready"] },
+        { "name": "Event Film + Photo", "price": "₹45,000", "featured": false, "includes": ["Photo and video team", "Half-day coverage", "Highlight film", "Full edited gallery"] }
+      ],
+      "addons": ["Extra hour", "Second photographer", "Highlight reel", "BTS clips", "Same-day preview"],
+      "videos": [
+        { "title": "Event highlight reel placeholder", "embed": "" }
+      ],
+      "bts": [
+        { "title": "Decor details", "copy": "Capture the invitation, decor, cake, gifts and keepsakes before guests arrive.", "image": "/images/story-toddler-2.jpeg" },
+        { "title": "Family moments", "copy": "Short clips and candid frames preserve the atmosphere beyond formal portraits.", "image": "/images/portfolio-family-1.jpeg" }
+      ],
+      "faqs": [
+        { "q": "Do event pages support video?", "a": "Yes. Event pages can include highlight films, embedded videos, BTS clips and photo galleries." },
+        { "q": "Can coverage be extended?", "a": "Yes. Additional hours and a second photographer can be added depending on event scale." }
+      ],
+      "testimonials": ["Nikita Sharma", "Abhika Mittal"],
+      "related": ["birthday-cake-smash", "family-portrait", "festival"],
+      "children": [
+        { "slug": "baby-shower", "title": "Baby Shower", "summary": "Candid and styled coverage for baby showers.", "heroImage": "/images/portfolio-maternity-2.jpeg" },
+        { "slug": "godh-bharai", "title": "Godh Bharai", "summary": "Traditional Godh Bharai rituals, family portraits and decor details.", "heroImage": "/images/portfolio-maternity-1.jpeg" },
+        { "slug": "birthday-party", "title": "Birthday Party", "summary": "Birthday party candids, decor, cake, guests and family moments.", "heroImage": "/images/story-toddler-2.jpeg" },
+        { "slug": "naming-ceremony", "title": "Naming Ceremony", "summary": "Naming ceremony coverage with rituals and newborn family portraits.", "heroImage": "/images/portfolio-newborn-2.jpeg" },
+        { "slug": "mundan-ceremony", "title": "Mundan Ceremony", "summary": "Mundan ceremony photography with family, rituals and candid emotion.", "heroImage": "/images/portfolio-family-1.jpeg" }
+      ]
+    },
+    {
+      "slug": "festival",
+      "title": "Festival Based",
+      "label": "Festival Photography",
+      "eyebrow": "Seasonal sets and cultural stories",
+      "summary": "Christmas, Janmashtami, Holi, Diwali, Raksha Bandhan and more.",
+      "description": "Festival sessions are built around seasonal styling, child-friendly props and limited-edition sets for keepsakes, cards and social memories.",
+      "heroImage": "/images/santa1.jpg",
+      "gallery": [
+        { "src": "/images/santa1.jpg", "alt": "Christmas baby photoshoot", "caption": "Christmas" },
+        { "src": "/images/santa2.jpg", "alt": "Christmas tree baby portrait", "caption": "Santa set" },
+        { "src": "/images/story-3-6-months-1.jpeg", "alt": "Janmashtami Krishna baby portrait", "caption": "Janmashtami" },
+        { "src": "/images/story-3-6-months-2.jpeg", "alt": "Krishna toddler festival portrait", "caption": "Festival story" }
+      ],
+      "pricing": [
+        { "name": "Festival Mini", "price": "₹1,999", "featured": false, "includes": ["Limited set", "1 child", "3 edited images", "Costume as available"] },
+        { "name": "Festival Signature", "price": "₹5,999", "featured": true, "includes": ["Premium set", "8 edited images", "Family add-on option", "Priority slot"] },
+        { "name": "Festival Family", "price": "₹11,000", "featured": false, "includes": ["Festival set and family portraits", "15 edited images", "Sibling included", "Print add-on support"] }
+      ],
+      "addons": ["Sibling add-on", "Extra edited images", "Greeting card design", "Short reel"],
+      "videos": [
+        { "title": "Festival BTS placeholder", "embed": "" }
+      ],
+      "bts": [
+        { "title": "Seasonal set changes", "copy": "Festival pages can publish fresh set previews, BTS clips and limited-slot announcements.", "image": "/images/santa3.jpg" }
+      ],
+      "faqs": [
+        { "q": "Are festival shoots available all year?", "a": "Festival sets are seasonal and slot-based. Booking early is recommended." },
+        { "q": "Can new festivals be added later?", "a": "Yes. New festival pages can be added to the CMS category list without changing templates." }
+      ],
+      "testimonials": ["Ashish Arora", "Abhika Mittal"],
+      "related": ["milestone", "birthday-cake-smash", "family-portrait"],
+      "children": [
+        { "slug": "christmas", "title": "Christmas", "summary": "Santa-themed baby and family portraits with limited festive sets.", "heroImage": "/images/santa1.jpg" },
+        { "slug": "janmashtami", "title": "Janmashtami", "summary": "Little Krishna portraits with traditional props and playful storytelling.", "heroImage": "/images/story-3-6-months-1.jpeg" },
+        { "slug": "holi", "title": "Holi", "summary": "Colorful Holi portraits planned with baby-safe styling.", "heroImage": "/images/hero-carousel-2.jpeg" },
+        { "slug": "diwali", "title": "Diwali", "summary": "Warm festive portraits for lights, family outfits and keepsakes.", "heroImage": "/images/portfolio-family-2.jpeg" },
+        { "slug": "raksha-bandhan", "title": "Raksha Bandhan", "summary": "Sibling-focused portraits for Rakhi memories.", "heroImage": "/images/client-ethan.jpeg" }
+      ]
+    }
+  ],
+  "testimonials": [
+    { "name": "Paras Abbi", "category": "newborn", "rating": 5, "quote": "Our newborn photoshoot was magical. The team was kind, patient and attentive throughout the session, and the final images are memories we will preserve forever." },
+    { "name": "Shashank Thakur", "category": "maternity", "rating": 5, "quote": "It was an overwhelming experience and three hours of pure self love. We were excited from the session itself." },
+    { "name": "Nikita Sharma", "category": "birthday-cake-smash", "rating": 5, "quote": "The communication was seamless, the studio was warm and welcoming, and the photos captured our baby's personality beautifully." },
+    { "name": "Ashish Arora", "category": "festival", "rating": 5, "quote": "We had a very good Janmashtami shoot and used their services for both sons. Comfortable environment for small newborns and nice service." },
+    { "name": "Abhika Mittal", "category": "festival", "rating": 5, "quote": "The team clicked miracle pictures of my baby, including newborn and Janmashtami themes. They were supportive and calm with babies and parents." },
+    { "name": "Jyoti Sharma", "category": "newborn", "rating": 5, "quote": "They handled my 26-day-old baby with care and created a warm, protected space during winter. The experience was smooth and stress-free." },
+    { "name": "Shuchi Abhiruta", "category": "milestone", "rating": 5, "quote": "My first shooting experience with my six-month baby was smooth. The team was generous, polite and lovely to work with." }
+  ],
+  "faqs": [
+    { "q": "Where is the My Baby Pictures studio?", "a": "The studio is in Saini Enclave, Karkardooma, East Delhi, with sessions available across Delhi NCR." },
+    { "q": "Is pricing the same for every category?", "a": "No. Pricing is managed per category, so maternity, newborn, events, festival and other sessions can each have their own packages and add-ons." },
+    { "q": "Can I update images, pricing and FAQs without code?", "a": "Yes. The site is generated from editable content files designed for CMS or non-technical updates." },
+    { "q": "Do you support videos and behind-the-scenes content?", "a": "Yes. Category pages can include embedded videos, short clips and BTS content blocks." },
+    { "q": "How do I book?", "a": "Use the inquiry form, call the studio or message on WhatsApp to check availability and reserve a slot." }
+  ],
+  "resources": [
+    {
+      "slug": "when-to-book-maternity-photoshoot",
+      "title": "When to book your maternity photoshoot",
+      "category": "Maternity",
+      "excerpt": "A simple guide to choosing the right week, wardrobe and setting for pregnancy portraits.",
+      "image": "/images/portfolio-maternity-1.jpeg"
+    },
+    {
+      "slug": "newborn-session-safety",
+      "title": "How newborn sessions are planned safely",
+      "category": "Newborn",
+      "excerpt": "What parents should know about timing, feeding, posing, temperature and baby-led breaks.",
+      "image": "/images/portfolio-newborn-1.jpeg"
+    },
+    {
+      "slug": "first-birthday-shoot-checklist",
+      "title": "First birthday photoshoot checklist",
+      "category": "Birthday",
+      "excerpt": "Cake, outfits, naps, props and family frames to plan before a cake smash session.",
+      "image": "/images/portfolio-cakesmash-1.jpeg"
+    }
+  ]
+}
