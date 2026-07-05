@@ -15,7 +15,7 @@ export async function generateMetadata() {
   return await buildMetadata({
     title: `Testimonials | ${site.name}`,
     description: "Parent testimonials and reviews for My Baby Pictures photography studio.",
-    path: "/testimonials/",
+    path: "/testimonials",
     image: "/images/client-sophia.jpeg",
   });
 }

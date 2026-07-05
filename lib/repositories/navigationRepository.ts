@@ -28,7 +28,7 @@ export async function getHeaderNavigation(): Promise<NavigationLink[]> {
 export async function getFooterExperiences(): Promise<NavigationLink[]> {
   const categories = await getCategories();
   return categories.map((cat) => ({
-    href: `/categories/${cat.slug}/`,
+    href: `/categories/${cat.slug}`,
     label: cat.label,
   }));
 }
@@ -57,7 +57,7 @@ export async function getFooterPricingLinks(): Promise<NavigationLink[]> {
   return categories
     .filter((cat) => cat.pricing && cat.pricing.length > 0)
     .map((cat) => ({
-      href: `/pricing/${cat.slug}/`,
+      href: `/pricing/${cat.slug}`,
       label: cat.title,
     }));
 }

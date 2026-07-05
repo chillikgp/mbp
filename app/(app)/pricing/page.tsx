@@ -15,7 +15,7 @@ export async function generateMetadata() {
   return await buildMetadata({
     title: `Pricing | ${site.name}`,
     description: "Category-specific photography pricing for maternity, newborn, milestone, birthday, family, event and festival sessions.",
-    path: "/pricing/",
+    path: "/pricing",
     image: "/images/portfolio-newborn-2.jpeg",
   });
 }

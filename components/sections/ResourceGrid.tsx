@@ -13,7 +13,7 @@ export default function ResourceGrid({ resources, limit }: ResourceGridProps) {
   return (
     <div className="grid grid-3">
       {list.map((item) => (
-        <a key={item.slug} className="resource-card" href={`/resources/${item.slug}/`}>
+        <a key={item.slug} className="resource-card" href={`/resources/${item.slug}`}>
           <ResponsiveImage
             src={item.image}
             alt={item.title}

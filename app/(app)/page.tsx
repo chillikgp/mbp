@@ -122,7 +122,7 @@ export default async function HomePage() {
           />
           <PortfolioGrid gallery={featuredGallery} category="homepage" />
           <div className="action-row">
-            <a className="btn btn-primary" href="/portfolio/">
+            <a className="btn btn-primary" href="/portfolio">
               View Portfolio by Category
             </a>
           </div>
@@ -163,7 +163,7 @@ export default async function HomePage() {
             ))}
           </div>
           <div className="action-row">
-            <a className="btn btn-outline" href="/pricing/">
+            <a className="btn btn-outline" href="/pricing">
               Explore All Pricing
             </a>
           </div>
@@ -175,7 +175,7 @@ export default async function HomePage() {
           <PageHeader title="Trusted by families across Delhi NCR" eyebrow="Kind words" />
           <TestimonialSection items={testimonials} limit={3} />
           <div className="action-row">
-            <a className="btn btn-soft" href="/testimonials/">
+            <a className="btn btn-soft" href="/testimonials">
               Read More Reviews
             </a>
           </div>

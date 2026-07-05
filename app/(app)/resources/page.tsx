@@ -13,7 +13,7 @@ export async function generateMetadata() {
   return await buildMetadata({
     title: `Resources | ${site.name}`,
     description: "Parent planning resources for maternity, newborn and birthday photography sessions.",
-    path: "/resources/",
+    path: "/resources",
     image: "/images/portfolio-maternity-2.jpeg",
   });
 }

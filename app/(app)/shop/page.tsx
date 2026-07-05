@@ -16,7 +16,7 @@ export async function generateMetadata() {
   return await buildMetadata({
     title: shop.seo.title,
     description: shop.seo.description,
-    path: "/shop/",
+    path: "/shop",
     image: shop.hero.image,
   });
 }

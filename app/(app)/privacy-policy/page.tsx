@@ -9,7 +9,7 @@ export async function generateMetadata() {
   return await buildMetadata({
     title: `Privacy Policy | ${site.name}`,
     description: "Privacy policy for My Baby Pictures photography studio.",
-    path: "/privacy-policy/",
+    path: "/privacy-policy",
     image: site.ogImage,
   });
 }

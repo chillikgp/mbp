@@ -1,6 +1,7 @@
 import { FAQItem, Product, PhotographyCategory, SiteSettings } from "./types";
 
 const url = (path: string = "/", domain: string) => {
+  if (path.startsWith("http")) return path;
   const formattedDomain = domain.replace(/\/$/, "");
   const formattedPath = path.startsWith("/") ? path : `/${path}`;
   return `${formattedDomain}${formattedPath}`;
@@ -65,7 +66,7 @@ export function buildProductSchema(product: Product, site: SiteSettings) {
       priceCurrency: "INR",
       price: productBasePrice(product),
       availability: "https://schema.org/InStock",
-      url: url(`/shop/${product.slug}/`, site.domain),
+      url: url(`/shop/${product.slug}`, site.domain),
     },
   };
 }

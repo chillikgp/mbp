@@ -8,15 +8,18 @@ interface MetadataProps {
   image?: string;
 }
 
+function toAbsoluteUrl(path: string, domain: string): string {
+  if (path.startsWith("http")) return path;
+  return `${domain}${path.startsWith("/") ? "" : "/"}${path}`;
+}
+
 export async function buildMetadata({ title, description, path, image }: MetadataProps): Promise<Metadata> {
   const site = await getSiteSettings();
   const domain = site.domain.replace(/\/$/, "");
   const formattedPath = path.startsWith("/") ? path : `/${path}`;
   const canonicalUrl = `${domain}${formattedPath}`;
-  
-  const ogImgUrl = image 
-    ? (image.startsWith("http") ? image : `${domain}${image.startsWith("/") ? "" : "/"}${image}`)
-    : `${domain}${site.ogImage.startsWith("/") ? "" : "/"}${site.ogImage}`;
+
+  const ogImgUrl = toAbsoluteUrl(image || site.ogImage, domain);
 
   return {
     title: title,

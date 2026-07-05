@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: ResourcePageProps) {
   return await buildMetadata({
     title: `${resource.title} | ${site.name}`,
     description: resource.excerpt,
-    path: `/resources/${resource.slug}/`,
+    path: `/resources/${resource.slug}`,
     image: resource.image,
   });
 }

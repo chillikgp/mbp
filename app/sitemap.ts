@@ -16,13 +16,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticRoutes = [
     "",
-    "/contact/",
-    "/portfolio/",
-    "/pricing/",
-    "/privacy-policy/",
-    "/resources/",
-    "/shop/",
-    "/testimonials/",
+    "/contact",
+    "/portfolio",
+    "/pricing",
+    "/privacy-policy",
+    "/resources",
+    "/shop",
+    "/testimonials",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: today,
@@ -36,25 +36,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const cat of categories) {
     // Categories
     categoryRoutes.push({
-      url: `${baseUrl}/categories/${cat.slug}/`,
+      url: `${baseUrl}/categories/${cat.slug}`,
       lastModified: today,
     });
     for (const child of cat.children || []) {
       categoryRoutes.push({
-        url: `${baseUrl}/categories/${cat.slug}/${child.slug}/`,
+        url: `${baseUrl}/categories/${cat.slug}/${child.slug}`,
         lastModified: today,
       });
     }
 
     // Pricing
     pricingRoutes.push({
-      url: `${baseUrl}/pricing/${cat.slug}/`,
+      url: `${baseUrl}/pricing/${cat.slug}`,
       lastModified: today,
     });
 
     // Portfolio
     portfolioRoutes.push({
-      url: `${baseUrl}/portfolio/${cat.slug}/`,
+      url: `${baseUrl}/portfolio/${cat.slug}`,
       lastModified: today,
     });
   }
@@ -62,25 +62,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Resources
   const resources = await getResources();
   const resourceRoutes = resources.map((r) => ({
-    url: `${baseUrl}/resources/${r.slug}/`,
+    url: `${baseUrl}/resources/${r.slug}`,
     lastModified: today,
   }));
 
   // Shop Products
+  // Checkout and confirmation pages are intentionally excluded: they don't
+  // exist as public pages, and even once implemented they're noindex thin
+  // content that shouldn't be crawled.
   const products = await getProducts();
   const productRoutes: MetadataRoute.Sitemap = [];
   for (const prod of products) {
     productRoutes.push({
-      url: `${baseUrl}/shop/${prod.slug}/`,
-      lastModified: today,
-    });
-    // Add checkout and confirmation routes as they exist today and we want sitemap parity
-    productRoutes.push({
-      url: `${baseUrl}/shop/${prod.slug}/checkout/`,
-      lastModified: today,
-    });
-    productRoutes.push({
-      url: `${baseUrl}/shop/${prod.slug}/confirmation/`,
+      url: `${baseUrl}/shop/${prod.slug}`,
       lastModified: today,
     });
   }

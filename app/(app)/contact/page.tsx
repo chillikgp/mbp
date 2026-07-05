@@ -13,7 +13,7 @@ export async function generateMetadata() {
   return await buildMetadata({
     title: `Contact | ${site.name}`,
     description: "Contact My Baby Pictures for baby, maternity, family, event and festival photography in Delhi NCR.",
-    path: "/contact/",
+    path: "/contact",
     image: "/images/hero-carousel-1.jpeg",
   });
 }
@@ -37,7 +37,7 @@ export default async function ContactPage() {
         primary="WhatsApp Now"
         secondary="View Pricing"
         path={site.whatsapp}
-        secondaryPath="/pricing/"
+        secondaryPath="/pricing"
       />
       <Section isAlt id="contact">
         <Container className="grid grid-2">

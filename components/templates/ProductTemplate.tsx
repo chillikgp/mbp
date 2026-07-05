@@ -28,7 +28,7 @@ export default function ProductTemplate({
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
-    { label: "Shop", href: "/shop/" },
+    { label: "Shop", href: "/shop" },
     { label: product.name },
   ];
 

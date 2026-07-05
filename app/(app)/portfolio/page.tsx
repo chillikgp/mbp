@@ -15,7 +15,7 @@ export async function generateMetadata() {
   return await buildMetadata({
     title: `Portfolio | ${site.name}`,
     description: "Category-based baby, maternity, birthday, event, festival and family photography portfolio by My Baby Pictures.",
-    path: "/portfolio/",
+    path: "/portfolio",
     image: "/images/portfolio-family-2.jpeg",
   });
 }

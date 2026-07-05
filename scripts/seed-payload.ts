@@ -708,19 +708,19 @@ async function run() {
     slug: 'navigation',
     data: {
       primaryNavigation: [
-        { label: 'Categories', href: '/categories/maternity/' },
-        { label: 'Portfolio', href: '/portfolio/' },
-        { label: 'Shop', href: '/shop/' },
-        { label: 'Pricing', href: '/pricing/' },
-        { label: 'Resources', href: '/resources/' },
-        { label: 'Contact', href: '/contact/' },
+        { label: 'Categories', href: '/categories/maternity' },
+        { label: 'Portfolio', href: '/portfolio' },
+        { label: 'Shop', href: '/shop' },
+        { label: 'Pricing', href: '/pricing' },
+        { label: 'Resources', href: '/resources' },
+        { label: 'Contact', href: '/contact' },
       ],
       footerNavigation: {
         studioLinks: [
-          { label: 'Reviews', href: '/testimonials/' },
-          { label: 'Privacy Policy', href: '/privacy-policy/' },
-          { label: 'Guides', href: '/resources/' },
-          { label: 'Inquiry', href: '/contact/' },
+          { label: 'Reviews', href: '/testimonials' },
+          { label: 'Privacy Policy', href: '/privacy-policy' },
+          { label: 'Guides', href: '/resources' },
+          { label: 'Inquiry', href: '/contact' },
         ],
       },
       ctaButtons: {

@@ -52,7 +52,7 @@ export default function PortfolioTemplate({ category, site, categories }: Portfo
               </a>
               <a
                 className="btn btn-outline"
-                href="/contact/"
+                href="/contact"
                 data-track="cta_click"
                 data-track-label="Contact page"
               >

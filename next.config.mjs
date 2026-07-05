@@ -7,12 +7,12 @@ const nextConfig = {
     return [
       {
         source: "/privacy-policy.html",
-        destination: "/privacy-policy/",
+        destination: "/privacy-policy",
         permanent: true,
       },
       {
         source: "/testimonials.html",
-        destination: "/testimonials/",
+        destination: "/testimonials",
         permanent: true,
       },
     ];
