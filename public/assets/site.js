@@ -17,12 +17,53 @@
   }
 
   window.mbpTrack = function mbpTrack(eventName, params) {
-    const payload = Object.assign({ site: "mybabypictures.in" }, params || {});
+    const pagePath = window.location.pathname;
+    
+    // Auto-extract category slug from URL paths
+    let pathCategory = "";
+    if (pagePath.indexOf("/categories/") === 0 || pagePath.indexOf("/portfolio/") === 0 || pagePath.indexOf("/pricing/") === 0) {
+      const parts = pagePath.split("/");
+      pathCategory = parts[2] || "";
+    }
+
+    // Auto-extract product slug from URL path
+    let pathProduct = "";
+    if (pagePath.indexOf("/shop/") === 0) {
+      const parts = pagePath.split("/");
+      pathProduct = parts[2] || "";
+    }
+
+    const payload = Object.assign({
+      site: "mybabypictures.in",
+      page: pagePath,
+      category: pathCategory || undefined,
+      product: pathProduct || undefined
+    }, params || {});
+
+    // Clean up empty/undefined values so they don't bloat the payload
+    Object.keys(payload).forEach(function (key) {
+      if (payload[key] === undefined || payload[key] === "") {
+        delete payload[key];
+      }
+    });
+
     if (typeof window.gtag === "function") {
       window.gtag("event", eventName, payload);
     }
     window.dispatchEvent(new CustomEvent("mbp:track", { detail: { eventName, payload } }));
   };
+
+  function getSourceOf(element) {
+    if (!element) return "body";
+    if (element.closest("header, .site-header")) return "header";
+    if (element.closest("footer, .site-footer")) return "footer";
+    const section = element.closest("section, #contact, #categories, #portfolio");
+    if (section) {
+      const src = section.id || section.className || "section";
+      return src.replace(/\s+/g, "-").split("-")[0];
+    }
+    return "body";
+  }
 
   document.addEventListener("click", function (event) {
     const clickable = event.target.closest("a, button");
@@ -32,12 +73,14 @@
     const textContent = clickable.textContent.trim();
     const label = clickable.dataset.trackLabel || textContent;
     const cleanText = label.toLowerCase();
+    const source = getSourceOf(clickable);
 
     // 1. WhatsApp Click Tracking
     if (href.includes("wa.me") || href.includes("api.whatsapp.com")) {
       window.mbpTrack("whatsapp_click", {
         label: label || "WhatsApp Link",
-        href: href
+        href: href,
+        source: source
       });
     }
 
@@ -45,7 +88,8 @@
     if (href.startsWith("tel:")) {
       window.mbpTrack("phone_click", {
         label: label || href,
-        phone: href.replace("tel:", "")
+        phone: href.replace("tel:", ""),
+        source: source
       });
     }
 
@@ -53,12 +97,11 @@
     if (cleanText.includes("book now") || cleanText.includes("book a session")) {
       window.mbpTrack("book_now_click", {
         label: label,
-        href: href
+        href: href,
+        source: source
       });
     }
   });
-
-
 
   const menuToggle = document.querySelector("[data-menu-toggle]");
   const mobileNav = document.querySelector("[data-mobile-nav]");
@@ -74,7 +117,8 @@
       window.mbpTrack(element.dataset.track, {
         label: element.dataset.trackLabel || element.textContent.trim(),
         href: element.getAttribute("href") || "",
-        category: element.dataset.category || ""
+        category: element.dataset.category || "",
+        source: getSourceOf(element)
       });
     });
   });
@@ -124,7 +168,7 @@
       event.preventDefault();
       const formData = new FormData(form);
       const category = formData.get("category") || form.dataset.category || "";
-      window.mbpTrack("contact_submit", {
+      window.mbpTrack("generate_lead", {
         form: form.dataset.trackForm,
         category
       });
@@ -195,12 +239,13 @@
     const product = getProductFrom(root);
     if (!product) return;
 
-    // Track product view
-    window.mbpTrack("shop_product_view", {
+    // Track product view (GA4 standard view_item)
+    window.mbpTrack("view_item", {
       id: product.id,
-      name: product.name,
+      product: product.name,
       slug: product.slug,
-      price: product.startingPrice || 0
+      value: product.startingPrice || 0,
+      currency: "INR"
     });
 
     const price = root.querySelector("[data-product-price]");
@@ -210,10 +255,12 @@
       checkout.addEventListener("click", () => {
         window.mbpTrack("customize_start", {
           id: product.id,
-          name: product.name,
+          product: product.name,
           slug: product.slug,
           quantity: quantity(root),
-          total: productTotal(product, root)
+          value: productTotal(product, root),
+          currency: "INR",
+          source: getSourceOf(checkout)
         });
       });
     }
