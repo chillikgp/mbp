@@ -53,6 +53,40 @@ async function run() {
   const config = (await import('../payload.config')).default;
   const payload = await getPayload({ config });
 
+  if (process.argv.includes('--clear-media')) {
+    console.log('Clearing existing collections to avoid foreign key violations...');
+    const collectionsToClear = ['faqs', 'resources', 'products', 'categories', 'testimonials'];
+    for (const col of collectionsToClear) {
+      try {
+        const docs = await payload.find({ collection: col as any, limit: 1000 });
+        for (const doc of docs.docs) {
+          await payload.delete({ collection: col as any, id: doc.id });
+        }
+        console.log(`Cleared collection: ${col}`);
+      } catch (err) {
+        console.error(`Failed to clear collection ${col}:`, err);
+      }
+    }
+
+    console.log('Clearing existing media documents from database and S3...');
+    const mediaDocs = await payload.find({
+      collection: 'media',
+      limit: 1000,
+    });
+    for (const doc of mediaDocs.docs) {
+      try {
+        await payload.delete({
+          collection: 'media',
+          id: doc.id,
+        });
+        console.log(`Deleted media: "${doc.alt}" (ID: ${doc.id})`);
+      } catch (err) {
+        console.error(`Failed to delete media ${doc.id}:`, err);
+      }
+    }
+    console.log('Media documents cleared.');
+  }
+
   console.log('Seeding User collection...');
   const adminEmail = 'admin@mybabypictures.in';
   const existingUsers = await payload.find({
