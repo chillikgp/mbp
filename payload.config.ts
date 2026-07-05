@@ -42,7 +42,14 @@ export default buildConfig({
   plugins: [
     s3Storage({
       collections: {
-        media: true,
+        media: {
+          disablePayloadAccessControl: true,
+          generateFileURL: ({ filename, prefix }) => {
+            const bucket = process.env.S3_BUCKET;
+            const region = process.env.S3_REGION || 'ap-south-1';
+            return `https://${bucket}.s3.${region}.amazonaws.com/${prefix ? `${prefix}/` : ''}${filename}`;
+          },
+        },
       },
       bucket: process.env.S3_BUCKET || '',
       config: {
