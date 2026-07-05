@@ -1729,6 +1729,11 @@ summary::marker {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-auto-flow: dense;
+  /* Grid's default align-items: stretch forces every item in a row to match
+     the row's tallest item, which letterboxed shorter (landscape) images
+     against the card background. start keeps each card at its own natural
+     height so the grid reads as a masonry of true image proportions. */
+  align-items: start;
   gap: 24px;
 }
 

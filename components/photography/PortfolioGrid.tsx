@@ -1,5 +1,5 @@
 import React from "react";
-import { getImageAspectRatioClass } from "../../lib/image-utils";
+import { getAspectRatioClass } from "../../lib/image-utils";
 import GalleryImage from "../layout/GalleryImage";
 import { GalleryItem } from "../../lib/types";
 
@@ -8,15 +8,12 @@ interface PortfolioGridProps {
   category: string;
 }
 
-export default async function PortfolioGrid({ gallery, category }: PortfolioGridProps) {
-  const itemsWithClass = await Promise.all(
-    gallery.map(async (item, index) => {
-      const aspectClass = await getImageAspectRatioClass(item.src);
-      const isTall = index % 5 === 0 ? "tall" : "";
-      const className = `portfolio-item ${isTall} ${aspectClass}`.trim();
-      return { ...item, className };
-    })
-  );
+export default function PortfolioGrid({ gallery, category }: PortfolioGridProps) {
+  const itemsWithClass = gallery.map((item) => {
+    const aspectClass = getAspectRatioClass(item.width, item.height);
+    const className = `portfolio-item ${aspectClass}`.trim();
+    return { ...item, className };
+  });
 
   return (
     <div className="portfolio-grid">

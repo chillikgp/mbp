@@ -55,6 +55,8 @@ export interface GalleryItem {
   src: string;
   alt: string;
   caption?: string;
+  width?: number;
+  height?: number;
 }
 
 export interface PricingPackage {

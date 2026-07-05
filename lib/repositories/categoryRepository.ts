@@ -3,11 +3,16 @@ import { PhotographyCategory, CategoryChild } from "../types";
 const mapCategory = (doc: any): PhotographyCategory => {
   const heroImage = typeof doc.heroImage === 'object' && doc.heroImage !== null ? (doc.heroImage as any).url || '' : '';
   
-  const gallery = (doc.gallery || []).map((item: any) => ({
-    src: typeof item.image === 'object' && item.image !== null ? (item.image as any).url || '' : '',
-    alt: item.alt || '',
-    caption: item.caption || '',
-  }));
+  const gallery = (doc.gallery || []).map((item: any) => {
+    const image = typeof item.image === 'object' && item.image !== null ? (item.image as any) : null;
+    return {
+      src: image?.url || '',
+      alt: item.alt || '',
+      caption: item.caption || '',
+      width: image?.width ?? undefined,
+      height: image?.height ?? undefined,
+    };
+  });
 
   const pricing = (doc.pricing || []).map((pkg: any) => ({
     name: pkg.name,
