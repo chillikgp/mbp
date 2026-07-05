@@ -5,6 +5,7 @@ import Script from "next/script";
 import "../../public/assets/styles.css";
 import { getSiteSettings } from "../../lib/repositories/settingsRepository";
 import { getHeaderNavigation, getFooterExperiences, getFooterPricingLinks, getFooterStudioLinks } from "../../lib/repositories/navigationRepository";
+import GoogleAnalytics from "../../components/layout/GoogleAnalytics";
 
 export const metadata: Metadata = {
   title: "My Baby Pictures",
@@ -21,6 +22,8 @@ export default async function RootLayout({
   const footerExperiences = await getFooterExperiences();
   const footerPricing = await getFooterPricingLinks();
   const footerStudio = await getFooterStudioLinks();
+
+  const gaId = process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID : undefined;
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -68,6 +71,7 @@ export default async function RootLayout({
         />
       </head>
       <body>
+        <GoogleAnalytics gaId={gaId} />
         <a className="skip-link btn btn-primary" href="#main">
           Skip to content
         </a>
@@ -90,3 +94,4 @@ export default async function RootLayout({
     </html>
   );
 }
+

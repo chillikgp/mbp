@@ -1,10 +1,20 @@
 (function () {
-  const analyticsId = "G-LW6GNLQ3KH";
+  const isNext = typeof window !== "undefined" && (
+    !!window.__NEXT_DATA__ || 
+    !!document.querySelector('script[src*="/_next/"]') || 
+    !!document.querySelector('link[href*="/_next/"]') || 
+    !!document.querySelector('meta[name="next-head-count"]')
+  );
 
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function gtag() {
-    window.dataLayer.push(arguments);
-  };
+  if (!isNext) {
+    const analyticsId = "G-LW6GNLQ3KH";
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function gtag() {
+      window.dataLayer.push(arguments);
+    };
+    window.gtag("js", new Date());
+    window.gtag("config", analyticsId, { send_page_view: true });
+  }
 
   window.mbpTrack = function mbpTrack(eventName, params) {
     const payload = Object.assign({ site: "mybabypictures.in" }, params || {});
@@ -14,8 +24,41 @@
     window.dispatchEvent(new CustomEvent("mbp:track", { detail: { eventName, payload } }));
   };
 
-  window.gtag("js", new Date());
-  window.gtag("config", analyticsId, { send_page_view: true });
+  document.addEventListener("click", function (event) {
+    const clickable = event.target.closest("a, button");
+    if (!clickable) return;
+
+    const href = clickable.tagName === "A" ? clickable.getAttribute("href") || "" : "";
+    const textContent = clickable.textContent.trim();
+    const label = clickable.dataset.trackLabel || textContent;
+    const cleanText = label.toLowerCase();
+
+    // 1. WhatsApp Click Tracking
+    if (href.includes("wa.me") || href.includes("api.whatsapp.com")) {
+      window.mbpTrack("whatsapp_click", {
+        label: label || "WhatsApp Link",
+        href: href
+      });
+    }
+
+    // 2. Phone Click Tracking
+    if (href.startsWith("tel:")) {
+      window.mbpTrack("phone_click", {
+        label: label || href,
+        phone: href.replace("tel:", "")
+      });
+    }
+
+    // 3. Book Now Click Tracking
+    if (cleanText.includes("book now") || cleanText.includes("book a session")) {
+      window.mbpTrack("book_now_click", {
+        label: label,
+        href: href
+      });
+    }
+  });
+
+
 
   const menuToggle = document.querySelector("[data-menu-toggle]");
   const mobileNav = document.querySelector("[data-mobile-nav]");
@@ -54,7 +97,7 @@
       lightboxImage.src = button.dataset.galleryImage;
       lightboxImage.alt = img ? img.alt : "My Baby Pictures portfolio image";
       lightbox.classList.add("is-open");
-      window.mbpTrack("gallery_click", {
+      window.mbpTrack("gallery_image_open", {
         category: button.dataset.category || "",
         image: button.dataset.galleryImage
       });
@@ -81,7 +124,7 @@
       event.preventDefault();
       const formData = new FormData(form);
       const category = formData.get("category") || form.dataset.category || "";
-      window.mbpTrack("form_submit", {
+      window.mbpTrack("contact_submit", {
         form: form.dataset.trackForm,
         category
       });
@@ -151,8 +194,29 @@
   document.querySelectorAll("[data-product-detail]").forEach((root) => {
     const product = getProductFrom(root);
     if (!product) return;
+
+    // Track product view
+    window.mbpTrack("shop_product_view", {
+      id: product.id,
+      name: product.name,
+      slug: product.slug,
+      price: product.startingPrice || 0
+    });
+
     const price = root.querySelector("[data-product-price]");
     const checkout = root.querySelector("[data-product-checkout]");
+
+    if (checkout) {
+      checkout.addEventListener("click", () => {
+        window.mbpTrack("customize_start", {
+          id: product.id,
+          name: product.name,
+          slug: product.slug,
+          quantity: quantity(root),
+          total: productTotal(product, root)
+        });
+      });
+    }
 
     function update() {
       const total = productTotal(product, root);
