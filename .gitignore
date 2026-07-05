@@ -1,9 +1,34 @@
-# Next.js
+# Next.js Build Output
 .next/
 out/
 
-# node_modules
+# Dependencies
 node_modules/
 
-# OS files
+# Local Environment files
+.env
+.env.local
+.env.development.local
+.env.production.local
+
+# Vercel Deployment configuration
+.vercel/
+
+# OS/System files
 .DS_Store
+Thumbs.db
+
+# Logs and Caches
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+.stylelintcache
+
+# Testing & Coverage
+coverage/
+
+# Output directories & compiles
+dist/
+payload-types.ts.map

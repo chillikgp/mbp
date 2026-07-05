@@ -8,8 +8,8 @@ interface MetadataProps {
   image?: string;
 }
 
-export function buildMetadata({ title, description, path, image }: MetadataProps): Metadata {
-  const site = getSiteSettings();
+export async function buildMetadata({ title, description, path, image }: MetadataProps): Promise<Metadata> {
+  const site = await getSiteSettings();
   const domain = site.domain.replace(/\/$/, "");
   const formattedPath = path.startsWith("/") ? path : `/${path}`;
   const canonicalUrl = `${domain}${formattedPath}`;
@@ -51,3 +51,4 @@ export function buildMetadata({ title, description, path, image }: MetadataProps
     },
   };
 }
+

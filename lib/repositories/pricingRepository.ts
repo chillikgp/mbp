@@ -1,7 +1,7 @@
 import { getCategoryBySlug } from "./categoryRepository";
 import { PricingPackage } from "../types";
 
-export function getPricingPackages(categorySlug: string): PricingPackage[] {
-  const category = getCategoryBySlug(categorySlug);
+export async function getPricingPackages(categorySlug: string): Promise<PricingPackage[]> {
+  const category = await getCategoryBySlug(categorySlug);
   return category?.pricing || [];
 }

@@ -3,7 +3,7 @@ import { getCategories } from "../lib/repositories/categoryRepository";
 import { getProducts } from "../lib/repositories/productRepository";
 import { getResources } from "../lib/repositories/resourceRepository";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://mybabypictures.in";
   
   // Format today's date in 'en-CA' (YYYY-MM-DD) as done in the static builder
@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: today,
   }));
 
-  const categories = getCategories();
+  const categories = await getCategories();
   const categoryRoutes: MetadataRoute.Sitemap = [];
   const pricingRoutes: MetadataRoute.Sitemap = [];
   const portfolioRoutes: MetadataRoute.Sitemap = [];
@@ -60,14 +60,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   // Resources
-  const resources = getResources();
+  const resources = await getResources();
   const resourceRoutes = resources.map((r) => ({
     url: `${baseUrl}/resources/${r.slug}/`,
     lastModified: today,
   }));
 
   // Shop Products
-  const products = getProducts();
+  const products = await getProducts();
   const productRoutes: MetadataRoute.Sitemap = [];
   for (const prod of products) {
     productRoutes.push({

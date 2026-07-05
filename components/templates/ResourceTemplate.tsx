@@ -33,9 +33,17 @@ export default function ResourceTemplate({ resource, site, categories }: Resourc
             <h2>{resource.title}</h2>
             <p className="lead">{resource.excerpt}</p>
             <ul className="feature-list">
-              <li>Choose the right category page before comparing packages.</li>
-              <li>Share baby age, date, theme and location preferences with the studio.</li>
-              <li>Use the inquiry form to confirm current availability and add-ons.</li>
+              {resource.contentPoints && resource.contentPoints.length > 0 ? (
+                resource.contentPoints.map((item, idx) => (
+                  <li key={idx}>{item}</li>
+                ))
+              ) : (
+                <>
+                  <li>Choose the right category page before comparing packages.</li>
+                  <li>Share baby age, date, theme and location preferences with the studio.</li>
+                  <li>Use the inquiry form to confirm current availability and add-ons.</li>
+                </>
+              )}
             </ul>
           </div>
           <ResponsiveImage src={resource.image} alt={resource.title} loading="lazy" />

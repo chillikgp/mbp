@@ -119,6 +119,7 @@ export interface Resource {
   category: string;
   excerpt: string;
   image: string;
+  contentPoints?: string[];
 }
 
 export interface SiteData {

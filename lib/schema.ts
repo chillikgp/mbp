@@ -1,20 +1,17 @@
-import { getSiteSettings } from "./repositories/settingsRepository";
-import { FAQItem, Product, PhotographyCategory } from "./types";
+import { FAQItem, Product, PhotographyCategory, SiteSettings } from "./types";
 
-const url = (path: string = "/") => {
-  const site = getSiteSettings();
-  const domain = site.domain.replace(/\/$/, "");
+const url = (path: string = "/", domain: string) => {
+  const formattedDomain = domain.replace(/\/$/, "");
   const formattedPath = path.startsWith("/") ? path : `/${path}`;
-  return `${domain}${formattedPath}`;
+  return `${formattedDomain}${formattedPath}`;
 };
 
-export function buildLocalBusinessSchema() {
-  const site = getSiteSettings();
+export function buildLocalBusinessSchema(site: SiteSettings) {
   return {
     "@context": "https://schema.org",
     "@type": "PhotographyStudio",
     name: site.name,
-    image: url(site.logo),
+    image: url(site.logo, site.domain),
     url: site.domain,
     telephone: site.phone,
     priceRange: "₹₹",
@@ -50,13 +47,12 @@ function productBasePrice(product: Product): number {
   return product.variants?.[0]?.options?.[0]?.price || product.startingPrice || 0;
 }
 
-export function buildProductSchema(product: Product) {
-  const site = getSiteSettings();
+export function buildProductSchema(product: Product, site: SiteSettings) {
   return {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
-    image: product.gallery?.map((image) => url(image.src)) || [url(product.heroImage)],
+    image: product.gallery?.map((image) => url(image.src, site.domain)) || [url(product.heroImage, site.domain)],
     description: product.summary,
     brand: { "@type": "Brand", name: site.name },
     aggregateRating: {
@@ -69,13 +65,12 @@ export function buildProductSchema(product: Product) {
       priceCurrency: "INR",
       price: productBasePrice(product),
       availability: "https://schema.org/InStock",
-      url: url(`/shop/${product.slug}/`),
+      url: url(`/shop/${product.slug}/`, site.domain),
     },
   };
 }
 
-export function buildServiceSchema(category: PhotographyCategory, path: string) {
-  const site = getSiteSettings();
+export function buildServiceSchema(category: PhotographyCategory, path: string, site: SiteSettings) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -87,7 +82,7 @@ export function buildServiceSchema(category: PhotographyCategory, path: string) 
       url: site.domain,
     },
     areaServed: ["Delhi", "Noida", "Gurugram", "Faridabad", "Ghaziabad"],
-    url: url(path),
+    url: url(path, site.domain),
     offers: (category.pricing || []).map((pkg) => ({
       "@type": "Offer",
       name: pkg.name,
