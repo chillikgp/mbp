@@ -49,6 +49,7 @@ export interface HomepageData {
   hero: HeroData;
   story: StoryData;
   resources: string[];
+  categories?: PhotographyCategory[];
 }
 
 export interface GalleryItem {

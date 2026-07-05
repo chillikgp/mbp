@@ -138,6 +138,13 @@ export const Homepage: GlobalConfig = {
       hasMany: true,
       label: 'Featured Planning Guides / Resources',
     },
+    {
+      name: 'categories',
+      type: 'relationship',
+      relationTo: 'categories',
+      hasMany: true,
+      label: 'Featured Categories (Homepage Order)',
+    },
   ],
   hooks: {
     afterChange: [

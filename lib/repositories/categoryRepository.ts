@@ -1,6 +1,6 @@
 import { PhotographyCategory, CategoryChild } from "../types";
 
-const mapCategory = (doc: any): PhotographyCategory => {
+export const mapCategory = (doc: any): PhotographyCategory => {
   const heroImage = typeof doc.heroImage === 'object' && doc.heroImage !== null ? (doc.heroImage as any).url || '' : '';
   
   const gallery = (doc.gallery || []).map((item: any) => {
@@ -90,7 +90,25 @@ export async function getCategories(): Promise<PhotographyCategory[]> {
     (doc as any).childrenDocs = childrenRes.docs;
     list.push(mapCategory(doc));
   }
-  return list;
+
+  // Sort according to user's preferred order: maternity, newborn, milestone, birthday, family, events, festival
+  const preferredOrder = [
+    "maternity",
+    "newborn",
+    "milestone",
+    "birthday-cake-smash",
+    "family-portrait",
+    "events",
+    "festival"
+  ];
+
+  return list.sort((a, b) => {
+    let indexA = preferredOrder.indexOf(a.slug);
+    let indexB = preferredOrder.indexOf(b.slug);
+    if (indexA === -1) indexA = 999;
+    if (indexB === -1) indexB = 999;
+    return indexA - indexB;
+  });
 }
 
 export async function getCategoryBySlug(slug: string): Promise<PhotographyCategory | undefined> {

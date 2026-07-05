@@ -859,6 +859,7 @@ export interface Homepage {
       | null;
   };
   resources?: (number | Resource)[] | null;
+  categories?: (number | Category)[] | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1024,6 +1025,7 @@ export interface HomepageSelect<T extends boolean = true> {
             };
       };
   resources?: T;
+  categories?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -39,15 +39,19 @@ export default async function HomePage() {
     getTestimonials(),
   ]);
 
+  const displayCategories = homepage.categories || categories;
+  const defaultPricingCategory = categories.find((c) => c.slug === "newborn") || categories[1] || categories[0];
+
   const businessSchema = buildLocalBusinessSchema(site);
   const faqSchema = buildFAQSchema(globalFaqs);
 
   // Map the first image of each category's gallery for portfolio highlights
-  const featuredGallery = categories.flatMap((category) =>
+  const featuredGallery = displayCategories.flatMap((category) =>
     (category.gallery || [])
       .slice(0, 1)
       .map((item) => ({ ...item, category: category.slug }))
   );
+
 
   return (
     <>
@@ -89,7 +93,7 @@ export default async function HomePage() {
             eyebrow="Photography experiences"
             copy="One featured gateway per category, each leading to a dedicated page with its own gallery, pricing, FAQs and CTAs."
           />
-          <CategoryGrid items={categories} />
+          <CategoryGrid items={displayCategories} />
         </Container>
       </Section>
 
@@ -136,11 +140,11 @@ export default async function HomePage() {
             eyebrow="Services and pricing"
             copy="Each category has independent pricing, inclusions, add-ons and inquiry CTAs."
           />
-          {/* Default to Newborn pricing cards (categories[1]) */}
+          {/* Default to Newborn pricing cards */}
           <div className="grid grid-3">
-            {(categories[1]?.pricing || []).map((pkg, idx) => (
+            {(defaultPricingCategory?.pricing || []).map((pkg, idx) => (
               <article key={idx} className={`price-card ${pkg.featured ? "featured" : ""}`}>
-                <p className="eyebrow">{pkg.featured ? "Most booked" : categories[1]?.title}</p>
+                <p className="eyebrow">{pkg.featured ? "Most booked" : defaultPricingCategory?.title}</p>
                 <h3>{pkg.name}</h3>
                 <div className="price">
                   {pkg.price} <small>onwards</small>
@@ -154,7 +158,7 @@ export default async function HomePage() {
                   className={`btn ${pkg.featured ? "btn-primary" : "btn-soft"}`}
                   href="#contact"
                   data-track="cta_click"
-                  data-category={categories[1]?.slug}
+                  data-category={defaultPricingCategory?.slug}
                   data-track-label={`${pkg.name} inquiry`}
                 >
                   Inquire
