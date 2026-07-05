@@ -1,4 +1,5 @@
 import { GlobalConfig } from 'payload';
+import { revalidateShopSettings } from '../hooks/revalidation';
 
 export const ShopSettings: GlobalConfig = {
   slug: 'shop-settings',
@@ -64,4 +65,12 @@ export const ShopSettings: GlobalConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [
+      async ({ doc, req }) => {
+        await revalidateShopSettings(req.payload);
+        return doc;
+      },
+    ],
+  },
 };

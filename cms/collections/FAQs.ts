@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload';
+import { revalidateFaqDoc } from '../hooks/revalidation';
 
 export const FAQs: CollectionConfig = {
   slug: 'faqs',
@@ -34,4 +35,18 @@ export const FAQs: CollectionConfig = {
       label: 'Linked Products',
     },
   ],
+  hooks: {
+    afterChange: [
+      async ({ doc, req }) => {
+        await revalidateFaqDoc(req.payload, doc);
+        return doc;
+      },
+    ],
+    afterDelete: [
+      async ({ doc, req }) => {
+        await revalidateFaqDoc(req.payload, doc);
+        return doc;
+      },
+    ],
+  },
 };

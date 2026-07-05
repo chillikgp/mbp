@@ -1,4 +1,5 @@
 import { GlobalConfig } from 'payload';
+import { revalidateRootLayout } from '../hooks/revalidation';
 
 export const Navigation: GlobalConfig = {
   slug: 'navigation',
@@ -80,5 +81,13 @@ export const Navigation: GlobalConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [
+      async ({ doc }) => {
+        revalidateRootLayout();
+        return doc;
+      },
+    ],
+  },
 };
 

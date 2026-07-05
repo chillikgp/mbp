@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload';
+import { revalidateCategoryDoc } from '../hooks/revalidation';
 
 export const Categories: CollectionConfig = {
   slug: 'categories',
@@ -164,4 +165,18 @@ export const Categories: CollectionConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [
+      async ({ doc, req }) => {
+        await revalidateCategoryDoc(req.payload, doc);
+        return doc;
+      },
+    ],
+    afterDelete: [
+      async ({ doc, req }) => {
+        await revalidateCategoryDoc(req.payload, doc);
+        return doc;
+      },
+    ],
+  },
 };

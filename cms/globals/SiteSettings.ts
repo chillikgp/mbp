@@ -1,4 +1,5 @@
 import { GlobalConfig } from 'payload';
+import { revalidateRootLayout } from '../hooks/revalidation';
 
 export const SiteSettings: GlobalConfig = {
   slug: 'site-settings',
@@ -149,5 +150,13 @@ export const SiteSettings: GlobalConfig = {
       relationTo: 'media',
     },
   ],
+  hooks: {
+    afterChange: [
+      async ({ doc }) => {
+        revalidateRootLayout();
+        return doc;
+      },
+    ],
+  },
 };
 

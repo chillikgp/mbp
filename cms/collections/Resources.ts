@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload';
+import { revalidateResourceDoc } from '../hooks/revalidation';
 
 export const Resources: CollectionConfig = {
   slug: 'resources',
@@ -49,4 +50,18 @@ export const Resources: CollectionConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [
+      async ({ doc, req }) => {
+        await revalidateResourceDoc(req.payload, doc);
+        return doc;
+      },
+    ],
+    afterDelete: [
+      async ({ doc, req }) => {
+        await revalidateResourceDoc(req.payload, doc);
+        return doc;
+      },
+    ],
+  },
 };

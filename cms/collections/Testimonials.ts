@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload';
+import { revalidateTestimonialDoc } from '../hooks/revalidation';
 
 export const Testimonials: CollectionConfig = {
   slug: 'testimonials',
@@ -36,4 +37,18 @@ export const Testimonials: CollectionConfig = {
       label: 'Linked Category',
     },
   ],
+  hooks: {
+    afterChange: [
+      async ({ doc, req }) => {
+        await revalidateTestimonialDoc(req.payload, doc);
+        return doc;
+      },
+    ],
+    afterDelete: [
+      async ({ doc, req }) => {
+        await revalidateTestimonialDoc(req.payload, doc);
+        return doc;
+      },
+    ],
+  },
 };

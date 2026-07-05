@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload';
+import { revalidateProductDoc } from '../hooks/revalidation';
 
 export const Products: CollectionConfig = {
   slug: 'products',
@@ -209,4 +210,18 @@ export const Products: CollectionConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [
+      async ({ doc, req }) => {
+        await revalidateProductDoc(req.payload, doc);
+        return doc;
+      },
+    ],
+    afterDelete: [
+      async ({ doc, req }) => {
+        await revalidateProductDoc(req.payload, doc);
+        return doc;
+      },
+    ],
+  },
 };

@@ -1,4 +1,5 @@
 import { GlobalConfig } from 'payload';
+import { revalidatePaths } from '../hooks/revalidation';
 
 export const Homepage: GlobalConfig = {
   slug: 'homepage',
@@ -138,4 +139,12 @@ export const Homepage: GlobalConfig = {
       label: 'Featured Planning Guides / Resources',
     },
   ],
+  hooks: {
+    afterChange: [
+      async ({ doc }) => {
+        revalidatePaths(['/']);
+        return doc;
+      },
+    ],
+  },
 };
