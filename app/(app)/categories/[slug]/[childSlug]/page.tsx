@@ -4,8 +4,9 @@ import { getSiteSettings } from "../../../../../lib/repositories/settingsReposit
 import { getCategoryChild, getCategories, getCategoryBySlug } from "../../../../../lib/repositories/categoryRepository";
 import { getFAQs } from "../../../../../lib/repositories/faqRepository";
 import { getTestimonialsByNames } from "../../../../../lib/repositories/testimonialRepository";
+import { getResources } from "../../../../../lib/repositories/resourceRepository";
 import { buildMetadata } from "../../../../../lib/seo";
-import { buildServiceSchema, buildFAQSchema } from "../../../../../lib/schema";
+import { buildServiceSchema, buildFAQSchema, buildBreadcrumbSchema, buildImageObjectSchema, buildReviewSchema } from "../../../../../lib/schema";
 import PhotographyCategoryTemplate from "../../../../../components/templates/PhotographyCategoryTemplate";
 import { childPath } from "../../../../../lib/routes";
 
@@ -54,17 +55,31 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
   const { parent, child } = result;
   const path = childPath(parent, child);
   
-  const [site, pageFaqs, categoriesList, testimonials, relatedDocs] = await Promise.all([
+  const [site, pageFaqs, categoriesList, testimonials, relatedDocs, allResources] = await Promise.all([
     getSiteSettings(),
-    getFAQs(parent.slug),
+    getFAQs(parent.slug, child.slug),
     getCategories(),
-    getTestimonialsByNames(parent.testimonials || []),
+    getTestimonialsByNames(child.testimonials && child.testimonials.length > 0 ? child.testimonials : (parent.testimonials || [])),
     Promise.all((parent.related || []).map((s) => getCategoryBySlug(s))),
+    getResources(),
   ]);
+  const relatedResources = allResources.filter((r) => r.categorySlug === child.slug);
 
   const serviceSchema = buildServiceSchema(parent, path, site);
   const faqSchema = buildFAQSchema(pageFaqs);
+  const breadcrumbSchema = buildBreadcrumbSchema(
+    [
+      { label: "Home", href: "/" },
+      { label: "Categories", href: "/categories/maternity" },
+      { label: parent.label, href: `/categories/${parent.slug}` },
+      { label: child.title },
+    ],
+    site.domain
+  );
   const related = relatedDocs.filter(Boolean) as any[];
+  const galleryForSchema = child.gallery && child.gallery.length > 0 ? child.gallery : parent.gallery || [];
+  const imageObjectSchemas = buildImageObjectSchema(galleryForSchema, site);
+  const reviewSchemas = buildReviewSchema(testimonials, site, `${child.title} Photography`);
 
   return (
     <>
@@ -76,6 +91,24 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {imageObjectSchemas.map((imageSchema, idx) => (
+        <script
+          key={idx}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(imageSchema) }}
+        />
+      ))}
+      {reviewSchemas.map((reviewSchema, idx) => (
+        <script
+          key={idx}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
+        />
+      ))}
       <PhotographyCategoryTemplate
         category={parent}
         child={child}
@@ -84,6 +117,7 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
         site={site}
         categories={categoriesList}
         testimonials={testimonials}
+        relatedResources={relatedResources}
       />
     </>
   );

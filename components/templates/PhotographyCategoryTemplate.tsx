@@ -1,14 +1,16 @@
-import { PhotographyCategory, CategoryChild, FAQItem, Testimonial, SiteSettings } from "../../lib/types";
+import { PhotographyCategory, CategoryChild, FAQItem, Testimonial, SiteSettings, Resource } from "../../lib/types";
 import Hero from "../sections/Hero";
 import Container from "../layout/Container";
 import Section from "../layout/Section";
 import PageHeader from "../layout/PageHeader";
 import PortfolioGrid from "../photography/PortfolioGrid";
 import ComparisonTable from "../sections/ComparisonTable";
+import AddonsComparisonTable from "../sections/AddonsComparisonTable";
 import TestimonialSection from "../sections/TestimonialSection";
 import FAQSection from "../sections/FAQSection";
 import InquiryForm from "../sections/InquiryForm";
 import CategoryGrid from "../sections/CategoryGrid";
+import ResourceGrid from "../sections/ResourceGrid";
 import { portfolioPath, childPath } from "../../lib/routes";
 
 interface PhotographyCategoryTemplateProps {
@@ -19,6 +21,7 @@ interface PhotographyCategoryTemplateProps {
   site: SiteSettings;
   categories: PhotographyCategory[];
   testimonials: Testimonial[];
+  relatedResources?: Resource[];
 }
 
 export default function PhotographyCategoryTemplate({
@@ -29,11 +32,32 @@ export default function PhotographyCategoryTemplate({
   site,
   categories,
   testimonials,
+  relatedResources = [],
 }: PhotographyCategoryTemplateProps) {
   const isChild = Boolean(child);
   const title = isChild ? `${child!.title} Photography` : category.label;
   const summary = isChild ? child!.summary : category.description;
   const image = isChild ? child!.heroImage : category.heroImage;
+  const description = isChild ? child!.description || category.description : category.description;
+  const heroVideo = isChild ? child!.heroVideo || category.heroVideo : category.heroVideo;
+  const heroVideoPoster = isChild ? child!.heroVideoPoster || category.heroVideoPoster : category.heroVideoPoster;
+  const ctaBadgeImage = isChild ? child!.ctaBadgeImage || category.ctaBadgeImage : category.ctaBadgeImage;
+
+  const pick = <T,>(childVal: T[] | undefined, parentVal: T[] | undefined): T[] | undefined =>
+    isChild && childVal && childVal.length > 0 ? childVal : parentVal;
+
+  const effective = isChild
+    ? {
+        ...category,
+        gallery: pick(child!.gallery, category.gallery),
+        pricing: pick(child!.pricing, category.pricing),
+        addons: pick(child!.addons, category.addons),
+        addonDetails: pick(child!.addonDetails, category.addonDetails),
+        testimonials: pick(child!.testimonials, category.testimonials),
+        videos: pick(child!.videos, category.videos),
+        bts: pick(child!.bts, category.bts),
+      }
+    : category;
 
   return (
     <>
@@ -42,6 +66,8 @@ export default function PhotographyCategoryTemplate({
         title={title}
         copy={summary}
         image={image}
+        video={heroVideo}
+        videoPoster={heroVideoPoster}
         primary="Ask for Availability"
         secondary="See Portfolio"
         path="#contact"
@@ -55,9 +81,9 @@ export default function PhotographyCategoryTemplate({
             <h2>{title} at My Baby Pictures</h2>
           </div>
           <div>
-            <p className="lead">{category.description}</p>
+            <p className="lead">{description}</p>
             <div className="pill-row">
-              {(category.addons || []).map((addon, idx) => (
+              {(effective.addons || []).map((addon, idx) => (
                 <span key={idx} className="pill">
                   {addon}
                 </span>
@@ -94,7 +120,7 @@ export default function PhotographyCategoryTemplate({
             eyebrow="Portfolio"
             copy="Images are managed by category, with room for carousels, tags and future CMS media fields."
           />
-          <PortfolioGrid gallery={category.gallery || []} category={category.slug} />
+          <PortfolioGrid gallery={effective.gallery || []} category={category.slug} />
           <div className="action-row">
             <a className="btn btn-outline" href={portfolioPath(category)}>
               Open {category.title} Portfolio
@@ -111,7 +137,7 @@ export default function PhotographyCategoryTemplate({
             copy="Pricing is category-specific and can be updated independently."
           />
           <div className="grid grid-3">
-            {(category.pricing || []).map((pkg, idx) => (
+            {(effective.pricing || []).map((pkg, idx) => (
               <article key={idx} className={`price-card ${pkg.featured ? "featured" : ""}`}>
                 <p className="eyebrow">{pkg.featured ? "Most booked" : category.title}</p>
                 <h3>{pkg.name}</h3>
@@ -141,12 +167,21 @@ export default function PhotographyCategoryTemplate({
       <Section isAlt>
         <Container>
           <PageHeader title="Package comparison" eyebrow="Compare" />
-          <ComparisonTable category={category} />
+          <ComparisonTable category={effective} />
         </Container>
       </Section>
 
+      {effective.addonDetails && effective.addonDetails.length > 0 && (
+        <Section>
+          <Container>
+            <PageHeader title="Optional add-ons" eyebrow="Customize your package" />
+            <AddonsComparisonTable addons={effective.addonDetails} />
+          </Container>
+        </Section>
+      )}
+
       {/* Video slots & Behind the scenes */}
-      {((category.videos && category.videos.length > 0) || (category.bts && category.bts.length > 0)) && (
+      {((effective.videos && effective.videos.length > 0) || (effective.bts && effective.bts.length > 0)) && (
         <Section isAlt>
           <Container>
             <PageHeader
@@ -155,9 +190,13 @@ export default function PhotographyCategoryTemplate({
               copy="This template supports embedded videos, short clips, set previews and BTS content for categories that need it."
             />
             <div className="media-block">
-              {category.videos && category.videos.length > 0 ? (
-                category.videos.map((video, idx) =>
-                  video.embed ? (
+              {effective.videos && effective.videos.length > 0 ? (
+                effective.videos.map((video, idx) =>
+                  video.file ? (
+                    <div key={idx} className="video-shell">
+                      <video src={video.file} poster={image} controls title={video.title} />
+                    </div>
+                  ) : video.embed ? (
                     <div key={idx} className="video-shell">
                       <iframe
                         data-video=""
@@ -197,9 +236,9 @@ export default function PhotographyCategoryTemplate({
                   <p>Add an embed URL in the category video field to publish films or reels here.</p>
                 </div>
               )}
-              {category.bts && category.bts.length > 0 && (
+              {effective.bts && effective.bts.length > 0 && (
                 <div className="grid">
-                  {category.bts.map((item, idx) => (
+                  {effective.bts.map((item, idx) => (
                     <article key={idx} className="content-card bts-card">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={item.image} alt={item.title} loading="lazy" />
@@ -214,7 +253,7 @@ export default function PhotographyCategoryTemplate({
         </Section>
       )}
 
-      {category.testimonials && category.testimonials.length > 0 && (
+      {testimonials.length > 0 && (
         <Section>
           <Container>
             <PageHeader title="Families who booked this experience" eyebrow="Reviews" />
@@ -230,6 +269,15 @@ export default function PhotographyCategoryTemplate({
         </Container>
       </Section>
 
+      {relatedResources.length > 0 && (
+        <Section>
+          <Container>
+            <PageHeader title="Related guides" eyebrow="Read next" />
+            <ResourceGrid resources={relatedResources} />
+          </Container>
+        </Section>
+      )}
+
       {relatedCategories.length > 0 && (
         <Section>
           <Container>
@@ -242,6 +290,17 @@ export default function PhotographyCategoryTemplate({
       <Section id="contact">
         <Container className="grid grid-2">
           <div>
+            {ctaBadgeImage && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={ctaBadgeImage}
+                alt=""
+                width={96}
+                height={96}
+                loading="lazy"
+                style={{ borderRadius: "50%", marginBottom: "16px" }}
+              />
+            )}
             <p className="eyebrow">Book {category.title}</p>
             <h2>Check dates, themes and package fit.</h2>
             <p className="lead">

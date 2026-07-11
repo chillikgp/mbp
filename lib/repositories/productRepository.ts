@@ -96,6 +96,7 @@ const mapProduct = async (doc: any, payload: any): Promise<Product> => {
     faqs: productFaqs,
     variants,
     personalizationFields,
+    updatedAt: doc.updatedAt,
     upload: {
       min: doc.upload?.min || 1,
       max: doc.upload?.max || 12,

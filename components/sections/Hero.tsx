@@ -11,6 +11,8 @@ interface HeroProps {
   title: string;
   copy: string;
   image: string;
+  video?: string;
+  videoPoster?: string;
   primary?: string;
   secondary?: string;
   path?: string;
@@ -23,6 +25,8 @@ export default function Hero({
   title,
   copy,
   image,
+  video,
+  videoPoster,
   primary = "Book a Session",
   secondary = "View Portfolio",
   path = "#contact",
@@ -55,8 +59,29 @@ export default function Hero({
             </a>
           </div>
         </div>
-        <div className="hero-media">
-          <ResponsiveImage src={image} alt={title} loading="eager" />
+        <div className={`hero-media${video ? " hero-media--video" : ""}`}>
+          {video ? (
+            <>
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster={videoPoster || image}
+                data-hero-video
+              >
+                <source src={video} type="video/mp4" />
+              </video>
+              <button
+                type="button"
+                className="hero-sound-toggle"
+                data-hero-sound-toggle
+                aria-label="Unmute video"
+              />
+            </>
+          ) : (
+            <ResponsiveImage src={image} alt={title} loading="eager" />
+          )}
           {stats.length > 0 && (
             <div className="hero-card">
               {stats.map((stat, index) => (

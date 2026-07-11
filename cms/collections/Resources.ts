@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload';
+import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { revalidateResourceDoc } from '../hooks/revalidation';
 
 export const Resources: CollectionConfig = {
@@ -46,6 +47,52 @@ export const Resources: CollectionConfig = {
           name: 'item',
           type: 'text',
           required: true,
+        },
+      ],
+    },
+    {
+      name: 'content',
+      type: 'richText',
+      editor: lexicalEditor({}),
+      label: 'Article Body (optional, for long-form blog posts)',
+    },
+    {
+      name: 'gallery',
+      type: 'array',
+      label: 'Article Image Gallery (optional, e.g. one image per idea/step)',
+      fields: [
+        {
+          name: 'image',
+          type: 'relationship',
+          relationTo: 'media',
+          required: true,
+        },
+        {
+          name: 'alt',
+          type: 'text',
+        },
+        {
+          name: 'caption',
+          type: 'text',
+        },
+      ],
+    },
+    {
+      name: 'faqs',
+      type: 'array',
+      label: 'Article FAQs (optional, drives this article\'s FAQ schema)',
+      fields: [
+        {
+          name: 'q',
+          type: 'text',
+          required: true,
+          label: 'Question',
+        },
+        {
+          name: 'a',
+          type: 'textarea',
+          required: true,
+          label: 'Answer',
         },
       ],
     },

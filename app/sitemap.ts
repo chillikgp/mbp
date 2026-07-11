@@ -2,10 +2,12 @@ import { MetadataRoute } from "next";
 import { getCategories } from "../lib/repositories/categoryRepository";
 import { getProducts } from "../lib/repositories/productRepository";
 import { getResources } from "../lib/repositories/resourceRepository";
+import { getSiteSettings } from "../lib/repositories/settingsRepository";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://mybabypictures.in";
-  
+  const site = await getSiteSettings();
+  const baseUrl = site.domain.replace(/\/$/, "");
+
   // Format today's date in 'en-CA' (YYYY-MM-DD) as done in the static builder
   const today = new Intl.DateTimeFormat("en-CA", {
     timeZone: "Asia/Kolkata",
@@ -15,17 +17,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }).format(new Date());
 
   const staticRoutes = [
-    "",
-    "/contact",
-    "/portfolio",
-    "/pricing",
-    "/privacy-policy",
-    "/resources",
-    "/shop",
-    "/testimonials",
-  ].map((route) => ({
+    { route: "", changeFrequency: "weekly" as const, priority: 1 },
+    { route: "/contact", changeFrequency: "monthly" as const, priority: 0.6 },
+    { route: "/portfolio", changeFrequency: "weekly" as const, priority: 0.8 },
+    { route: "/pricing", changeFrequency: "monthly" as const, priority: 0.7 },
+    { route: "/privacy-policy", changeFrequency: "yearly" as const, priority: 0.2 },
+    { route: "/resources", changeFrequency: "weekly" as const, priority: 0.7 },
+    { route: "/shop", changeFrequency: "weekly" as const, priority: 0.7 },
+    { route: "/testimonials", changeFrequency: "weekly" as const, priority: 0.6 },
+  ].map(({ route, changeFrequency, priority }) => ({
     url: `${baseUrl}${route}`,
     lastModified: today,
+    changeFrequency,
+    priority,
   }));
 
   const categories = await getCategories();
@@ -37,25 +41,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Categories
     categoryRoutes.push({
       url: `${baseUrl}/categories/${cat.slug}`,
-      lastModified: today,
+      lastModified: cat.updatedAt || today,
+      changeFrequency: "weekly",
+      priority: 0.8,
     });
     for (const child of cat.children || []) {
       categoryRoutes.push({
         url: `${baseUrl}/categories/${cat.slug}/${child.slug}`,
-        lastModified: today,
+        lastModified: child.updatedAt || cat.updatedAt || today,
+        changeFrequency: "weekly",
+        priority: 0.8,
       });
     }
 
     // Pricing
     pricingRoutes.push({
       url: `${baseUrl}/pricing/${cat.slug}`,
-      lastModified: today,
+      lastModified: cat.updatedAt || today,
+      changeFrequency: "monthly",
+      priority: 0.6,
     });
 
     // Portfolio
     portfolioRoutes.push({
       url: `${baseUrl}/portfolio/${cat.slug}`,
-      lastModified: today,
+      lastModified: cat.updatedAt || today,
+      changeFrequency: "weekly",
+      priority: 0.7,
     });
   }
 
@@ -63,7 +75,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const resources = await getResources();
   const resourceRoutes = resources.map((r) => ({
     url: `${baseUrl}/resources/${r.slug}`,
-    lastModified: today,
+    lastModified: r.updatedAt || r.createdAt || today,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
   }));
 
   // Shop Products
@@ -75,7 +89,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const prod of products) {
     productRoutes.push({
       url: `${baseUrl}/shop/${prod.slug}`,
-      lastModified: today,
+      lastModified: prod.updatedAt || today,
+      changeFrequency: "weekly",
+      priority: 0.6,
     });
   }
 

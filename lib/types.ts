@@ -58,6 +58,7 @@ export interface GalleryItem {
   caption?: string;
   width?: number;
   height?: number;
+  theme?: string;
 }
 
 export interface PricingPackage {
@@ -67,11 +68,28 @@ export interface PricingPackage {
   includes: string[];
 }
 
+export interface AddonDetail {
+  name: string;
+  price: string;
+}
+
 export interface CategoryChild {
   slug: string;
   title: string;
   summary: string;
+  description?: string;
   heroImage: string;
+  heroVideo?: string;
+  heroVideoPoster?: string;
+  gallery?: GalleryItem[];
+  pricing?: PricingPackage[];
+  addons?: string[];
+  addonDetails?: AddonDetail[];
+  testimonials?: string[];
+  videos?: VideoSlot[];
+  bts?: BtsItem[];
+  ctaBadgeImage?: string;
+  updatedAt?: string;
 }
 
 export interface FAQItem {
@@ -82,6 +100,7 @@ export interface FAQItem {
 export interface VideoSlot {
   title: string;
   embed?: string;
+  file?: string;
 }
 
 export interface BtsItem {
@@ -98,15 +117,20 @@ export interface PhotographyCategory {
   summary: string;
   description: string;
   heroImage: string;
+  heroVideo?: string;
+  heroVideoPoster?: string;
   gallery?: GalleryItem[];
   pricing?: PricingPackage[];
   addons?: string[];
+  addonDetails?: AddonDetail[];
   faqs?: FAQItem[];
   testimonials?: string[];
   related?: string[];
   children?: CategoryChild[];
   videos?: VideoSlot[];
   bts?: BtsItem[];
+  ctaBadgeImage?: string;
+  updatedAt?: string;
 }
 
 export interface Testimonial {
@@ -120,9 +144,15 @@ export interface Resource {
   slug: string;
   title: string;
   category: string;
+  categorySlug?: string;
   excerpt: string;
   image: string;
   contentPoints?: string[];
+  content?: unknown;
+  gallery?: GalleryItem[];
+  faqs?: FAQItem[];
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface SiteData {
@@ -199,6 +229,7 @@ export interface Product {
   included: string[];
   reviews?: ProductReview[];
   faqs?: FAQItem[];
+  updatedAt?: string;
 }
 
 export interface ProductsData {

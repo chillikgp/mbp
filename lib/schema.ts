@@ -1,4 +1,4 @@
-import { FAQItem, Product, PhotographyCategory, SiteSettings } from "./types";
+import { FAQItem, Product, PhotographyCategory, SiteSettings, Resource, Testimonial } from "./types";
 
 const url = (path: string = "/", domain: string) => {
   if (path.startsWith("http")) return path;
@@ -30,6 +30,46 @@ export function buildLocalBusinessSchema(site: SiteSettings) {
     },
     sameAs: [site.instagram, site.youtube],
   };
+}
+
+export function buildBreadcrumbSchema(items: { label: string; href?: string }[], domain: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.label,
+      ...(item.href ? { item: url(item.href, domain) } : {}),
+    })),
+  };
+}
+
+export function buildImageObjectSchema(images: { src: string; alt: string; caption?: string }[], site: SiteSettings) {
+  return images
+    .filter((image) => image.src)
+    .map((image) => ({
+      "@context": "https://schema.org",
+      "@type": "ImageObject",
+      contentUrl: url(image.src, site.domain),
+      url: url(image.src, site.domain),
+      caption: image.caption || image.alt,
+      description: image.alt,
+      creator: { "@type": "Organization", name: site.name },
+      copyrightHolder: { "@type": "Organization", name: site.name },
+      contentLocation: { "@type": "Place", name: "Delhi, India" },
+    }));
+}
+
+export function buildReviewSchema(testimonials: Testimonial[], site: SiteSettings, itemReviewedName: string) {
+  return testimonials.map((testimonial) => ({
+    "@context": "https://schema.org",
+    "@type": "Review",
+    reviewRating: { "@type": "Rating", ratingValue: testimonial.rating, bestRating: 5 },
+    author: { "@type": "Person", name: testimonial.name },
+    reviewBody: testimonial.quote,
+    itemReviewed: { "@type": "Service", name: itemReviewedName, provider: { "@type": "PhotographyStudio", name: site.name } },
+  }));
 }
 
 export function buildFAQSchema(items: FAQItem[]) {
@@ -68,6 +108,21 @@ export function buildProductSchema(product: Product, site: SiteSettings) {
       availability: "https://schema.org/InStock",
       url: url(`/shop/${product.slug}`, site.domain),
     },
+  };
+}
+
+export function buildArticleSchema(resource: Resource, path: string, site: SiteSettings) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: resource.title,
+    description: resource.excerpt,
+    image: resource.image ? [url(resource.image, site.domain)] : undefined,
+    datePublished: resource.createdAt,
+    dateModified: resource.updatedAt || resource.createdAt,
+    author: { "@type": "Organization", name: site.name },
+    publisher: { "@type": "Organization", name: site.name, logo: { "@type": "ImageObject", url: url(site.logo, site.domain) } },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url(path, site.domain) },
   };
 }
 

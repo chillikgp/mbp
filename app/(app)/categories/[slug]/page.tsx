@@ -4,8 +4,9 @@ import { getSiteSettings } from "../../../../lib/repositories/settingsRepository
 import { getCategoryBySlug, getCategories } from "../../../../lib/repositories/categoryRepository";
 import { getFAQs } from "../../../../lib/repositories/faqRepository";
 import { getTestimonialsByNames } from "../../../../lib/repositories/testimonialRepository";
+import { getResources } from "../../../../lib/repositories/resourceRepository";
 import { buildMetadata } from "../../../../lib/seo";
-import { buildServiceSchema, buildFAQSchema } from "../../../../lib/schema";
+import { buildServiceSchema, buildFAQSchema, buildBreadcrumbSchema } from "../../../../lib/schema";
 import PhotographyCategoryTemplate from "../../../../components/templates/PhotographyCategoryTemplate";
 import { categoryPath } from "../../../../lib/routes";
 
@@ -45,16 +46,26 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   const path = categoryPath(category);
   
-  const [site, pageFaqs, categoriesList, testimonials, relatedDocs] = await Promise.all([
+  const [site, pageFaqs, categoriesList, testimonials, relatedDocs, allResources] = await Promise.all([
     getSiteSettings(),
     getFAQs(category.slug),
     getCategories(),
     getTestimonialsByNames(category.testimonials || []),
     Promise.all((category.related || []).map((s) => getCategoryBySlug(s))),
+    getResources(),
   ]);
+  const relatedResources = allResources.filter((r) => r.categorySlug === category.slug);
 
   const serviceSchema = buildServiceSchema(category, path, site);
   const faqSchema = buildFAQSchema(pageFaqs);
+  const breadcrumbSchema = buildBreadcrumbSchema(
+    [
+      { label: "Home", href: "/" },
+      { label: "Categories", href: "/categories/maternity" },
+      { label: category.label },
+    ],
+    site.domain
+  );
   const related = relatedDocs.filter(Boolean) as any[];
 
   return (
@@ -67,6 +78,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <PhotographyCategoryTemplate
         category={category}
         child={null}
@@ -75,6 +90,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         site={site}
         categories={categoriesList}
         testimonials={testimonials}
+        relatedResources={relatedResources}
       />
     </>
   );

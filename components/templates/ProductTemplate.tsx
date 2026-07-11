@@ -1,6 +1,7 @@
 import React from "react";
 import { Product, FAQItem, SiteSettings } from "../../lib/types";
 import { shopPath, checkoutPath } from "../../lib/routes";
+import { buildBreadcrumbSchema } from "../../lib/schema";
 import Breadcrumbs from "../layout/Breadcrumbs";
 import ResponsiveImage from "../layout/ResponsiveImage";
 import Section from "../layout/Section";
@@ -31,9 +32,14 @@ export default function ProductTemplate({
     { label: "Shop", href: "/shop" },
     { label: product.name },
   ];
+  const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbs, site.domain);
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <section className="product-page">
         <Container>
           <Breadcrumbs items={breadcrumbs} />

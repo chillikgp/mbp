@@ -6,6 +6,9 @@ interface MetadataProps {
   description: string;
   path: string;
   image?: string;
+  type?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
 function toAbsoluteUrl(path: string, domain: string): string {
@@ -13,7 +16,15 @@ function toAbsoluteUrl(path: string, domain: string): string {
   return `${domain}${path.startsWith("/") ? "" : "/"}${path}`;
 }
 
-export async function buildMetadata({ title, description, path, image }: MetadataProps): Promise<Metadata> {
+export async function buildMetadata({
+  title,
+  description,
+  path,
+  image,
+  type = "website",
+  publishedTime,
+  modifiedTime,
+}: MetadataProps): Promise<Metadata> {
   const site = await getSiteSettings();
   const domain = site.domain.replace(/\/$/, "");
   const formattedPath = path.startsWith("/") ? path : `/${path}`;
@@ -27,18 +38,30 @@ export async function buildMetadata({ title, description, path, image }: Metadat
     alternates: {
       canonical: canonicalUrl,
     },
-    openGraph: {
-      type: "website",
-      siteName: site.name,
-      title: title,
-      description: description,
-      url: canonicalUrl,
-      images: [
-        {
-          url: ogImgUrl,
-        },
-      ],
-    },
+    openGraph:
+      type === "article"
+        ? {
+            type: "article",
+            siteName: site.name,
+            title: title,
+            description: description,
+            url: canonicalUrl,
+            images: [{ url: ogImgUrl }],
+            publishedTime,
+            modifiedTime,
+          }
+        : {
+            type: "website",
+            siteName: site.name,
+            title: title,
+            description: description,
+            url: canonicalUrl,
+            images: [
+              {
+                url: ogImgUrl,
+              },
+            ],
+          },
     twitter: {
       card: "summary_large_image",
       title: title,

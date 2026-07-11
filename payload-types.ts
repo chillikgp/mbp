@@ -191,6 +191,7 @@ export interface Media {
 export interface Addon {
   id: number;
   name: string;
+  price?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -221,11 +222,14 @@ export interface Category {
   description?: string | null;
   parent?: (number | null) | Category;
   heroImage: number | Media;
+  heroVideo?: (number | null) | Media;
+  heroVideoPoster?: (number | null) | Media;
   gallery?:
     | {
         image: number | Media;
         alt?: string | null;
         caption?: string | null;
+        theme?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -244,12 +248,20 @@ export interface Category {
       }[]
     | null;
   addons?: (number | Addon)[] | null;
+  addonDetails?:
+    | {
+        name: string;
+        price: string;
+        id?: string | null;
+      }[]
+    | null;
   related?: (number | Category)[] | null;
   testimonials?: (number | Testimonial)[] | null;
   videos?:
     | {
         title: string;
         embed?: string | null;
+        file?: (number | null) | Media;
         id?: string | null;
       }[]
     | null;
@@ -261,6 +273,7 @@ export interface Category {
         id?: string | null;
       }[]
     | null;
+  ctaBadgeImage?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -369,6 +382,36 @@ export interface Resource {
   contentPoints?:
     | {
         item: string;
+        id?: string | null;
+      }[]
+    | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  gallery?:
+    | {
+        image: number | Media;
+        alt?: string | null;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  faqs?:
+    | {
+        q: string;
+        a: string;
         id?: string | null;
       }[]
     | null;
@@ -520,6 +563,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface AddonsSelect<T extends boolean = true> {
   name?: T;
+  price?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -560,12 +604,15 @@ export interface CategoriesSelect<T extends boolean = true> {
   description?: T;
   parent?: T;
   heroImage?: T;
+  heroVideo?: T;
+  heroVideoPoster?: T;
   gallery?:
     | T
     | {
         image?: T;
         alt?: T;
         caption?: T;
+        theme?: T;
         id?: T;
       };
   pricing?:
@@ -583,6 +630,13 @@ export interface CategoriesSelect<T extends boolean = true> {
         id?: T;
       };
   addons?: T;
+  addonDetails?:
+    | T
+    | {
+        name?: T;
+        price?: T;
+        id?: T;
+      };
   related?: T;
   testimonials?: T;
   videos?:
@@ -590,6 +644,7 @@ export interface CategoriesSelect<T extends boolean = true> {
     | {
         title?: T;
         embed?: T;
+        file?: T;
         id?: T;
       };
   bts?:
@@ -600,6 +655,7 @@ export interface CategoriesSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
+  ctaBadgeImage?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -617,6 +673,22 @@ export interface ResourcesSelect<T extends boolean = true> {
     | T
     | {
         item?: T;
+        id?: T;
+      };
+  content?: T;
+  gallery?:
+    | T
+    | {
+        image?: T;
+        alt?: T;
+        caption?: T;
+        id?: T;
+      };
+  faqs?:
+    | T
+    | {
+        q?: T;
+        a?: T;
         id?: T;
       };
   updatedAt?: T;

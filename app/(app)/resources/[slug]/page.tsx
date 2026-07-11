@@ -4,7 +4,7 @@ import { getSiteSettings } from "../../../../lib/repositories/settingsRepository
 import { getResourceBySlug, getResources } from "../../../../lib/repositories/resourceRepository";
 import { getCategories } from "../../../../lib/repositories/categoryRepository";
 import { buildMetadata } from "../../../../lib/seo";
-import { buildLocalBusinessSchema } from "../../../../lib/schema";
+import { buildLocalBusinessSchema, buildBreadcrumbSchema, buildArticleSchema, buildFAQSchema, buildImageObjectSchema } from "../../../../lib/schema";
 import ResourceTemplate from "../../../../components/templates/ResourceTemplate";
 
 interface ResourcePageProps {
@@ -31,6 +31,9 @@ export async function generateMetadata({ params }: ResourcePageProps) {
     description: resource.excerpt,
     path: `/resources/${resource.slug}`,
     image: resource.image,
+    type: "article",
+    publishedTime: resource.createdAt,
+    modifiedTime: resource.updatedAt || resource.createdAt,
   });
 }
 
@@ -46,6 +49,17 @@ export default async function ResourceDetailPage({ params }: ResourcePageProps) 
     getCategories(),
   ]);
   const schema = buildLocalBusinessSchema(site);
+  const breadcrumbSchema = buildBreadcrumbSchema(
+    [
+      { label: "Home", href: "/" },
+      { label: "Resources", href: "/resources" },
+      { label: resource.title },
+    ],
+    site.domain
+  );
+  const articleSchema = buildArticleSchema(resource, `/resources/${resource.slug}`, site);
+  const faqSchema = resource.faqs && resource.faqs.length > 0 ? buildFAQSchema(resource.faqs) : null;
+  const imageObjectSchemas = buildImageObjectSchema(resource.gallery || [], site);
 
   return (
     <>
@@ -53,6 +67,27 @@ export default async function ResourceDetailPage({ params }: ResourcePageProps) 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      {imageObjectSchemas.map((imageSchema, idx) => (
+        <script
+          key={idx}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(imageSchema) }}
+        />
+      ))}
       <ResourceTemplate resource={resource} site={site} categories={categoriesList} />
     </>
   );

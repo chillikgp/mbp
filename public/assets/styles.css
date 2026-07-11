@@ -238,7 +238,8 @@ h3 {
   box-shadow: var(--shadow);
 }
 
-.hero-media img {
+.hero-media img,
+.hero-media video {
   width: 100%;
   height: 100%;
   min-height: 560px;
@@ -742,7 +743,8 @@ details p {
   }
 
   .hero-media,
-  .hero-media img {
+  .hero-media img,
+  .hero-media video {
     min-height: 430px;
   }
 
@@ -772,7 +774,8 @@ details p {
   }
 
   .hero-media,
-  .hero-media img {
+  .hero-media img,
+  .hero-media video {
     min-height: 360px;
   }
 
@@ -1173,7 +1176,8 @@ details p {
   border-radius: 26px;
 }
 
-.hero-media img {
+.hero-media img,
+.hero-media video {
   min-height: 590px;
 }
 
@@ -1660,7 +1664,8 @@ summary::marker {
   }
 
   .hero-media,
-  .hero-media img {
+  .hero-media img,
+  .hero-media video {
     min-height: 470px;
   }
 
@@ -1679,7 +1684,8 @@ summary::marker {
   }
 
   .hero-media,
-  .hero-media img {
+  .hero-media img,
+  .hero-media video {
     min-height: 380px;
   }
 
@@ -1722,6 +1728,23 @@ summary::marker {
   .form {
     padding: 20px;
   }
+}
+
+.portfolio-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.portfolio-tab.is-active {
+  background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+  color: #fff;
+  border-color: transparent;
+}
+
+.portfolio-item.is-hidden {
+  display: none;
 }
 
 /* Clickable portfolio images should preview the real image, not a crop. */
@@ -2266,4 +2289,44 @@ summary::marker {
   .order-summary {
     padding: 22px;
   }
+}
+
+/* Portrait hero video (e.g. janmashtami): size the box to the video's own
+   aspect ratio and 25% smaller, instead of the fixed min-height used by
+   every other (static-image) hero. Scoped to .hero-media--video so no other
+   page's hero is affected. */
+.hero-media.hero-media--video {
+  width: 75%;
+  margin-left: auto;
+  aspect-ratio: 9 / 16;
+  min-height: 0;
+}
+
+.hero-media--video img,
+.hero-media--video video {
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-sound-toggle {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(30, 20, 16, 0.5);
+  color: #fff;
+  cursor: pointer;
+  transition: background 180ms ease;
+}
+
+.hero-sound-toggle:hover {
+  background: rgba(30, 20, 16, 0.68);
 }

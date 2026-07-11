@@ -14,6 +14,10 @@ export const Addons: CollectionConfig = {
       required: true,
       unique: true,
     },
+    {
+      name: 'price',
+      type: 'text',
+    },
   ],
   hooks: {
     afterChange: [

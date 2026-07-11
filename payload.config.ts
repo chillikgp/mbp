@@ -1,4 +1,5 @@
 import { buildConfig } from 'payload';
+import sharp from 'sharp';
 import { postgresAdapter } from '@payloadcms/db-postgres';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { s3Storage } from '@payloadcms/storage-s3';
@@ -29,6 +30,7 @@ export default buildConfig({
   },
   collections: [Users, Media, Addons, FAQs, Testimonials, Categories, Resources, Products],
   globals: [SiteSettings, Navigation, Homepage, ShopSettings],
+  sharp,
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URL || '',

@@ -50,6 +50,18 @@ export const Categories: CollectionConfig = {
       required: true,
     },
     {
+      name: 'heroVideo',
+      type: 'relationship',
+      relationTo: 'media',
+      label: 'Hero Background Video (optional)',
+    },
+    {
+      name: 'heroVideoPoster',
+      type: 'relationship',
+      relationTo: 'media',
+      label: 'Hero Video Poster/Cover (optional, falls back to Hero Image)',
+    },
+    {
       name: 'gallery',
       type: 'array',
       label: 'Gallery Images',
@@ -67,6 +79,11 @@ export const Categories: CollectionConfig = {
         {
           name: 'caption',
           type: 'text',
+        },
+        {
+          name: 'theme',
+          type: 'text',
+          label: 'Theme (optional, enables gallery tabs)',
         },
       ],
     },
@@ -112,6 +129,23 @@ export const Categories: CollectionConfig = {
       label: 'Linked Addons',
     },
     {
+      name: 'addonDetails',
+      type: 'array',
+      label: 'Optional Add-Ons (name + price, for comparison table)',
+      fields: [
+        {
+          name: 'name',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'price',
+          type: 'text',
+          required: true,
+        },
+      ],
+    },
+    {
       name: 'related',
       type: 'relationship',
       relationTo: 'categories',
@@ -138,6 +172,13 @@ export const Categories: CollectionConfig = {
         {
           name: 'embed',
           type: 'text',
+          label: 'Embed URL (YouTube/Vimeo, etc.)',
+        },
+        {
+          name: 'file',
+          type: 'relationship',
+          relationTo: 'media',
+          label: 'Self-hosted Video File (optional, takes priority over Embed URL)',
         },
       ],
     },
@@ -163,6 +204,12 @@ export const Categories: CollectionConfig = {
           required: true,
         },
       ],
+    },
+    {
+      name: 'ctaBadgeImage',
+      type: 'relationship',
+      relationTo: 'media',
+      label: 'Small Decorative CTA Badge Image (optional, e.g. a gif)',
     },
   ],
   hooks: {
