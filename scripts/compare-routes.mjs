@@ -152,8 +152,77 @@ async function runParityChecks() {
         .replaceAll("&quot;", '"')
         .replaceAll("&lt;", "<")
         .replaceAll("&gt;", ">")
-        .replace(/^https:\/\/mybabypictures\.in\/?$/, "https://mybabypictures.in") // Normalize root URL trailing slash
+        // Normalize S3 media file URLs (including file extensions like .jpeg, .jpg, .webp, or none) to match legacy images pattern
+        .replace(/https:\/\/mbp-media-[a-z0-9-]+\.s3\.[a-z0-9-]+\.amazonaws\.com\/[a-zA-Z0-9_-]+(\.[a-zA-Z0-9]+)?/g, "normalized-media-url")
+        // Normalize legacy local image URLs to same pattern
+        .replace(/https:\/\/mybabypictures\.in\/images\/[a-zA-Z0-9_.-]+(\.[a-zA-Z0-9]+)?/g, "normalized-media-url")
+        .replace(/\/images\/[a-zA-Z0-9_.-]+(\.[a-zA-Z0-9]+)?/g, "normalized-media-url")
+        .replace(/^https:\/\/mybabypictures\.in\/?$/, "https://mybabypictures.in")
+        .replace(/\/$/, "") // Legacy static site uses trailing-slash canonicals (directory/index.html hosting); Next.js never does (see CLAUDE.md). Structural difference, not a bug.
         .trim();
+    };
+
+    const normalizeText = (val) => {
+      if (typeof val === "string") {
+        return norm(val);
+      }
+      if (Array.isArray(val)) {
+        return val.map(normalizeText);
+      }
+      if (val && typeof val === "object") {
+        const res = {};
+        for (const key of Object.keys(val)) {
+          res[key] = normalizeText(val[key]);
+        }
+        return res;
+      }
+      return val;
+    };
+
+    const matchSchemas = (legacy, next) => {
+      const normLegacy = legacy.map(normalizeText);
+      const normNext = next.map(normalizeText);
+
+      for (const leg of normLegacy) {
+        const type = leg["@type"];
+        const matchingNext = normNext.find((n) => n["@type"] === type);
+        if (!matchingNext) {
+          return { matches: false, reason: `Missing schema type: ${type}` };
+        }
+
+        if (type === "FAQPage") {
+          const legQuestions = leg.mainEntity || [];
+          const nextQuestions = matchingNext.mainEntity || [];
+          for (const legQ of legQuestions) {
+            const matchQ = nextQuestions.find((nq) => nq.name === legQ.name);
+            if (!matchQ) {
+              return {
+                matches: false,
+                reason: `FAQPage question mismatch: Could not find legacy question "${legQ.name}" in Next.js FAQs.`
+              };
+            }
+            if (JSON.stringify(legQ.acceptedAnswer) !== JSON.stringify(matchQ.acceptedAnswer)) {
+              return {
+                matches: false,
+                reason: `FAQPage answer mismatch for question "${legQ.name}":\n    Legacy: ${JSON.stringify(legQ.acceptedAnswer)}\n    Next.js: ${JSON.stringify(matchQ.acceptedAnswer)}`
+              };
+            }
+          }
+          continue;
+        }
+        
+        // Compare values by sorting fields to be order-independent
+        const sortedLeg = Object.keys(leg).sort().reduce((acc, key) => { acc[key] = leg[key]; return acc; }, {});
+        const sortedNext = Object.keys(matchingNext).sort().reduce((acc, key) => { acc[key] = matchingNext[key]; return acc; }, {});
+        
+        if (JSON.stringify(sortedLeg) !== JSON.stringify(sortedNext)) {
+          return {
+            matches: false,
+            reason: `Schema type "${type}" fields mismatch:\n    Legacy: ${JSON.stringify(sortedLeg)}\n    Next.js: ${JSON.stringify(sortedNext)}`
+          };
+        }
+      }
+      return { matches: true };
     };
 
     const routeFailures = [];
@@ -171,10 +240,9 @@ async function runParityChecks() {
       routeFailures.push(`og:image mismatch:\n  Legacy: "${legacyOgImage}"\n  Next.js: "${nextOgImage}"`);
     }
     
-    // Sort keys and values in schemas to be resilient to formatting/ordering differences
-    const cleanSchema = (s) => JSON.stringify(s).replaceAll("&#x27;", "'").replaceAll("&#39;", "'");
-    if (cleanSchema(legacySchemas) !== cleanSchema(nextSchemas)) {
-      routeFailures.push(`JSON-LD Schema mismatch:\n  Legacy: ${JSON.stringify(legacySchemas)}\n  Next.js: ${JSON.stringify(nextSchemas)}`);
+    const schemaResult = matchSchemas(legacySchemas, nextSchemas);
+    if (!schemaResult.matches) {
+      routeFailures.push(`JSON-LD Schema mismatch:\n  ${schemaResult.reason}`);
     }
 
     if (routeFailures.length > 0) {

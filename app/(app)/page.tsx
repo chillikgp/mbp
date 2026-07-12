@@ -91,7 +91,7 @@ export default async function HomePage() {
           <PageHeader
             title="Choose the story you want to preserve"
             eyebrow="Photography experiences"
-            copy="One featured gateway per category, each leading to a dedicated page with its own gallery, pricing, FAQs and CTAs."
+            copy="Explore our specialized photography categories, from gentle newborn sessions to elegant maternity shoots, each with dedicated setups and pricing."
           />
           <CategoryGrid items={displayCategories} />
         </Container>
@@ -122,7 +122,7 @@ export default async function HomePage() {
           <PageHeader
             title="A category-led portfolio, not one giant gallery"
             eyebrow="Portfolio highlights"
-            copy="Browse the highlights here, then step into dedicated portfolio pages for each category."
+            copy="Browse recent highlights and step into dedicated galleries showing our signature themes, outfits, and natural styling."
           />
           <PortfolioGrid gallery={featuredGallery} category="homepage" />
           <div className="action-row">
@@ -138,7 +138,7 @@ export default async function HomePage() {
           <PageHeader
             title="Packages that change by session type"
             eyebrow="Services and pricing"
-            copy="Each category has independent pricing, inclusions, add-ons and inquiry CTAs."
+            copy="Choose from clear, category-focused packages featuring upfront pricing, premium prints, and custom set coordination."
           />
           {/* Default to Newborn pricing cards */}
           <div className="grid grid-3">

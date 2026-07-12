@@ -14,22 +14,32 @@ interface PortfolioTemplateProps {
 }
 
 export default function PortfolioTemplate({ category, site, categories }: PortfolioTemplateProps) {
+  const isMaternity = category.slug === "maternity";
+  const title = isMaternity ? "Maternity Photography Portfolio" : `${category.title} portfolio`;
+  const copy = isMaternity 
+    ? "Explore elegant maternity portraits created across studio, outdoor and couple settings. Each gallery reflects a different gown, mood and visual style, helping you discover the direction you prefer for your own session."
+    : category.summary;
+
   return (
     <>
       <Hero
-        eyebrow="Category portfolio"
-        title={`${category.title} portfolio`}
-        copy={category.summary}
-        image={category.heroImage}
-        primary="Book This Look"
-        secondary="See Pricing"
+        eyebrow={isMaternity ? "Studio & Outdoor Gallery" : "Category portfolio"}
+        title={title}
+        copy={copy}
+        image={isMaternity ? "/images/maternity_hero.jpg" : category.heroImage}
+        primary={isMaternity ? "Check Availability" : "Book This Look"}
+        secondary={isMaternity ? "See packages & pricing" : "See Pricing"}
         path="#contact"
-        secondaryPath="#portfolio"
+        secondaryPath={isMaternity ? "/categories/maternity" : "#portfolio"}
       />
 
       <Section isAlt id="portfolio">
         <Container>
-          <PageHeader title={`${category.title} images`} eyebrow="Gallery" />
+          <PageHeader 
+            title={isMaternity ? "Maternity Images" : `${category.title} images`} 
+            eyebrow="Gallery" 
+            copy={isMaternity ? "Every gown, backdrop, and styling theme is crafted to celebrate your pregnancy with comfort and elegance." : undefined}
+          />
           <PortfolioGrid gallery={category.gallery || []} category={category.slug} />
         </Container>
       </Section>
@@ -39,7 +49,13 @@ export default function PortfolioTemplate({ category, site, categories }: Portfo
           <div className="cta-band">
             <p className="eyebrow">Book My Baby Pictures</p>
             <h2>Plan a {category.title.toLowerCase()} session</h2>
-            <p>Send us your favorite gallery references and preferred date.</p>
+            {isMaternity ? (
+              <p>
+                Browse our <a href="/categories/maternity" style={{ textDecoration: "underline", fontWeight: "bold" }}>maternity photoshoot packages</a> to choose the right theme and gown inclusions, or send us your favorite references.
+              </p>
+            ) : (
+              <p>Send us your favorite gallery references and preferred date.</p>
+            )}
             <div className="action-row">
               <a
                 className="btn btn-soft"
@@ -68,7 +84,9 @@ export default function PortfolioTemplate({ category, site, categories }: Portfo
           <div>
             <h2>Start your inquiry.</h2>
             <p className="lead">
-              Tell us which images you loved and what kind of session you are imagining.
+              {isMaternity 
+                ? "Tell us which gowns or themes you loved and what kind of session you are imagining. We serve families across Delhi, Noida, Gurgaon and Faridabad."
+                : "Tell us which images you loved and what kind of session you are imagining."}
             </p>
           </div>
           <InquiryForm site={site} categories={categories} category={category} />

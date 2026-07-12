@@ -1469,6 +1469,11 @@ details {
   font-weight: 750;
 }
 
+.grid-4 .price {
+  font-size: 1.7rem;
+  white-space: nowrap;
+}
+
 .compare {
   border-radius: 28px;
   box-shadow: 0 18px 42px rgba(177, 108, 64, 0.08);
@@ -2330,3 +2335,29 @@ summary::marker {
 .hero-sound-toggle:hover {
   background: rgba(30, 20, 16, 0.68);
 }
+
+/* Maternity Theme Overrides */
+.theme-maternity {
+  --radius: 4px;
+}
+
+.theme-maternity .portfolio-item .portfolio-caption {
+  opacity: 0;
+  transition: opacity 250ms ease;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.76));
+  padding: 30px 16px 14px;
+}
+
+.theme-maternity .portfolio-item:hover .portfolio-caption {
+  opacity: 1;
+}
+
+.theme-maternity .promo-box {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 40px;
+  margin: 0 auto;
+  box-shadow: var(--shadow);
+}
+

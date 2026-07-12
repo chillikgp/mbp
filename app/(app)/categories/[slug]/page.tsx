@@ -29,9 +29,19 @@ export async function generateMetadata({ params }: CategoryPageProps) {
   if (!category) return {};
 
   const site = await getSiteSettings();
+  const isMaternity = slug === "maternity";
+
+  const title = isMaternity
+    ? "Maternity Photoshoot in Delhi NCR | Packages from ₹3,499"
+    : `${category.label} | ${site.name}`;
+
+  const description = isMaternity
+    ? "Book an elegant maternity photoshoot in Delhi NCR with studio, outdoor and couple themes. Packages start at ₹3,499 and include maternity gowns. Serving Delhi, Noida, Gurgaon and Faridabad."
+    : category.description;
+
   return await buildMetadata({
-    title: `${category.label} | ${site.name}`,
-    description: category.description,
+    title,
+    description,
     path: categoryPath(category),
     image: category.heroImage,
   });

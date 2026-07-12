@@ -32,3 +32,7 @@ coverage/
 # Output directories & compiles
 dist/
 payload-types.ts.map
+
+# Raw, unprocessed source images (pre-optimization scratch material)
+/maternity images/
+

@@ -14,23 +14,27 @@ loadEnvConfig(process.cwd());
 async function seedMedia(payload: any, relativePath: string, altText: string) {
   const cleanRelativePath = relativePath.replace(/^\//, '');
   const absPath = path.resolve(process.cwd(), 'public', cleanRelativePath);
+  const baseName = path.basename(cleanRelativePath).replace(/\.[^.]+$/, '');
 
   if (!fs.existsSync(absPath)) {
     console.warn(`Warning: Media file not found at ${absPath}. Skipping.`);
     return null;
   }
 
-  // Idempotency check: search by alt
+  // Idempotency check: search by source filename. Alt text is not a safe dedupe
+  // key -- generic incrementing labels like "Category Gallery Image 3" get reused
+  // across unrelated content revisions and cause an unrelated older upload to be
+  // matched and reused instead of uploading the current file.
   const existing = await payload.find({
     collection: 'media',
     where: {
-      alt: { equals: altText },
+      filename: { contains: baseName },
     },
     limit: 1,
   });
 
   if (existing.docs.length > 0) {
-    console.log(`Media found: "${altText}" already exists. Reusing.`);
+    console.log(`Media found: "${baseName}" already exists. Reusing.`);
     return existing.docs[0];
   }
 
@@ -319,6 +323,7 @@ async function run() {
       pricing: pricingData,
       addons: linkedAddons,
       testimonials: linkedTestimonials,
+      addonDetails: cat.addonDetails || [],
       videos: cat.videos || [],
       bts: btsDocs,
     };
@@ -618,9 +623,9 @@ async function run() {
       excerpt: r.excerpt,
       image: resourceImg ? resourceImg.id : undefined,
       contentPoints: [
-        { item: 'Choose the right category page before comparing packages.' },
-        { item: 'Share baby age, date, theme and location preferences with the studio.' },
-        { item: 'Use the inquiry form to confirm current availability and add-ons.' },
+        { item: 'Browse our specialized galleries and select the right session type for your baby.' },
+        { item: 'Coordinate outfits, themes, and prop options with our team prior to the shoot.' },
+        { item: 'Use our online booking form or contact us via WhatsApp to check seasonal slots.' },
       ],
     };
 

@@ -59,6 +59,11 @@ export default function PhotographyCategoryTemplate({
       }
     : category;
 
+  const isMaternity = category.slug === "maternity";
+  const effectiveGallery = isMaternity && effective.gallery
+    ? effective.gallery.slice(0, 10)
+    : effective.gallery;
+
   return (
     <>
       <Hero
@@ -99,7 +104,7 @@ export default function PhotographyCategoryTemplate({
             <PageHeader
               title={`${category.title} pages`}
               eyebrow="Subcategories"
-              copy="Each subcategory can become a dedicated SEO landing page with its own media and copy."
+              copy="Explore specialized session themes, cultural rituals, and package detail pages for each celebration."
             />
             <div className="grid grid-3">
               {category.children.map((item) => (
@@ -116,14 +121,14 @@ export default function PhotographyCategoryTemplate({
       <Section isAlt={isChild} id="portfolio">
         <Container>
           <PageHeader
-            title={`${title} gallery`}
+            title={isMaternity ? "Maternity Portfolio Highlights" : `${title} gallery`}
             eyebrow="Portfolio"
-            copy="Images are managed by category, with room for carousels, tags and future CMS media fields."
+            copy={isMaternity ? "Browse our signature looks and outfits. Expecting mothers can select their preferred themes from these curated recent sessions." : "Step into our gallery of recent sessions and browse by theme to see our styling and setups in action."}
           />
-          <PortfolioGrid gallery={effective.gallery || []} category={category.slug} />
+          <PortfolioGrid gallery={effectiveGallery || []} category={category.slug} />
           <div className="action-row">
             <a className="btn btn-outline" href={portfolioPath(category)}>
-              Open {category.title} Portfolio
+              {isMaternity ? "View the Complete Maternity Portfolio" : `Open ${category.title} Portfolio`}
             </a>
           </div>
         </Container>
@@ -134,9 +139,9 @@ export default function PhotographyCategoryTemplate({
           <PageHeader
             title={`${category.title} packages`}
             eyebrow="Pricing"
-            copy="Pricing is category-specific and can be updated independently."
+            copy="Browse tailored package inclusions, premium prints, and custom setups for your session."
           />
-          <div className="grid grid-3">
+          <div className={isMaternity ? "grid grid-4" : "grid grid-3"}>
             {(effective.pricing || []).map((pkg, idx) => (
               <article key={idx} className={`price-card ${pkg.featured ? "featured" : ""}`}>
                 <p className="eyebrow">{pkg.featured ? "Most booked" : category.title}</p>
@@ -180,6 +185,131 @@ export default function PhotographyCategoryTemplate({
         </Section>
       )}
 
+      {isMaternity && (
+        <>
+          {/* Complimentary Frame Offer */}
+          <Section isAlt>
+            <Container>
+              <div className="promo-box" style={{ maxWidth: '780px', margin: '0 auto', textAlign: 'center' }}>
+                <p className="eyebrow">Exclusive Promotion</p>
+                <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', marginBottom: '16px' }}>Complimentary Frame Offer</h2>
+                <p style={{ fontSize: '1.1rem', marginBottom: '24px' }}>
+                  Follow, subscribe, and review MyBabyPictures.in to receive a complimentary frame for your session memories:
+                </p>
+                <div className="grid grid-2" style={{ textAlign: 'left', marginBottom: '24px', gap: '20px' }}>
+                  <div style={{ padding: '20px', background: 'var(--paper)', border: '1px solid var(--line)', borderRadius: '4px' }}>
+                    <h4 style={{ margin: '0 0 8px 0', color: 'var(--accent-strong)', fontSize: '1.1rem' }}>From One Account</h4>
+                    <p style={{ margin: 0, fontSize: '0.95rem' }}>Receive a complimentary <strong>8 × 12-inch</strong> printed frame.</p>
+                  </div>
+                  <div style={{ padding: '20px', background: 'var(--paper)', border: '1px solid var(--line)', borderRadius: '4px' }}>
+                    <h4 style={{ margin: '0 0 8px 0', color: 'var(--accent-strong)', fontSize: '1.1rem' }}>From Two Accounts</h4>
+                    <p style={{ margin: 0, fontSize: '0.95rem' }}>Receive a complimentary <strong>12 × 18-inch</strong> printed frame.</p>
+                  </div>
+                </div>
+                <p style={{ fontSize: '0.85rem', color: 'var(--muted)', margin: 0 }}>
+                  * Verification of reviews/follows is required. Subject to current frame availability and standard studio terms.
+                </p>
+              </div>
+            </Container>
+          </Section>
+
+          {/* What to Expect (4-step experience) */}
+          <Section>
+            <Container>
+              <PageHeader
+                title="Your Session Experience"
+                eyebrow="What to expect"
+                copy="We walk you through every stage of your maternity shoot, from planning to final deliverables."
+              />
+              <div className="grid grid-4" style={{ marginTop: '40px' }}>
+                <article style={{ textAlign: 'center', padding: '20px' }}>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'var(--accent-soft)', color: 'var(--accent-strong)', display: 'grid', placeItems: 'center', fontSize: '1.25rem', fontWeight: 'bold', margin: '0 auto 16px' }}>1</div>
+                  <h3 style={{ fontSize: '1.2rem', margin: '0 0 8px 0' }}>Select a Package</h3>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--muted)', margin: 0 }}>Choose the pricing and inclusion level that best fits your family’s vision.</p>
+                </article>
+                <article style={{ textAlign: 'center', padding: '20px' }}>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'var(--accent-soft)', color: 'var(--accent-strong)', display: 'grid', placeItems: 'center', fontSize: '1.25rem', fontWeight: 'bold', margin: '0 auto 16px' }}>2</div>
+                  <h3 style={{ fontSize: '1.2rem', margin: '0 0 8px 0' }}>Theme & Outfit Planning</h3>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--muted)', margin: 0 }}>Discuss your preferred gown selections, backdrops, and session locations.</p>
+                </article>
+                <article style={{ textAlign: 'center', padding: '20px' }}>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'var(--accent-soft)', color: 'var(--accent-strong)', display: 'grid', placeItems: 'center', fontSize: '1.25rem', fontWeight: 'bold', margin: '0 auto 16px' }}>3</div>
+                  <h3 style={{ fontSize: '1.2rem', margin: '0 0 8px 0' }}>The Maternity Shoot</h3>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--muted)', margin: 0 }}>Enjoy a relaxed, unhurried session designed entirely around your physical comfort.</p>
+                </article>
+                <article style={{ textAlign: 'center', padding: '20px' }}>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: 'var(--accent-soft)', color: 'var(--accent-strong)', display: 'grid', placeItems: 'center', fontSize: '1.25rem', fontWeight: 'bold', margin: '0 auto 16px' }}>4</div>
+                  <h3 style={{ fontSize: '1.2rem', margin: '0 0 8px 0' }}>Artistic Delivery</h3>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--muted)', margin: 0 }}>Receive your high-resolution, professionally finished and edited digital photographs.</p>
+                </article>
+              </div>
+            </Container>
+          </Section>
+
+          {/* Ideal Timing for the Shoot */}
+          <Section isAlt>
+            <Container>
+              <div className="grid grid-2" style={{ alignItems: 'center' }}>
+                <div>
+                  <p className="eyebrow">Planning Tip</p>
+                  <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem' }}>Ideal Timing for Your Photoshoot</h2>
+                  <p className="lead" style={{ marginTop: '16px' }}>
+                    Maternity sessions are commonly planned during the later second trimester or early third trimester, when the baby bump is clearly visible and the mother is generally comfortable enough for the session.
+                  </p>
+                  <p style={{ color: 'var(--muted)' }}>
+                    The ideal timing varies by pregnancy, so personal comfort and medical guidance should always take priority. We recommend reserving your date early in your second trimester to secure your preferred slot.
+                  </p>
+                </div>
+                <div style={{ display: 'grid', placeItems: 'center' }}>
+                  <img src="/images/maternity/26_white3_large.jpeg" alt="Soft natural light white gown photoshoot" style={{ width: '100%', maxHeight: '400px', objectFit: 'cover', borderRadius: '4px' }} />
+                </div>
+              </div>
+            </Container>
+          </Section>
+
+          {/* Delhi NCR Service Area */}
+          <Section>
+            <Container>
+              <PageHeader
+                title="Maternity Photography Across Delhi NCR"
+                eyebrow="Locations"
+                copy="Our team provides professional maternity photography services to expecting families across the capital region."
+              />
+              <div className="grid grid-3" style={{ marginTop: '32px', gap: '16px' }}>
+                {['Delhi', 'Noida', 'Gurgaon / Gurugram', 'Greater Noida', 'Noida Extension', 'Faridabad'].map((loc) => (
+                  <div key={loc} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px 16px', background: 'var(--paper)', border: '1px solid var(--line)', borderRadius: '4px' }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--accent-strong)' }}><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                    <span style={{ fontWeight: 600 }}>{loc}</span>
+                  </div>
+                ))}
+              </div>
+            </Container>
+          </Section>
+
+          {/* Other Photography Services */}
+          <Section isAlt>
+            <Container>
+              <PageHeader
+                title="Other Family Photography Services"
+                eyebrow="Keep Exploring"
+                copy="We capture all milestones and celebrations of your family's journey."
+              />
+              <p className="lead" style={{ textAlign: 'center', maxWidth: '800px', margin: '30px auto' }}>
+                We also provide candid photography and cinematic event coverage for birthdays, baby welcome celebrations, mundan ceremonies, naming ceremonies, Kua Pujan, Mata Ki Chowki and other family occasions.
+              </p>
+              <div className="pill-row" style={{ justifyContent: 'center', flexWrap: 'wrap' }}>
+                <span className="pill">Birthday Sessions</span>
+                <span className="pill">Baby Welcome</span>
+                <span className="pill">Mundan Photography</span>
+                <span className="pill">Naming Ceremonies</span>
+                <span className="pill">Kua Pujan</span>
+                <span className="pill">Mata Ki Chowki</span>
+              </div>
+            </Container>
+          </Section>
+        </>
+      )}
+
       {/* Video slots & Behind the scenes */}
       {((effective.videos && effective.videos.length > 0) || (effective.bts && effective.bts.length > 0)) && (
         <Section isAlt>
@@ -187,7 +317,7 @@ export default function PhotographyCategoryTemplate({
             <PageHeader
               title="Video and behind the scenes"
               eyebrow="Media support"
-              copy="This template supports embedded videos, short clips, set previews and BTS content for categories that need it."
+              copy="Experience the magic behind the lens with highlight reels, set sneak-peeks, and client session stories."
             />
             <div className="media-block">
               {effective.videos && effective.videos.length > 0 ? (
@@ -224,7 +354,7 @@ export default function PhotographyCategoryTemplate({
                         </p>
                         <h3>{video.title}</h3>
                         <p style={{ color: "rgba(255,255,255,.76)" }}>
-                          Add a video embed URL in the CMS content model to publish a film, reel or BTS clip here.
+                          Highlight reel or set preview video coming soon. Contact our East Delhi studio to view our sample films.
                         </p>
                       </div>
                     </div>
@@ -233,7 +363,7 @@ export default function PhotographyCategoryTemplate({
               ) : (
                 <div className="content-card">
                   <h3>Video-ready section</h3>
-                  <p>Add an embed URL in the category video field to publish films or reels here.</p>
+                  <p>See our latest behind-the-scenes content and video reels on our official social media channels.</p>
                 </div>
               )}
               {effective.bts && effective.bts.length > 0 && (

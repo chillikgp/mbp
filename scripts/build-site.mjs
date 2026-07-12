@@ -363,7 +363,8 @@ function portfolioGrid(gallery = [], category = "") {
 }
 
 function pricingCards(category) {
-  return `<div class="grid grid-3">${(category.pricing || [])
+  const gridClass = category.slug === "maternity" ? "grid-4" : "grid-3";
+  return `<div class="grid ${gridClass}">${(category.pricing || [])
     .map(
       (pkg) => `
         <article class="price-card ${pkg.featured ? "featured" : ""}">
@@ -466,7 +467,7 @@ function videoSection(category) {
           <div>
             <p class="eyebrow" style="color:#f4d7cf;">Video slot</p>
             <h3>${esc(video.title)}</h3>
-            <p style="color:rgba(255,255,255,.76);">Add a video embed URL in the CMS content model to publish a film, reel or BTS clip here.</p>
+            <p style="color:rgba(255,255,255,.76);">Highlight reel or set preview video coming soon. Contact our East Delhi studio to view our sample films.</p>
           </div>
         </div>`
     )
@@ -485,9 +486,9 @@ function videoSection(category) {
   return `
     <section class="section section-alt">
       <div class="container">
-        ${sectionHead("Media support", "Video and behind the scenes", "This template supports embedded videos, short clips, set previews and BTS content for categories that need it.")}
+        ${sectionHead("Media support", "Video and behind the scenes", "Experience the magic behind the lens with highlight reels, set sneak-peeks, and client session stories.")}
         <div class="media-block">
-          ${videos || `<div class="content-card"><h3>Video-ready section</h3><p>Add an embed URL in the category video field to publish films or reels here.</p></div>`}
+          ${videos || `<div class="content-card"><h3>Video-ready section</h3><p>See our latest behind-the-scenes content and video reels on our official social media channels.</p></div>`}
           <div class="grid">${bts}</div>
         </div>
       </div>
@@ -556,7 +557,7 @@ function homePage() {
     </section>
     <section class="section section-alt" id="categories">
       <div class="container">
-        ${sectionHead("Photography experiences", "Choose the story you want to preserve", "One featured gateway per category, each leading to a dedicated page with its own gallery, pricing, FAQs and CTAs.")}
+        ${sectionHead("Photography experiences", "Choose the story you want to preserve", "Explore our specialized photography categories, from gentle newborn sessions to elegant maternity shoots, each with dedicated setups and pricing.")}
         ${categoryCards(categories)}
       </div>
     </section>
@@ -573,14 +574,14 @@ function homePage() {
     </section>
     <section class="section section-alt" id="portfolio">
       <div class="container">
-        ${sectionHead("Portfolio highlights", "A category-led portfolio, not one giant gallery", "Browse the highlights here, then step into dedicated portfolio pages for each category.")}
+        ${sectionHead("Portfolio highlights", "A category-led portfolio, not one giant gallery", "Browse recent highlights and step into dedicated galleries showing our signature themes, outfits, and natural styling.")}
         ${portfolioGrid(featuredGallery, "homepage")}
         <div class="action-row"><a class="btn btn-primary" href="/portfolio/">View Portfolio by Category</a></div>
       </div>
     </section>
     <section class="section">
       <div class="container">
-        ${sectionHead("Services and pricing", "Packages that change by session type", "Each category has independent pricing, inclusions, add-ons and inquiry CTAs.")}
+        ${sectionHead("Services and pricing", "Packages that change by session type", "Choose from clear, category-focused packages featuring upfront pricing, premium prints, and custom set coordination.")}
         ${pricingCards(categories[1])}
         <div class="action-row"><a class="btn btn-outline" href="/pricing/">Explore All Pricing</a></div>
       </div>
@@ -628,21 +629,149 @@ function homePage() {
 
 function categoryPage(category, child = null) {
   const isChild = Boolean(child);
+  const isMaternity = category.slug === "maternity" && !isChild;
+  
   const title = isChild ? `${child.title} Photography` : category.label;
   const summary = isChild ? child.summary : category.description;
-  const image = isChild ? child.heroImage : category.heroImage;
+  const image = isChild ? child.heroImage : (isMaternity ? "/images/maternity_hero.jpg" : category.heroImage);
   const path = isChild ? childPath(category, child) : categoryPath(category);
   const pageFaqs = category.faqs?.length ? category.faqs : faqs.slice(0, 3);
+  
   const children = category.children?.length
-    ? `<section class="section section-alt"><div class="container">${sectionHead("Subcategories", `${category.title} pages`, "Each subcategory can become a dedicated SEO landing page with its own media and copy.")}<div class="grid grid-3">${category.children
+    ? `<section class="section section-alt"><div class="container">${sectionHead("Subcategories", `${category.title} pages`, "Explore specialized session themes, cultural rituals, and package detail pages for each celebration.")}<div class="grid grid-3">${category.children
         .map((item) => `<a class="content-card" href="${childPath(category, item)}"><h3>${esc(item.title)}</h3><p>${esc(item.summary)}</p></a>`)
         .join("")}</div></div></section>`
+    : "";
+
+  const gallery = isMaternity && category.gallery
+    ? category.gallery.slice(0, 10)
+    : category.gallery || [];
+
+  const btsDocs = (category.bts || []).map((item) => `
+    <article class="content-card bts-card">
+      <img src="${item.image}" alt="${esc(item.title)}" loading="lazy">
+      <h3>${esc(item.title)}</h3>
+      <p>${esc(item.copy)}</p>
+    </article>`).join("");
+
+  const addonDetailsRows = isMaternity && category.addonDetails?.length
+    ? `
+    <section class="section">
+      <div class="container">
+        ${sectionHead("Customize your session", "Optional add-ons")}
+        <table class="compare">
+          <thead>
+            <tr>
+              <th>Add-on</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${category.addonDetails.map((addon) => `
+              <tr>
+                <th>${esc(addon.name)}</th>
+                <td>${esc(addon.price)}</td>
+              </tr>`).join("")}
+          </tbody>
+        </table>
+      </div>
+    </section>`
+    : "";
+
+  const maternityExtras = isMaternity
+    ? `
+    <section class="section section-alt">
+      <div class="container">
+        <div class="promo-box" style="max-width:780px;margin:0 auto;text-align:center;">
+          <p class="eyebrow">Exclusive Promotion</p>
+          <h2 style="font-family:var(--font-serif);font-size:2rem;margin-bottom:16px;">Complimentary Frame Offer</h2>
+          <p style="font-size:1.1rem;margin-bottom:24px;">Follow, subscribe, and review MyBabyPictures.in to receive a complimentary frame for your session memories:</p>
+          <div class="grid grid-2" style="text-align:left;margin-bottom:24px;gap:20px;">
+            <div style="padding:20px;background:var(--paper);border:1px solid var(--line);border-radius:4px;">
+              <h4 style="margin:0 0 8px 0;color:var(--accent-strong);font-size:1.1rem;">From One Account</h4>
+              <p style="margin:0;font-size:0.95rem;">Receive a complimentary <strong>8 × 12-inch</strong> printed frame.</p>
+            </div>
+            <div style="padding:20px;background:var(--paper);border:1px solid var(--line);border-radius:4px;">
+              <h4 style="margin:0 0 8px 0;color:var(--accent-strong);font-size:1.1rem;">From Two Accounts</h4>
+              <p style="margin:0;font-size:0.95rem;">Receive a complimentary <strong>12 × 18-inch</strong> printed frame.</p>
+            </div>
+          </div>
+          <p style="font-size:0.85rem;color:var(--muted);margin:0;">* Verification of reviews/follows is required. Subject to current frame availability and standard studio terms.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        ${sectionHead("What to expect", "Your Session Experience", "We walk you through every stage of your maternity shoot, from planning to final deliverables.")}
+        <div class="grid grid-4" style="margin-top:40px;">
+          <article style="text-align:center;padding:20px;">
+            <div style="width:48px;height:48px;border-radius:50%;background:var(--accent-soft);color:var(--accent-strong);display:grid;place-items:center;font-size:1.25rem;font-weight:bold;margin:0 auto 16px;">1</div>
+            <h3 style="font-size:1.2rem;margin:0 0 8px 0;">Select a Package</h3>
+            <p style="font-size:0.9rem;color:var(--muted);margin:0;">Choose the pricing and inclusion level that best fits your family’s vision.</p>
+          </article>
+          <article style="text-align:center;padding:20px;">
+            <div style="width:48px;height:48px;border-radius:50%;background:var(--accent-soft);color:var(--accent-strong);display:grid;place-items:center;font-size:1.25rem;font-weight:bold;margin:0 auto 16px;">2</div>
+            <h3 style="font-size:1.2rem;margin:0 0 8px 0;">Theme & Outfit Planning</h3>
+            <p style="font-size:0.9rem;color:var(--muted);margin:0;">Discuss your preferred gown selections, backdrops, and session locations.</p>
+          </article>
+          <article style="text-align:center;padding:20px;">
+            <div style="width:48px;height:48px;border-radius:50%;background:var(--accent-soft);color:var(--accent-strong);display:grid;place-items:center;font-size:1.25rem;font-weight:bold;margin:0 auto 16px;">3</div>
+            <h3 style="font-size:1.2rem;margin:0 0 8px 0;">The Maternity Shoot</h3>
+            <p style="font-size:0.9rem;color:var(--muted);margin:0;">Enjoy a relaxed, unhurried session designed entirely around your physical comfort.</p>
+          </article>
+          <article style="text-align:center;padding:20px;">
+            <div style="width:48px;height:48px;border-radius:50%;background:var(--accent-soft);color:var(--accent-strong);display:grid;place-items:center;font-size:1.25rem;font-weight:bold;margin:0 auto 16px;">4</div>
+            <h3 style="font-size:1.2rem;margin:0 0 8px 0;">Artistic Delivery</h3>
+            <p style="font-size:0.9rem;color:var(--muted);margin:0;">Receive your high-resolution, professionally finished and edited digital photographs.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section section-alt">
+      <div class="container grid grid-2" style="align-items:center;">
+        <div>
+          <p class="eyebrow">Planning Tip</p>
+          <h2 style="font-family:var(--font-serif);font-size:2rem;">Ideal Timing for Your Photoshoot</h2>
+          <p class="lead" style="margin-top:16px;">Maternity sessions are commonly planned during the later second trimester or early third trimester, when the baby bump is clearly visible and the mother is generally comfortable enough for the session.</p>
+          <p style="color:var(--muted);">The ideal timing varies by pregnancy, so personal comfort and medical guidance should always take priority. We recommend reserving your date early in your second trimester to secure your preferred slot.</p>
+        </div>
+        <div style="display:grid;place-items:center;">
+          <img src="/images/maternity/26_white3_large.jpeg" alt="Soft natural light white gown photoshoot" style="width:100%;max-height:400px;object-fit:cover;border-radius:4px;">
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        ${sectionHead("Locations", "Maternity Photography Across Delhi NCR", "Our team provides professional maternity photography services to expecting families across the capital region.")}
+        <div class="grid grid-3" style="margin-top:32px;gap:16px;">
+          ${['Delhi', 'Noida', 'Gurgaon / Gurugram', 'Greater Noida', 'Noida Extension', 'Faridabad'].map((loc) => `
+            <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--paper);border:1px solid var(--line);border-radius:4px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-strong);"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+              <span style="font-weight:600;">${loc}</span>
+            </div>`).join("")}
+        </div>
+      </div>
+    </section>
+    <section class="section section-alt">
+      <div class="container">
+        ${sectionHead("Keep Exploring", "Other Family Photography Services", "We capture all milestones and celebrations of your family's journey.")}
+        <p class="lead" style="text-align:center;max-width:800px;margin:30px auto;">We also provide candid photography and cinematic event coverage for birthdays, baby welcome celebrations, mundan ceremonies, naming ceremonies, Kua Pujan, Mata Ki Chowki and other family occasions.</p>
+        <div class="pill-row" style="justify-content:center;flex-wrap:wrap;">
+          <span class="pill">Birthday Sessions</span>
+          <span class="pill">Baby Welcome</span>
+          <span class="pill">Mundan Photography</span>
+          <span class="pill">Naming Ceremonies</span>
+          <span class="pill">Kua Pujan</span>
+          <span class="pill">Mata Ki Chowki</span>
+        </div>
+      </div>
+    </section>`
     : "";
 
   const body = `
     ${hero({
       eyebrow: isChild ? category.label : category.eyebrow,
-      title,
+      title: isMaternity ? "Maternity Photoshoot in Delhi NCR" : title,
       copy: summary,
       image,
       primary: "Ask for Availability",
@@ -653,7 +782,7 @@ function categoryPage(category, child = null) {
       <div class="container grid grid-2">
         <div>
           <p class="eyebrow">Category intro</p>
-          <h2>${esc(title)} at My Baby Pictures</h2>
+          <h2>${esc(isMaternity ? "Maternity Photography" : title)} at My Baby Pictures</h2>
         </div>
         <div>
           <p class="lead">${esc(category.description)}</p>
@@ -664,14 +793,14 @@ function categoryPage(category, child = null) {
     ${children}
     <section class="section section-alt" id="portfolio">
       <div class="container">
-        ${sectionHead("Portfolio", `${esc(title)} gallery`, "Images are managed by category, with room for carousels, tags and future CMS media fields.")}
-        ${portfolioGrid(category.gallery || [], category.slug)}
-        <div class="action-row"><a class="btn btn-outline" href="${portfolioPath(category)}">Open ${esc(category.title)} Portfolio</a></div>
+        ${sectionHead("Portfolio", isMaternity ? "Maternity Portfolio Highlights" : `${esc(title)} gallery`, isMaternity ? "Browse our signature looks and outfits. Expecting mothers can select their preferred themes from these curated recent sessions." : "Step into our gallery of recent sessions and browse by theme to see our styling and setups in action.")}
+        ${portfolioGrid(gallery, category.slug)}
+        <div class="action-row"><a class="btn btn-outline" href="${portfolioPath(category)}">${isMaternity ? "View the Complete Maternity Portfolio" : `Open ${esc(category.title)} Portfolio`}</a></div>
       </div>
     </section>
     <section class="section">
       <div class="container">
-        ${sectionHead("Pricing", `${esc(category.title)} packages`, "Pricing is category-specific and can be updated independently.")}
+        ${sectionHead("Pricing", `${esc(category.title)} packages`, "Browse tailored package inclusions, premium prints, and custom setups for your session.")}
         ${pricingCards(category)}
       </div>
     </section>
@@ -681,6 +810,8 @@ function categoryPage(category, child = null) {
         ${comparisonTable(category)}
       </div>
     </section>
+    ${addonDetailsRows}
+    ${maternityExtras}
     ${videoSection(category)}
     <section class="section">
       <div class="container">
@@ -706,9 +837,16 @@ function categoryPage(category, child = null) {
       </div>
     </section>`;
 
+  const pageTitle = isMaternity
+    ? "Maternity Photoshoot in Delhi NCR | Packages from ₹3,499"
+    : `${title} | ${site.name}`;
+  const pageDesc = isMaternity
+    ? "Book an elegant maternity photoshoot in Delhi NCR with studio, outdoor and couple themes. Packages start at ₹3,499 and include maternity gowns. Serving Delhi, Noida, Gurgaon and Faridabad."
+    : strip(summary);
+
   return layout({
-    title: `${title} | ${site.name}`,
-    description: strip(summary),
+    title: pageTitle,
+    description: pageDesc,
     path,
     image,
     body,
@@ -720,9 +858,9 @@ function categoryPage(category, child = null) {
 function pricingIndexPage() {
   const body = `
     ${hero({
-      eyebrow: "Category-specific pricing",
-      title: "Choose pricing by photography category.",
-      copy: "Maternity, newborn, milestone, birthday, family, event and festival sessions each have their own packages, inclusions and add-ons.",
+      eyebrow: "Session pricing",
+      title: "Find the perfect session package.",
+      copy: "Explore our transparent pricing packages tailored specifically for maternity, newborn, milestones, cake smashes, family portraits, and events.",
       image: "/images/portfolio-newborn-2.jpeg",
       primary: "Ask for Guidance",
       secondary: "Browse Categories",
@@ -742,7 +880,7 @@ function pricingIndexPage() {
 
   return layout({
     title: `Pricing | ${site.name}`,
-    description: "Category-specific photography pricing for maternity, newborn, milestone, birthday, family, event and festival sessions.",
+    description: "Transparent photography session packages and pricing for maternity, newborn, baby milestones, cake smashes, and family events.",
     path: "/pricing/",
     image: "/images/portfolio-newborn-2.jpeg",
     body,
@@ -756,7 +894,7 @@ function pricingPage(category) {
     ${hero({
       eyebrow: "Pricing",
       title: `${category.title} pricing`,
-      copy: `Compare ${category.title.toLowerCase()} packages, inclusions and add-ons. Pricing can be updated independently for this category.`,
+      copy: `Compare our signature ${category.title.toLowerCase()} packages, details, and customization options to find the perfect fit for your family.`,
       image: category.heroImage,
       primary: "Inquire About Pricing",
       secondary: "View Gallery",
@@ -825,35 +963,103 @@ function portfolioIndexPage() {
 }
 
 function portfolioPage(category) {
+  const isMaternity = category.slug === "maternity";
+  const heroEyebrow = isMaternity ? "Studio & Outdoor Gallery" : "Category portfolio";
+  const heroTitle = isMaternity ? "Maternity Photography Portfolio" : `${category.title} portfolio`;
+  const heroCopy = isMaternity
+    ? "Explore elegant maternity portraits created across studio, outdoor and couple settings. Each gallery reflects a different gown, mood and visual style, helping you discover the direction you prefer for your own session."
+    : category.summary;
+  const heroImage = isMaternity ? "/images/maternity_hero.jpg" : category.heroImage;
+  const primaryCTA = isMaternity ? "Check Availability" : "Book This Look";
+  const secondaryCTA = isMaternity ? "See packages & pricing" : "See Pricing";
+  const secondaryPath = isMaternity ? "/categories/maternity/" : "#portfolio";
+
+  const galleryHeadTitle = isMaternity ? "Maternity Images" : `${category.title} images`;
+  const galleryHeadCopy = isMaternity ? "Every gown, backdrop, and styling theme is crafted to celebrate your pregnancy with comfort and elegance." : "";
+
+  const ctaParagraph = isMaternity
+    ? `Browse our <a href="/categories/maternity/" style="text-decoration:underline;font-weight:bold;">maternity photoshoot packages</a> to choose the right theme and gown inclusions, or send us your favorite references.`
+    : "Send us your favorite gallery references and preferred date.";
+  
+  const leadParagraph = isMaternity
+    ? "Tell us which gowns or themes you loved and what kind of session you are imagining. We serve families across Delhi, Noida, Gurgaon and Faridabad."
+    : "Tell us which images you loved and what kind of session you are imagining.";
+
   const body = `
     ${hero({
-      eyebrow: "Category portfolio",
-      title: `${category.title} portfolio`,
-      copy: category.summary,
-      image: category.heroImage,
-      primary: "Book This Look",
-      secondary: "See Pricing",
-      path: "#contact"
+      eyebrow: heroEyebrow,
+      title: heroTitle,
+      copy: heroCopy,
+      image: heroImage,
+      primary: primaryCTA,
+      secondary: secondaryCTA,
+      path: "#contact",
+      secondaryPath: secondaryPath
     })}
     <section class="section section-alt" id="portfolio">
       <div class="container">
-        ${sectionHead("Gallery", `${category.title} images`)}
+        ${sectionHead("Gallery", galleryHeadTitle, galleryHeadCopy)}
         ${portfolioGrid(category.gallery || [], category.slug)}
       </div>
     </section>
-    ${ctaBand(`Plan a ${category.title.toLowerCase()} session`, "Send us your favorite gallery references and preferred date.", category)}
+    <section class="section">
+      <div class="container">
+        <div class="cta-band">
+          <p class="eyebrow">Book My Baby Pictures</p>
+          <h2>Plan a ${category.title.toLowerCase()} session</h2>
+          <p>${ctaParagraph}</p>
+          <div class="action-row">
+            <a class="btn btn-soft" href="${site.whatsapp}" data-track="cta_click" data-category="${category.slug}" data-track-label="WhatsApp CTA">WhatsApp Now</a>
+            <a class="btn btn-outline" href="/contact/" data-track="cta_click" data-track-label="Contact page">Contact Studio</a>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="section" id="contact">
-      <div class="container grid grid-2"><div><h2>Start your inquiry.</h2><p class="lead">Tell us which images you loved and what kind of session you are imagining.</p></div>${inquiryForm(category)}</div>
+      <div class="container grid grid-2">
+        <div>
+          <h2>Start your inquiry.</h2>
+          <p class="lead">${leadParagraph}</p>
+        </div>
+        ${inquiryForm(category)}
+      </div>
     </section>`;
 
+  const portfolioTitle = isMaternity
+    ? "Maternity Photography Portfolio | MyBabyPictures.in"
+    : `${category.title} Portfolio | ${site.name}`;
+  const portfolioDesc = isMaternity
+    ? "Explore elegant maternity photography themes, gowns, couple portraits and studio looks created for families across Delhi NCR."
+    : `${category.label} portfolio with category-specific images and inquiry CTA.`;
+
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "Portfolio", href: "/portfolio/" },
+    { label: `${category.title} Portfolio` }
+  ];
+  const breadcrumbListSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbs.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.label,
+      ...(item.href ? { item: `${site.domain.replace(/\/$/, "")}${item.href}` } : {})
+    }))
+  };
+
+  const schemas = isMaternity
+    ? [breadcrumbListSchema]
+    : [serviceSchema(category, portfolioPath(category))];
+
   return layout({
-    title: `${category.title} Portfolio | ${site.name}`,
-    description: `${category.label} portfolio with category-specific images and inquiry CTA.`,
+    title: portfolioTitle,
+    description: portfolioDesc,
     path: portfolioPath(category),
-    image: category.heroImage,
+    image: heroImage,
     body,
     theme: pageTheme(category),
-    schema: [serviceSchema(category, portfolioPath(category))]
+    schema: schemas
   });
 }
 

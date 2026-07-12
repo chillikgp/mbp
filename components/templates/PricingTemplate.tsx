@@ -19,7 +19,7 @@ export default function PricingTemplate({ category, site, categories }: PricingT
       <Hero
         eyebrow="Pricing"
         title={`${category.title} pricing`}
-        copy={`Compare ${category.title.toLowerCase()} packages, inclusions and add-ons. Pricing can be updated independently for this category.`}
+        copy={`Compare our signature ${category.title.toLowerCase()} packages, details, and customization options to find the perfect fit for your family.`}
         image={category.heroImage}
         primary="Inquire About Pricing"
         secondary="View Gallery"

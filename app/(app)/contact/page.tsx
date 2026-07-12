@@ -18,9 +18,23 @@ export async function generateMetadata() {
   });
 }
 
-export default async function ContactPage() {
+interface ContactPageProps {
+  searchParams: Promise<{
+    category?: string;
+    service?: string;
+  }>;
+}
+
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const { category: queryCategory, service: queryService } = await searchParams;
   const site = await getSiteSettings();
   const categories = await getCategories();
+  
+  const targetSlug = (queryCategory || queryService || "").toLowerCase();
+  const selectedCategory = categories.find(
+    (c) => c.slug === targetSlug || c.title.toLowerCase() === targetSlug
+  );
+
   const schema = buildLocalBusinessSchema(site);
 
   return (
@@ -48,7 +62,7 @@ export default async function ContactPage() {
               A short note is enough: category, baby age, date and preferred location.
             </p>
           </div>
-          <InquiryForm site={site} categories={categories} />
+          <InquiryForm site={site} categories={categories} category={selectedCategory} />
         </Container>
       </Section>
     </>
