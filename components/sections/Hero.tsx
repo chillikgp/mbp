@@ -63,7 +63,6 @@ export default function Hero({
           {video ? (
             <>
               <video
-                autoPlay
                 muted
                 loop
                 playsInline
@@ -78,6 +77,11 @@ export default function Hero({
                 data-hero-sound-toggle
                 aria-label="Unmute video"
               />
+              <div className="hero-play-toggle" data-hero-play-icon aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
             </>
           ) : (
             <ResponsiveImage src={image} alt={title} loading="eager" />

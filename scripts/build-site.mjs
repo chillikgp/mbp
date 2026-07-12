@@ -498,10 +498,13 @@ function videoSection(category) {
 function relatedCategories(category) {
   const related = categories.filter((item) => (category.related || []).includes(item.slug));
   if (!related.length) return "";
+  const copy = category.slug === "maternity"
+    ? "We also capture every other milestone and celebration in your family's journey, from the newborn days through birthdays and cultural ceremonies."
+    : "";
   return `
     <section class="section">
       <div class="container">
-        ${sectionHead("Keep exploring", "Related photography experiences")}
+        ${sectionHead("Keep exploring", "Related photography experiences", copy)}
         ${categoryCards(related)}
       </div>
     </section>`;
@@ -630,7 +633,9 @@ function homePage() {
 function categoryPage(category, child = null) {
   const isChild = Boolean(child);
   const isMaternity = category.slug === "maternity" && !isChild;
-  
+  const isJanmashtami = isChild && child.slug === "janmashtami";
+  const hideComparisonTable = isMaternity || isJanmashtami;
+
   const title = isChild ? `${child.title} Photography` : category.label;
   const summary = isChild ? child.summary : category.description;
   const image = isChild ? child.heroImage : (isMaternity ? "/images/maternity_hero.jpg" : category.heroImage);
@@ -752,20 +757,7 @@ function categoryPage(category, child = null) {
         </div>
       </div>
     </section>
-    <section class="section section-alt">
-      <div class="container">
-        ${sectionHead("Keep Exploring", "Other Family Photography Services", "We capture all milestones and celebrations of your family's journey.")}
-        <p class="lead" style="text-align:center;max-width:800px;margin:30px auto;">We also provide candid photography and cinematic event coverage for birthdays, baby welcome celebrations, mundan ceremonies, naming ceremonies, Kua Pujan, Mata Ki Chowki and other family occasions.</p>
-        <div class="pill-row" style="justify-content:center;flex-wrap:wrap;">
-          <span class="pill">Birthday Sessions</span>
-          <span class="pill">Baby Welcome</span>
-          <span class="pill">Mundan Photography</span>
-          <span class="pill">Naming Ceremonies</span>
-          <span class="pill">Kua Pujan</span>
-          <span class="pill">Mata Ki Chowki</span>
-        </div>
-      </div>
-    </section>`
+    `
     : "";
 
   const body = `
@@ -804,12 +796,13 @@ function categoryPage(category, child = null) {
         ${pricingCards(category)}
       </div>
     </section>
+    ${hideComparisonTable ? "" : `
     <section class="section section-alt">
       <div class="container">
         ${sectionHead("Compare", "Package comparison")}
         ${comparisonTable(category)}
       </div>
-    </section>
+    </section>`}
     ${addonDetailsRows}
     ${maternityExtras}
     ${videoSection(category)}
@@ -841,7 +834,7 @@ function categoryPage(category, child = null) {
     ? "Maternity Photoshoot in Delhi NCR | Packages from ₹3,499"
     : `${title} | ${site.name}`;
   const pageDesc = isMaternity
-    ? "Book an elegant maternity photoshoot in Delhi NCR with studio, outdoor and couple themes. Packages start at ₹3,499 and include maternity gowns. Serving Delhi, Noida, Gurgaon and Faridabad."
+    ? "Book an elegant maternity photoshoot in Delhi NCR with studio, outdoor and couple themes. Packages start at ₹3,499 and include maternity gowns."
     : strip(summary);
 
   return layout({

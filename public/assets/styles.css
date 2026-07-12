@@ -2315,6 +2315,10 @@ summary::marker {
   object-fit: cover;
 }
 
+.hero-media--video video {
+  cursor: pointer;
+}
+
 .hero-sound-toggle {
   position: absolute;
   top: 18px;
@@ -2334,6 +2338,29 @@ summary::marker {
 
 .hero-sound-toggle:hover {
   background: rgba(30, 20, 16, 0.68);
+}
+
+.hero-play-toggle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(30, 20, 16, 0.55);
+  color: #fff;
+  transform: translate(-50%, -50%) scale(0.85);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.hero-play-toggle.is-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 /* Maternity Theme Overrides */

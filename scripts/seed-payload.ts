@@ -559,6 +559,31 @@ async function run() {
           }
         }
       }
+
+      // Unlink stale FAQs: content edits that reword a question (rather than
+      // keep the exact same text) create a new FAQ doc above and leave the
+      // old one still linked to this category forever, since nothing else
+      // ever removes a category link. Prune any FAQ linked to this category
+      // whose question text isn't in the current content for this category.
+      const currentQuestions = new Set(cat.faqs.map((f: any) => f.q));
+      const linkedFaqs = await payload.find({
+        collection: 'faqs',
+        where: { categories: { contains: catId } },
+        limit: 200,
+      });
+      for (const faqDoc of linkedFaqs.docs) {
+        if (!currentQuestions.has(faqDoc.q)) {
+          const remainingCats = (faqDoc.categories || [])
+            .map((c: any) => (typeof c === 'object' ? c.id : c))
+            .filter((id: any) => id !== catId);
+          await payload.update({
+            collection: 'faqs',
+            id: faqDoc.id,
+            data: { categories: remainingCats },
+          });
+          console.log(`Unlinked stale FAQ from ${cat.slug}: "${faqDoc.q}"`);
+        }
+      }
     }
   }
 

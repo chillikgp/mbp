@@ -60,6 +60,8 @@ export default function PhotographyCategoryTemplate({
     : category;
 
   const isMaternity = category.slug === "maternity";
+  const isJanmashtami = isChild && child!.slug === "janmashtami";
+  const hideComparisonTable = isMaternity || isJanmashtami;
   const effectiveGallery = isMaternity && effective.gallery
     ? effective.gallery.slice(0, 10)
     : effective.gallery;
@@ -169,12 +171,14 @@ export default function PhotographyCategoryTemplate({
         </Container>
       </Section>
 
-      <Section isAlt>
-        <Container>
-          <PageHeader title="Package comparison" eyebrow="Compare" />
-          <ComparisonTable category={effective} />
-        </Container>
-      </Section>
+      {!hideComparisonTable && (
+        <Section isAlt>
+          <Container>
+            <PageHeader title="Package comparison" eyebrow="Compare" />
+            <ComparisonTable category={effective} />
+          </Container>
+        </Section>
+      )}
 
       {effective.addonDetails && effective.addonDetails.length > 0 && (
         <Section>
@@ -286,27 +290,6 @@ export default function PhotographyCategoryTemplate({
             </Container>
           </Section>
 
-          {/* Other Photography Services */}
-          <Section isAlt>
-            <Container>
-              <PageHeader
-                title="Other Family Photography Services"
-                eyebrow="Keep Exploring"
-                copy="We capture all milestones and celebrations of your family's journey."
-              />
-              <p className="lead" style={{ textAlign: 'center', maxWidth: '800px', margin: '30px auto' }}>
-                We also provide candid photography and cinematic event coverage for birthdays, baby welcome celebrations, mundan ceremonies, naming ceremonies, Kua Pujan, Mata Ki Chowki and other family occasions.
-              </p>
-              <div className="pill-row" style={{ justifyContent: 'center', flexWrap: 'wrap' }}>
-                <span className="pill">Birthday Sessions</span>
-                <span className="pill">Baby Welcome</span>
-                <span className="pill">Mundan Photography</span>
-                <span className="pill">Naming Ceremonies</span>
-                <span className="pill">Kua Pujan</span>
-                <span className="pill">Mata Ki Chowki</span>
-              </div>
-            </Container>
-          </Section>
         </>
       )}
 
@@ -411,7 +394,11 @@ export default function PhotographyCategoryTemplate({
       {relatedCategories.length > 0 && (
         <Section>
           <Container>
-            <PageHeader title="Related photography experiences" eyebrow="Keep exploring" />
+            <PageHeader
+              title="Related photography experiences"
+              eyebrow="Keep exploring"
+              copy={isMaternity ? "We also capture every other milestone and celebration in your family's journey, from the newborn days through birthdays and cultural ceremonies." : undefined}
+            />
             <CategoryGrid items={relatedCategories} />
           </Container>
         </Section>

@@ -176,8 +176,11 @@
   const SOUND_ON_ICON = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M19 6a9 9 0 0 1 0 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
   const SOUND_OFF_ICON = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor"/><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
 
+  const HERO_VIDEO_START_DELAY_MS = 3000;
+
   document.querySelectorAll("[data-hero-video]").forEach((video) => {
     const toggle = video.parentElement?.querySelector("[data-hero-sound-toggle]");
+    const playIcon = video.parentElement?.querySelector("[data-hero-play-icon]");
 
     function syncToggle() {
       if (!toggle) return;
@@ -185,22 +188,43 @@
       toggle.setAttribute("aria-label", video.muted ? "Unmute video" : "Mute video");
     }
 
-    // Try to autoplay with sound; browsers that block audible autoplay will
-    // reject this, so fall back to a muted (guaranteed-allowed) autoplay.
-    video.muted = false;
-    video
-      .play()
-      .catch(() => {
-        video.muted = true;
-        return video.play().catch(() => {});
-      })
-      .finally(syncToggle);
+    function syncPlayIcon() {
+      playIcon?.classList.toggle("is-visible", video.paused);
+    }
 
-    toggle?.addEventListener("click", () => {
+    // Show the poster image for a beat before the video starts, so the hero
+    // reads as a photo first rather than opening straight into motion.
+    window.setTimeout(() => {
+      // Try to autoplay with sound; browsers that block audible autoplay will
+      // reject this, so fall back to a muted (guaranteed-allowed) autoplay.
+      video.muted = false;
+      video
+        .play()
+        .catch(() => {
+          video.muted = true;
+          return video.play().catch(() => {});
+        })
+        .finally(syncToggle);
+    }, HERO_VIDEO_START_DELAY_MS);
+
+    toggle?.addEventListener("click", (e) => {
+      e.stopPropagation();
       video.muted = !video.muted;
       if (!video.muted) video.play().catch(() => {});
       syncToggle();
       window.mbpTrack("hero_video_sound_toggle", { muted: video.muted });
+    });
+
+    video.addEventListener("play", syncPlayIcon);
+    video.addEventListener("pause", syncPlayIcon);
+
+    video.addEventListener("click", () => {
+      if (video.paused) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+      window.mbpTrack("hero_video_tap_toggle", { paused: video.paused });
     });
   });
 

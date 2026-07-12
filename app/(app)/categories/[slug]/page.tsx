@@ -6,7 +6,7 @@ import { getFAQs } from "../../../../lib/repositories/faqRepository";
 import { getTestimonialsByNames } from "../../../../lib/repositories/testimonialRepository";
 import { getResources } from "../../../../lib/repositories/resourceRepository";
 import { buildMetadata } from "../../../../lib/seo";
-import { buildServiceSchema, buildFAQSchema, buildBreadcrumbSchema } from "../../../../lib/schema";
+import { buildServiceSchema, buildFAQSchema, buildBreadcrumbSchema, buildImageObjectSchema, buildReviewSchema } from "../../../../lib/schema";
 import PhotographyCategoryTemplate from "../../../../components/templates/PhotographyCategoryTemplate";
 import { categoryPath } from "../../../../lib/routes";
 
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: CategoryPageProps) {
     : `${category.label} | ${site.name}`;
 
   const description = isMaternity
-    ? "Book an elegant maternity photoshoot in Delhi NCR with studio, outdoor and couple themes. Packages start at ₹3,499 and include maternity gowns. Serving Delhi, Noida, Gurgaon and Faridabad."
+    ? "Book an elegant maternity photoshoot in Delhi NCR with studio, outdoor and couple themes. Packages start at ₹3,499 and include maternity gowns."
     : category.description;
 
   return await buildMetadata({
@@ -71,12 +71,14 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const breadcrumbSchema = buildBreadcrumbSchema(
     [
       { label: "Home", href: "/" },
-      { label: "Categories", href: "/categories/maternity" },
+      { label: "Categories" },
       { label: category.label },
     ],
     site.domain
   );
   const related = relatedDocs.filter(Boolean) as any[];
+  const imageObjectSchemas = buildImageObjectSchema(category.gallery || [], site);
+  const reviewSchemas = buildReviewSchema(testimonials, site, `${category.title} Photography`);
 
   return (
     <>
@@ -92,6 +94,20 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {imageObjectSchemas.map((imageSchema, idx) => (
+        <script
+          key={idx}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(imageSchema) }}
+        />
+      ))}
+      {reviewSchemas.map((reviewSchema, idx) => (
+        <script
+          key={idx}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
+        />
+      ))}
       <PhotographyCategoryTemplate
         category={category}
         child={null}

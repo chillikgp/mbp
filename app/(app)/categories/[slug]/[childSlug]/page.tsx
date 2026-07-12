@@ -70,7 +70,7 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
   const breadcrumbSchema = buildBreadcrumbSchema(
     [
       { label: "Home", href: "/" },
-      { label: "Categories", href: "/categories/maternity" },
+      { label: "Categories" },
       { label: parent.label, href: `/categories/${parent.slug}` },
       { label: child.title },
     ],
