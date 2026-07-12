@@ -36,3 +36,9 @@ payload-types.ts.map
 # Raw, unprocessed source images (pre-optimization scratch material)
 /maternity images/
 
+# Local-only symlink to the legacy content source used by scripts/build-site.mjs
+# and scripts/compare-routes.mjs (the parity-comparison harness). Points outside
+# the repo (../content_backup) so it must never be committed -- doing so breaks
+# `next build` on Vercel with ENOENT, since that directory doesn't exist there.
+/content
+
