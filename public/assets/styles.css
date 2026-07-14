@@ -22,6 +22,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Anchor targets must clear the sticky header (~76px) when scrolled to. */
+[id] {
+  scroll-margin-top: 92px;
+}
+
 body {
   margin: 0;
   color: var(--ink);
@@ -2317,6 +2322,17 @@ summary::marker {
 
 .hero-media--video video {
   cursor: pointer;
+}
+
+/* On single-column (mobile) layouts the hero grid collapses, so the
+   75%-wide video box must center itself instead of hugging the right
+   edge (margin-left: auto alone right-aligns it). */
+@media (max-width: 980px) {
+  .hero-media.hero-media--video {
+    width: min(100%, 420px);
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .hero-sound-toggle {

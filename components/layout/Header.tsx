@@ -29,9 +29,10 @@ export default function Header({ site, navItems }: HeaderProps) {
         </nav>
         <a
           className="btn btn-primary desktop-cta"
-          href={site.whatsapp}
+          href="#contact"
+          data-book-now=""
           data-track="cta_click"
-          data-track-label="Header WhatsApp"
+          data-track-label="Header Book Now"
         >
           Book Now
         </a>
@@ -59,9 +60,10 @@ export default function Header({ site, navItems }: HeaderProps) {
           </a>
         ))}
         <a
-          href={site.whatsapp}
+          href="#contact"
+          data-book-now=""
           data-track="cta_click"
-          data-track-label="Mobile WhatsApp"
+          data-track-label="Mobile Book Now"
         >
           Book Now
         </a>

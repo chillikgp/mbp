@@ -159,9 +159,10 @@ export default async function HomePage() {
                   href="#contact"
                   data-track="cta_click"
                   data-category={defaultPricingCategory?.slug}
+                  data-package={pkg.name}
                   data-track-label={`${pkg.name} inquiry`}
                 >
-                  Inquire
+                  Select This Package
                 </a>
               </article>
             ))}

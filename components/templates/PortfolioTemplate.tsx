@@ -6,6 +6,7 @@ import Section from "../layout/Section";
 import PageHeader from "../layout/PageHeader";
 import PortfolioGrid from "../photography/PortfolioGrid";
 import InquiryForm from "../sections/InquiryForm";
+import { categoryPath } from "../../lib/routes";
 
 interface PortfolioTemplateProps {
   category: PhotographyCategory;
@@ -27,10 +28,12 @@ export default function PortfolioTemplate({ category, site, categories }: Portfo
         title={title}
         copy={copy}
         image={isMaternity ? "/images/maternity_hero.jpg" : category.heroImage}
-        primary={isMaternity ? "Check Availability" : "Book This Look"}
-        secondary={isMaternity ? "See packages & pricing" : "See Pricing"}
+        video={category.heroVideo}
+        videoPoster={isMaternity ? "/images/maternity_hero.jpg" : category.heroVideoPoster}
+        primary="Check Availability"
+        secondary={isMaternity ? "See Packages" : "See Pricing"}
         path="#contact"
-        secondaryPath={isMaternity ? "/categories/maternity" : "#portfolio"}
+        secondaryPath={isMaternity ? "/categories/maternity#packages" : "#portfolio"}
       />
 
       <Section isAlt id="portfolio">
@@ -59,20 +62,20 @@ export default function PortfolioTemplate({ category, site, categories }: Portfo
             <div className="action-row">
               <a
                 className="btn btn-soft"
-                href={site.whatsapp}
+                href={`${categoryPath(category)}#packages`}
                 data-track="cta_click"
                 data-category={category.slug}
-                data-track-label="WhatsApp CTA"
+                data-track-label="See Packages"
               >
-                WhatsApp Now
+                See Packages
               </a>
               <a
                 className="btn btn-outline"
-                href="/contact"
+                href="#contact"
                 data-track="cta_click"
-                data-track-label="Contact page"
+                data-track-label="Book a Session"
               >
-                Contact Studio
+                Book a Session
               </a>
             </div>
           </div>

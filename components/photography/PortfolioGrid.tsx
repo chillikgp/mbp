@@ -48,7 +48,12 @@ export default function PortfolioGrid({ gallery, category }: PortfolioGridProps)
             data-category={category}
             data-theme={item.theme ? item.theme.toLowerCase() : undefined}
           >
-            <GalleryImage src={item.src} alt={item.alt} />
+            <GalleryImage
+              src={item.src}
+              alt={item.alt}
+              width={item.width || undefined}
+              height={item.height || undefined}
+            />
             <span className="portfolio-caption">{item.caption || ""}</span>
           </button>
         ))}

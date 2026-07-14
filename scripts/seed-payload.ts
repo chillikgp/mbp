@@ -738,7 +738,7 @@ async function run() {
     slug: 'navigation',
     data: {
       primaryNavigation: [
-        { label: 'Categories', href: '/categories/maternity' },
+        { label: 'Categories', href: '/categories' },
         { label: 'Portfolio', href: '/portfolio' },
         { label: 'Shop', href: '/shop' },
         { label: 'Pricing', href: '/pricing' },

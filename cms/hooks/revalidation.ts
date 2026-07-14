@@ -47,7 +47,7 @@ function relIds(value: unknown): string[] {
 
 /** Index/listing pages that enumerate the full category list. */
 export function categoryListingPaths(): string[] {
-  return ['/', '/portfolio', '/pricing', '/contact', '/testimonials'];
+  return ['/', '/categories', '/portfolio', '/pricing', '/contact', '/testimonials'];
 }
 
 /**

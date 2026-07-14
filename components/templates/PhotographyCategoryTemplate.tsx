@@ -36,7 +36,7 @@ export default function PhotographyCategoryTemplate({
 }: PhotographyCategoryTemplateProps) {
   const isChild = Boolean(child);
   const title = isChild ? `${child!.title} Photography` : category.label;
-  const summary = isChild ? child!.summary : category.description;
+  const summary = isChild ? child!.summary : category.summary || category.description;
   const image = isChild ? child!.heroImage : category.heroImage;
   const description = isChild ? child!.description || category.description : category.description;
   const heroVideo = isChild ? child!.heroVideo || category.heroVideo : category.heroVideo;
@@ -62,9 +62,8 @@ export default function PhotographyCategoryTemplate({
   const isMaternity = category.slug === "maternity";
   const isJanmashtami = isChild && child!.slug === "janmashtami";
   const hideComparisonTable = isMaternity || isJanmashtami;
-  const effectiveGallery = isMaternity && effective.gallery
-    ? effective.gallery.slice(0, 10)
-    : effective.gallery;
+  const effectiveGallery = effective.gallery;
+  const displayName = isChild ? child!.title : category.title;
 
   return (
     <>
@@ -75,7 +74,7 @@ export default function PhotographyCategoryTemplate({
         image={image}
         video={heroVideo}
         videoPoster={heroVideoPoster}
-        primary="Ask for Availability"
+        primary="Check Availability"
         secondary="See Portfolio"
         path="#contact"
         secondaryPath="#portfolio"
@@ -125,28 +124,30 @@ export default function PhotographyCategoryTemplate({
           <PageHeader
             title={isMaternity ? "Maternity Portfolio Highlights" : `${title} gallery`}
             eyebrow="Portfolio"
-            copy={isMaternity ? "Browse our signature looks and outfits. Expecting mothers can select their preferred themes from these curated recent sessions." : "Step into our gallery of recent sessions and browse by theme to see our styling and setups in action."}
+            copy={isMaternity ? "Browse our signature looks and outfits. Expecting mothers can select their preferred themes from these recent sessions." : "Step into our gallery of recent sessions and browse by theme to see our styling and setups in action."}
           />
           <PortfolioGrid gallery={effectiveGallery || []} category={category.slug} />
-          <div className="action-row">
-            <a className="btn btn-outline" href={portfolioPath(category)}>
-              {isMaternity ? "View the Complete Maternity Portfolio" : `Open ${category.title} Portfolio`}
-            </a>
-          </div>
+          {!isChild && !isMaternity && (
+            <div className="action-row">
+              <a className="btn btn-outline" href={portfolioPath(category)}>
+                {`Open ${category.title} Portfolio`}
+              </a>
+            </div>
+          )}
         </Container>
       </Section>
 
-      <Section isAlt={!isChild}>
+      <Section isAlt={!isChild} id="packages">
         <Container>
           <PageHeader
-            title={`${category.title} packages`}
+            title={`${displayName} packages`}
             eyebrow="Pricing"
             copy="Browse tailored package inclusions, premium prints, and custom setups for your session."
           />
           <div className={isMaternity ? "grid grid-4" : "grid grid-3"}>
             {(effective.pricing || []).map((pkg, idx) => (
               <article key={idx} className={`price-card ${pkg.featured ? "featured" : ""}`}>
-                <p className="eyebrow">{pkg.featured ? "Most booked" : category.title}</p>
+                <p className="eyebrow">{pkg.featured ? "Most booked" : displayName}</p>
                 <h3>{pkg.name}</h3>
                 <div className="price">
                   {pkg.price} <small>onwards</small>
@@ -161,9 +162,10 @@ export default function PhotographyCategoryTemplate({
                   href="#contact"
                   data-track="cta_click"
                   data-category={category.slug}
+                  data-package={pkg.name}
                   data-track-label={`${pkg.name} inquiry`}
                 >
-                  Inquire
+                  Select This Package
                 </a>
               </article>
             ))}
@@ -377,7 +379,7 @@ export default function PhotographyCategoryTemplate({
 
       <Section isAlt>
         <Container>
-          <PageHeader title={`${category.title} questions`} eyebrow="FAQ" />
+          <PageHeader title={`${displayName} questions`} eyebrow="FAQ" />
           <FAQSection items={pageFaqs} />
         </Container>
       </Section>
@@ -418,13 +420,17 @@ export default function PhotographyCategoryTemplate({
                 style={{ borderRadius: "50%", marginBottom: "16px" }}
               />
             )}
-            <p className="eyebrow">Book {category.title}</p>
+            <p className="eyebrow">Book {displayName}</p>
             <h2>Check dates, themes and package fit.</h2>
             <p className="lead">
               Send the baby age, event date, preferred location and any visual references. We will help plan the right session flow.
             </p>
           </div>
-          <InquiryForm site={site} categories={categories} category={category} />
+          <InquiryForm
+            site={site}
+            categories={categories}
+            category={{ ...category, pricing: effective.pricing }}
+          />
         </Container>
       </Section>
     </>

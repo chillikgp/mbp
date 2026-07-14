@@ -18,22 +18,12 @@ export async function generateMetadata() {
   });
 }
 
-interface ContactPageProps {
-  searchParams: Promise<{
-    category?: string;
-    service?: string;
-  }>;
-}
-
-export default async function ContactPage({ searchParams }: ContactPageProps) {
-  const { category: queryCategory, service: queryService } = await searchParams;
+// Category preselection from ?category=/?service= happens client-side in
+// public/assets/site.js so this page stays fully static (reading
+// searchParams here would force per-request rendering + DB hits).
+export default async function ContactPage() {
   const site = await getSiteSettings();
   const categories = await getCategories();
-  
-  const targetSlug = (queryCategory || queryService || "").toLowerCase();
-  const selectedCategory = categories.find(
-    (c) => c.slug === targetSlug || c.title.toLowerCase() === targetSlug
-  );
 
   const schema = buildLocalBusinessSchema(site);
 
@@ -48,9 +38,9 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         title="Book a premium baby or family photography session."
         copy={`${site.address}. Call ${site.phone} or send a WhatsApp inquiry for availability.`}
         image="/images/hero-carousel-1.jpeg"
-        primary="WhatsApp Now"
+        primary="Check Availability"
         secondary="View Pricing"
-        path={site.whatsapp}
+        path="#contact"
         secondaryPath="/pricing"
       />
       <Section isAlt id="contact">
@@ -62,7 +52,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               A short note is enough: category, baby age, date and preferred location.
             </p>
           </div>
-          <InquiryForm site={site} categories={categories} category={selectedCategory} />
+          <InquiryForm site={site} categories={categories} />
         </Container>
       </Section>
     </>

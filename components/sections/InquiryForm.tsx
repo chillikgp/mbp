@@ -7,11 +7,24 @@ interface InquiryFormProps {
 }
 
 export default function InquiryForm({ site, categories, category = {} }: InquiryFormProps) {
+  const hasKnownTitle = categories.some((item) => item.title === category.title);
+  const selectedPackages = (category.pricing || []).map((pkg) => pkg.name);
+  // Category title -> package names, so site.js can repopulate the package
+  // dropdown when the visitor changes the category select.
+  const packagesByCategory = Object.fromEntries(
+    categories.map((item) => [item.title, (item.pricing || []).map((pkg) => pkg.name)])
+  );
+  if (category.title && selectedPackages.length > 0) {
+    packagesByCategory[category.title] = selectedPackages;
+  }
+
   return (
     <form
       className="form"
       data-track-form="inquiry"
       data-category={category.slug || ""}
+      data-whatsapp={site.whatsapp.replace(/\D/g, "")}
+      data-packages={JSON.stringify(packagesByCategory)}
     >
       <label>
         Name
@@ -24,9 +37,26 @@ export default function InquiryForm({ site, categories, category = {} }: Inquiry
       <label>
         Session category
         <select name="category" defaultValue={category.title || ""}>
+          <option value="" disabled>
+            Select a category
+          </option>
+          {category.title && !hasKnownTitle && (
+            <option value={category.title}>{category.label || category.title}</option>
+          )}
           {categories.map((item) => (
-            <option key={item.slug} value={item.title}>
+            <option key={item.slug} value={item.title} data-category-slug={item.slug}>
               {item.label}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label>
+        Package
+        <select name="package" defaultValue="" data-package-select>
+          <option value="">Not sure yet</option>
+          {selectedPackages.map((name) => (
+            <option key={name} value={name}>
+              {name}
             </option>
           ))}
         </select>

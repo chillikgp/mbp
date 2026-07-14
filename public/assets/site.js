@@ -241,16 +241,190 @@
       event.preventDefault();
       const formData = new FormData(form);
       const category = formData.get("category") || form.dataset.category || "";
+      const pkg = formData.get("package") || "";
+      const month = formData.get("month") || "";
+      const note = formData.get("message") || "";
       window.mbpTrack("generate_lead", {
         form: form.dataset.trackForm,
-        category
+        category,
+        package: pkg || undefined
       });
-      const message = encodeURIComponent(
-        `Hi My Baby Pictures, I want to inquire about ${category || "a photography session"}. My name is ${formData.get("name") || ""}. Phone: ${formData.get("phone") || ""}.`
-      );
-      window.location.href = `https://wa.me/917042926912?text=${message}`;
+
+      // Persist the lead (Google Sheet via /api/inquire) before the WhatsApp
+      // redirect. keepalive lets the request outlive the navigation.
+      try {
+        fetch("/api/inquire", {
+          method: "POST",
+          keepalive: true,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.get("name") || "",
+            phone: formData.get("phone") || "",
+            category: category,
+            package: pkg,
+            month: month,
+            message: note,
+            page: window.location.pathname
+          })
+        }).catch(() => {});
+      } catch (err) {
+        /* never block the WhatsApp handoff */
+      }
+
+      const lines = [
+        `Hi My Baby Pictures, I want to inquire about ${category || "a photography session"}.`,
+        pkg ? `Package: ${pkg}` : "",
+        `My name is ${formData.get("name") || ""}. Phone: ${formData.get("phone") || ""}.`,
+        month ? `Preferred month: ${month}.` : "",
+        note ? `Details: ${note}` : ""
+      ].filter(Boolean);
+      const message = encodeURIComponent(lines.join("\n"));
+      const number = form.dataset.whatsapp || "917042926912";
+      window.location.href = `https://wa.me/${number}?text=${message}`;
     });
   });
+
+  // --- Inquiry form: package dropdown follows the category select ---
+  document.querySelectorAll('form[data-track-form="inquiry"]').forEach((form) => {
+    const categorySelect = form.querySelector('select[name="category"]');
+    const packageSelect = form.querySelector("[data-package-select]");
+    if (!categorySelect || !packageSelect) return;
+
+    let packagesByCategory = {};
+    try {
+      packagesByCategory = JSON.parse(form.dataset.packages || "{}");
+    } catch (err) {
+      packagesByCategory = {};
+    }
+
+    categorySelect.addEventListener("change", () => {
+      const names = packagesByCategory[categorySelect.value] || [];
+      const current = packageSelect.value;
+      packageSelect.innerHTML = "";
+      const none = document.createElement("option");
+      none.value = "";
+      none.textContent = "Not sure yet";
+      packageSelect.appendChild(none);
+      names.forEach((name) => {
+        const option = document.createElement("option");
+        option.value = name;
+        option.textContent = name;
+        packageSelect.appendChild(option);
+      });
+      if (names.indexOf(current) !== -1) packageSelect.value = current;
+    });
+  });
+
+  // Package CTAs ("Select This Package") preselect that package in the form.
+  document.querySelectorAll("a[data-package]").forEach((link) => {
+    link.addEventListener("click", () => {
+      const form = document.querySelector('form[data-track-form="inquiry"]');
+      if (!form) return;
+      const categorySelect = form.querySelector('select[name="category"]');
+      const packageSelect = form.querySelector("[data-package-select]");
+      const slug = link.dataset.category || "";
+
+      if (categorySelect && slug) {
+        const match = Array.from(categorySelect.options).find(
+          (option) => (option.dataset.categorySlug || "") === slug
+        );
+        if (match && categorySelect.value !== match.value) {
+          categorySelect.value = match.value;
+          categorySelect.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+      }
+
+      if (packageSelect) {
+        const name = link.dataset.package;
+        let option = Array.from(packageSelect.options).find((item) => item.value === name);
+        if (!option) {
+          option = document.createElement("option");
+          option.value = name;
+          option.textContent = name;
+          packageSelect.appendChild(option);
+        }
+        packageSelect.value = name;
+      }
+    });
+  });
+
+  // Preselect the category from ?category= / ?service= (static /contact page).
+  (function preselectFromQuery() {
+    const params = new URLSearchParams(window.location.search);
+    const wanted = (params.get("category") || params.get("service") || "").toLowerCase();
+    if (!wanted) return;
+    document
+      .querySelectorAll('form[data-track-form="inquiry"] select[name="category"]')
+      .forEach((select) => {
+        const match = Array.from(select.options).find(
+          (option) =>
+            (option.dataset.categorySlug || "").toLowerCase() === wanted ||
+            option.value.toLowerCase() === wanted
+        );
+        if (match) {
+          select.value = match.value;
+          select.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+      });
+  })();
+
+  // Header "Book Now": scroll to the on-page form, or fall back to /contact.
+  document.querySelectorAll("[data-book-now]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (!document.getElementById("contact")) {
+        event.preventDefault();
+        window.location.href = "/contact";
+        return;
+      }
+      if (mobileNav && mobileNav.classList.contains("is-open")) {
+        mobileNav.classList.remove("is-open");
+        if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+
+  // --- Anchor-scroll correction ---
+  // Lazy-loaded images grow the page after an anchor scroll starts, so the
+  // browser's precomputed target offset undershoots (users land on the FAQ
+  // instead of #contact). Re-check after the smooth scroll settles and nudge
+  // to the true position if the target drifted.
+  const ANCHOR_OFFSET = 92; // keep in sync with scroll-margin-top in styles.css
+
+  function correctAnchorScroll(target) {
+    const check = () => {
+      const top = target.getBoundingClientRect().top;
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2;
+      const undershot = top > ANCHOR_OFFSET + 24 && !atBottom;
+      const overshot = top < -24;
+      if (undershot || overshot) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+    window.setTimeout(check, 700);
+    window.setTimeout(check, 1600);
+  }
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest('a[href*="#"]');
+    if (!link) return;
+    const href = link.getAttribute("href") || "";
+    const hashIndex = href.indexOf("#");
+    if (hashIndex === -1) return;
+    const pathPart = href.slice(0, hashIndex);
+    if (pathPart && pathPart !== window.location.pathname) return;
+    const target = document.getElementById(href.slice(hashIndex + 1));
+    if (target) correctAnchorScroll(target);
+  });
+
+  if (window.location.hash) {
+    const hashTarget = document.getElementById(window.location.hash.slice(1));
+    if (hashTarget) {
+      window.setTimeout(() => correctAnchorScroll(hashTarget), 200);
+      window.addEventListener("load", () => correctAnchorScroll(hashTarget));
+    }
+  }
 
   const money = (amount) => `₹${Number(amount || 0).toLocaleString("en-IN")}`;
   const orderKey = (slug) => `mbp-shop-order-${slug}`;
