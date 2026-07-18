@@ -14,7 +14,7 @@ export function buildLocalBusinessSchema(site: SiteSettings) {
 
   return {
     "@context": "https://schema.org",
-    "@type": "PhotographyStudio",
+    "@type": ["LocalBusiness", "PhotographyStudio"],
     name: site.name,
     image: url(site.logo, site.domain),
     url: site.domain,
