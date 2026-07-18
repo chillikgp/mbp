@@ -44,7 +44,7 @@ export default async function PortfolioIndexPage() {
       <Section isAlt>
         <Container>
           <PageHeader title="Select a gallery" eyebrow="Portfolio categories" />
-          <CategoryGrid items={categories} />
+          <CategoryGrid items={categories} destination="portfolio" />
         </Container>
       </Section>
       <Section id="contact">

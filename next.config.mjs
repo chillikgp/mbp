@@ -6,6 +6,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/index.html",
+        destination: "/",
+        permanent: true,
+      },
+      {
         source: "/privacy-policy.html",
         destination: "/privacy-policy",
         permanent: true,

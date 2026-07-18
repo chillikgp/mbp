@@ -14,7 +14,7 @@ Search rankings are a primary driver of client acquisition for the photography s
    - Open Graph tags (`og:title`, `og:description`, `og:image`, `og:url`)
    - Twitter card tags
 2. **JSON-LD Schema Injection**: Structured schemas (e.g. `LocalBusiness`, `FAQPage`, `Product`, `Service`) are constructed in `lib/schema.ts` and rendered inline as JSON script blocks within the Server Page components.
-3. **Parity Enforcement**: The canonical URL structure MUST preserve the trailing slash convention (e.g., `/categories/maternity/`), matched by the Next.js routing structure. Legacy `.html` routes must be permanently redirected (301 redirects) to clean endpoints inside `next.config.mjs` to preserve search authority.
+3. **URL Consistency**: Canonical URLs, sitemap entries, JSON-LD URLs, internal links, and redirect destinations MUST use the no-trailing-slash convention (for example, `/categories/maternity`). Legacy `.html` routes must permanently redirect to their clean canonical endpoints inside `next.config.mjs` to preserve search authority.
 
 ## Consequences
 - **100% SEO Parity**: Automating checks with `compare-routes.mjs` guarantees zero meta or head-tag regressions.

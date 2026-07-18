@@ -28,7 +28,7 @@ export async function buildMetadata({
   const site = await getSiteSettings();
   const domain = site.domain.replace(/\/$/, "");
   const formattedPath = path.startsWith("/") ? path : `/${path}`;
-  const canonicalUrl = `${domain}${formattedPath}`;
+  const canonicalUrl = formattedPath === "/" ? domain : `${domain}${formattedPath}`;
 
   const ogImgUrl = toAbsoluteUrl(image || site.ogImage, domain);
 
@@ -77,4 +77,3 @@ export async function buildMetadata({
     },
   };
 }
-
