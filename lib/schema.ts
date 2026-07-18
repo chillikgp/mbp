@@ -8,6 +8,10 @@ const url = (path: string = "/", domain: string) => {
 };
 
 export function buildLocalBusinessSchema(site: SiteSettings) {
+  const ratingValue = Number(site.rating);
+  const reviewCount = Number(site.reviewCount);
+  const hasValidRating = Number.isFinite(ratingValue) && Number.isFinite(reviewCount) && reviewCount > 0;
+
   return {
     "@context": "https://schema.org",
     "@type": "PhotographyStudio",
@@ -23,11 +27,13 @@ export function buildLocalBusinessSchema(site: SiteSettings) {
       postalCode: "110092",
       addressCountry: "IN",
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: site.rating,
-      reviewCount: site.reviewCount,
-    },
+    ...(hasValidRating && {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue,
+        reviewCount,
+      },
+    }),
     sameAs: [site.instagram, site.youtube],
   };
 }
@@ -98,8 +104,8 @@ export function buildProductSchema(product: Product, site: SiteSettings) {
     brand: { "@type": "Brand", name: site.name },
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: product.rating,
-      reviewCount: product.reviewCount,
+      ratingValue: Number(product.rating),
+      reviewCount: Number(product.reviewCount),
     },
     offers: {
       "@type": "Offer",
